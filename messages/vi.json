@@ -1,0 +1,21 @@
+{
+  "button": {
+    "submit": "Gửi",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "sign_in": "Đăng nhập",
+    "sign_up": "Đăng ký",
+    "sign_out": "Đăng xuất",
+    "edit": "Sửa",
+    "save": "Lưu",
+    "close": "Đóng",
+    "back": "Quay lại",
+    "next": "Tiếp theo",
+    "finish": "Hoàn tất",
+    "confirm": "Xác nhận",
+    "reset": "Đặt lại",
+    "search": "Tìm kiếm",
+    "upload": "Tải lên",
+    "download": "Tải xuống"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "button": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "sign_in": "Sign in",
+    "sign_up": "Sign up",
+    "sign_out": "Sign out",
+    "edit": "Edit",
+    "save": "Save",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "finish": "Finish",
+    "confirm": "Confirm",
+    "reset": "Reset",
+    "search": "Search",
+    "upload": "Upload",
+    "download": "Download"
+  }
+}
