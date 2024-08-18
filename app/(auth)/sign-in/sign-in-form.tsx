@@ -12,10 +12,15 @@ import { Input } from '@/components/ui/input'
 import { loginSchema } from '@/lib/validates'
 import { LoginUser } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 import z from 'zod'
+import setLanguageValue from './actions'
+import Link from 'next/link'
+import { pathRoute } from '@/lib/const'
 
 export default function SignInForm() {
+  const t = useTranslations()
   const defaultValues: LoginUser = {
     username: '',
     password: '',
@@ -36,6 +41,7 @@ export default function SignInForm() {
     // ✅ This will be type-safe and validated.
     console.log(values)
   }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
@@ -45,7 +51,7 @@ export default function SignInForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder='username' {...field} />
+                <Input placeholder={t('placehoolder.username')} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -57,21 +63,30 @@ export default function SignInForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder='password' {...field} className='p-' />
+                <Input type='password' placeholder='••••••••' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+        <p className='text-sm text-slate-500 text-right'>
+          {t('typography.forgot_password')}
+        </p>
         <Button
           type='submit'
           disabled={!isValid}
           className='w-full rounded-full'
           size='lg'
         >
-          Đăng nhập
+          {t('button.sign_in')}
         </Button>
       </form>
+      <p className='text-sm text-center mt-10'>
+        {t('typography.no_account')}{' '}
+        <Link href={pathRoute.SIGN_UP}>
+          <span className='text-primary'>{t('typography.register')}</span>
+        </Link>
+      </p>
     </Form>
   )
 }
