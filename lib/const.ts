@@ -16,3 +16,5 @@ export const languageLabels = [
     value: 'vi',
   },
 ]
+
+export const STEP_ONE = 1

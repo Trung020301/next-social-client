@@ -76,5 +76,8 @@
     "label": "Chọn ngôn ngữ",
     "en": "Tiếng Anh",
     "vi": "Tiếng Việt"
+  },
+  "title": {
+    "full_name": "Họ tên của bạn"
   }
 }

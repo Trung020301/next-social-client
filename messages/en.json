@@ -76,5 +76,8 @@
     "label": "Change language",
     "en": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 English",
     "vi": "🇻🇳 Vietnamese"
+  },
+  "title": {
+    "full_name": "Your full name"
   }
 }
