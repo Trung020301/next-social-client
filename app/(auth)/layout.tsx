@@ -7,9 +7,9 @@ export default function AuthLayout({
   children: React.ReactNode
 }) {
   return (
-    <section className='h-screen bg-sky-50'>
+    <section className='h-screen'>
       <LocaleSwitcher />
-      <Suspense>{children}</Suspense>
+      <>{children}</>
     </section>
   )
 }

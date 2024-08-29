@@ -18,9 +18,12 @@ import z from 'zod'
 import setLanguageValue from './actions'
 import Link from 'next/link'
 import { pathRoute } from '@/lib/const'
+import { useState } from 'react'
+import { ButtonLoading } from '@/components/ButtonLoading'
 
 export default function SignInForm() {
   const t = useTranslations()
+  const [loading, setLoading] = useState(false)
   const defaultValues: LoginUser = {
     username: '',
     password: '',
@@ -72,14 +75,18 @@ export default function SignInForm() {
         <p className='text-sm text-slate-500 text-right'>
           {t('typography.forgot_password')}
         </p>
-        <Button
-          type='submit'
-          disabled={!isValid}
-          className='w-full rounded-full'
-          size='lg'
-        >
-          {t('button.sign_in')}
-        </Button>
+        {loading ? (
+          <ButtonLoading title={t('button.sign_in')} />
+        ) : (
+          <Button
+            type='submit'
+            disabled={!isValid}
+            className='w-full rounded-full'
+            size='lg'
+          >
+            {t('button.sign_in')}
+          </Button>
+        )}
       </form>
       <p className='text-sm text-center mt-10'>
         {t('typography.no_account')}{' '}
