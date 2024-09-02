@@ -23,7 +23,7 @@
     "description": "Description",
     "content": "Content",
     "name": "Name",
-    "email": "Email",
+    "email": "{email}",
     "phone": "Phone",
     "address": "Address",
     "password": "Password",
@@ -57,7 +57,11 @@
     "light": "Light",
     "system": "System",
     "currency": "Currency",
-    "no_account": "Don't have an account?"
+    "no_account": "Don't have an account?",
+    "have_account": "Already have an account?",
+    "real_name": "Typing your real name",
+    "hide_post": "Hide post",
+    "report_post": "Report post"
   },
   "placehoolder": {
     "search": "Search...",
@@ -76,5 +80,19 @@
     "label": "Change language",
     "en": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 English",
     "vi": "🇻🇳 Vietnamese"
+  },
+  "title": {
+    "set_name": "Your full name",
+    "create_account": "Create your account",
+    "active_account": "Active your account"
+  },
+  "error": {
+    "name_length": "The fullname must be at least 3 characters.",
+    "start_with_space": "The fullname must not start with space.",
+    "otp_invalid": "The OTP code is invalid."
+  },
+  "notify": {
+    "send_email": "We have sent an email to {email}. Please check your email to verify your account.",
+    "otp_rule": "Your OTP must be 6 digits."
   }
 }

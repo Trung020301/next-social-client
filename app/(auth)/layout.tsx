@@ -9,7 +9,7 @@ export default function AuthLayout({
   return (
     <section className='h-screen'>
       <LocaleSwitcher />
-      <Suspense>{children}</Suspense>
+      <>{children}</>
     </section>
   )
 }

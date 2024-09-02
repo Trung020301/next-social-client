@@ -23,7 +23,7 @@
     "description": "Mô tả",
     "content": "Nội dung",
     "name": "Tên",
-    "email": "Email",
+    "email": "{email}",
     "phone": "Số điện thoại",
     "address": "Địa chỉ",
     "password": "Mật khẩu",
@@ -57,7 +57,11 @@
     "light": "Sáng",
     "system": "Hệ thống",
     "currency": "Tiền tệ",
-    "no_account": "Chưa có tài khoản?"
+    "no_account": "Chưa có tài khoản?",
+    "have_account": "Đã có tài khoản?",
+    "real_name": "Nhập tên bạn sử dụng ngoài đời thực.",
+    "hide_post": "Ẩn bài viết",
+    "report_post": "Báo cáo bài viết"
   },
   "placehoolder": {
     "search": "Tìm kiếm...",
@@ -76,5 +80,19 @@
     "label": "Chọn ngôn ngữ",
     "en": "Tiếng Anh",
     "vi": "Tiếng Việt"
+  },
+  "title": {
+    "set_name": "Họ tên của bạn",
+    "create_account": "Tạo tài khoản",
+    "active_account": "Kích hoạt tài khoản"
+  },
+  "error": {
+    "name_length": "Họ và tên phải có ít nhất 3 ký tự.",
+    "start_with_space": "Họ và tên không được bắt đầu bằng khoảng trắng.",
+    "otp_invalid": "Mã OTP không hợp lệ."
+  },
+  "notify": {
+    "send_email": "Chúng tôi đã gửi mã xác thực tới {email} cho bạn, hãy kiểm tra hộp thư để xác thực tài khoản.",
+    "otp_rule": "Mã OTP phải có 6 chữ số."
   }
 }
