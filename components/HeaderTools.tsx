@@ -20,7 +20,7 @@ export default function HeaderTools() {
     },
   ]
   return (
-    <div className='flex-[2] flex justify-end gap-10'>
+    <div className='flex-[2] flex justify-end gap-6'>
       {tools.map((tool, index) => (
         <div
           key={index}
