@@ -61,7 +61,8 @@
     "have_account": "Đã có tài khoản?",
     "real_name": "Nhập tên bạn sử dụng ngoài đời thực.",
     "hide_post": "Ẩn bài viết",
-    "report_post": "Báo cáo bài viết"
+    "report_post": "Báo cáo bài viết",
+    "view_more_comment": "Xem thêm bình luận"
   },
   "placehoolder": {
     "search": "Tìm kiếm...",
@@ -84,7 +85,8 @@
   "title": {
     "set_name": "Họ tên của bạn",
     "create_account": "Tạo tài khoản",
-    "active_account": "Kích hoạt tài khoản"
+    "active_account": "Kích hoạt tài khoản",
+    "comment": "Bình luận"
   },
   "error": {
     "name_length": "Họ và tên phải có ít nhất 3 ký tự.",

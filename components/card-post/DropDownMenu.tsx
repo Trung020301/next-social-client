@@ -3,8 +3,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Ellipsis } from 'lucide-react'
@@ -17,7 +15,6 @@ export default function DropDownMenu({
   post: CardPostProps['content']
 }) {
   const t = useTranslations('typography')
-  console.log(post)
   const DropDownMenuItemList = [
     {
       label: t('hide_post'),

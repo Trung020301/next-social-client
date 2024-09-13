@@ -61,7 +61,8 @@
     "have_account": "Already have an account?",
     "real_name": "Typing your real name",
     "hide_post": "Hide post",
-    "report_post": "Report post"
+    "report_post": "Report post",
+    "view_more_comment": "View more comment"
   },
   "placehoolder": {
     "search": "Search...",
@@ -84,7 +85,8 @@
   "title": {
     "set_name": "Your full name",
     "create_account": "Create your account",
-    "active_account": "Active your account"
+    "active_account": "Active your account",
+    "comment": "Comment"
   },
   "error": {
     "name_length": "The fullname must be at least 3 characters.",
