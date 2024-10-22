@@ -4,10 +4,22 @@ import { useTranslations } from 'next-intl'
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../ui/sheet'
 import Image from 'next/image'
 import { Heart } from 'lucide-react'
+import CommentField from '../comment/comment-field'
 
 export default function SheetComment({ comment }: { comment: CommentProps[] }) {
+  const USER_ID: string = '213123321'
   const t = useTranslations()
-  const [showMore, setShowMore] = useState(false)
+  const checkUserHasLiked = comment.findIndex(
+    (item) => item.likes.indexOf(USER_ID) > -1,
+  )
+
+  const [showMore, setShowMore] = useState(true)
+  const truncateText = showMore ? 'line-clamp-5' : 'line-clamp-none'
+
+  // Handlers
+  const handleShowMore = () => setShowMore(!showMore)
+
+  const handleLikeComment = () => {}
 
   return (
     <Sheet>
@@ -21,7 +33,7 @@ export default function SheetComment({ comment }: { comment: CommentProps[] }) {
         <SheetTitle>
           <p className='text-lg font-bold mb-2'>{t('title.comment')}</p>
         </SheetTitle>
-        <div className='h-[80vh]'>
+        <div className='h-[80vh] overflow-y-scroll scrollbar-hide'>
           {comment.map((item, index) => (
             <div key={index} className='py-2'>
               <div className='flex gap-2'>
@@ -35,22 +47,41 @@ export default function SheetComment({ comment }: { comment: CommentProps[] }) {
                 <div>
                   <p className='text-sm font-semibold'>
                     {item.user.fullname}
-                    <span className='font-normal text-slate-500 ml-2'>
+                    <span className='font-normal text-gray-400 ml-2'>
                       2 days ago
                     </span>
                   </p>
-                  <p className='text-sm leading-6 line-clamp-5'>
+                  <p
+                    onClick={handleShowMore}
+                    className={`text-sm leading-6 ${truncateText} flex-[8]`}
+                  >
                     {item.content}
                   </p>
-                  <div>
-                    <Heart />
-                    <p className='text-sm font-semibold'>{ t('typography')}</p>
+                  <div className='flex gap-1 mt-1'>
+                    <div className='flex gap-1 items-center'>
+                      <Heart
+                        size={18}
+                        className={`${
+                          checkUserHasLiked > -1
+                            ? 'text-red-500'
+                            : 'text-gray-400'
+                        }`}
+                        onClick={handleLikeComment}
+                      />
+                      <span className='text-sm font-semibold text-slate-600'>
+                        {item.likes?.length || ''}
+                      </span>
+                    </div>
+                    <p className='text-sm text-gray-500'>
+                      {t('typography.reply')}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
+        <CommentField />
       </SheetContent>
     </Sheet>
   )

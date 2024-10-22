@@ -62,7 +62,8 @@
     "real_name": "Typing your real name",
     "hide_post": "Hide post",
     "report_post": "Report post",
-    "view_more_comment": "View more comment"
+    "view_more_comment": "View more comment",
+    "reply": "Reply"
   },
   "placehoolder": {
     "search": "Search...",
@@ -75,7 +76,8 @@
     "confirm_password": "Enter your confirm password",
     "new_password": "Enter your new password",
     "confirm_new_password": "Enter your confirm new password",
-    "current_password": "Enter your current password"
+    "current_password": "Enter your current password",
+    "type_comment": "Type your comment..."
   },
   "LocaleSwitcher": {
     "label": "Change language",

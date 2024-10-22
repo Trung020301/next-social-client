@@ -20,6 +20,8 @@ export default function CardPost({
   hasStory,
   content,
   comments,
+  likes,
+  shares,
 }: CardPostProps) {
   const { images, text, createdAt } = content
   const firstComment = comments[0]
@@ -50,9 +52,14 @@ export default function CardPost({
   }
 
   const actions = [
-    { icon: <Heart />, count: 16, onClick: handlerLike, isActive: isLiked },
-    { icon: <MessageSquareMore />, count: 21 },
-    { icon: <Send />, count: 21 },
+    {
+      icon: <Heart />,
+      count: likes?.length,
+      onClick: handlerLike,
+      isActive: isLiked,
+    },
+    { icon: <MessageSquareMore />, count: comments.length },
+    { icon: <Send />, count: shares?.length },
   ]
 
   const formatText = (text: string) => {

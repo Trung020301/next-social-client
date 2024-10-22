@@ -21,6 +21,8 @@ export default function Page() {
         'https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       ],
     },
+    likes: ['34234b234'],
+    shares: ['34234b234', '232333234gdasd'],
     comments: [
       {
         _id: '1',
@@ -35,6 +37,7 @@ export default function Page() {
         content:
           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptate in incidunt magnam ex, eligendi accusantium itaque voluptatum! Quisquam impedit ducimus eius debitis minus quae facere maxime cupiditate, temporibus incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptate in incidunt magnam ex, eligendi accusantium itaque voluptatum! Quisquam impedit ducimus eius debitis minus quae facere maxime cupiditate, temporibus incidunt.',
         createdAt: '',
+        likes: ['34234b234b342', '232333234gdasd'],
       },
       {
         _id: '2',
@@ -48,6 +51,94 @@ export default function Page() {
         },
         content: '💔 So hurt moreee',
         createdAt: '',
+        likes: [],
+      },
+      {
+        _id: '1',
+        user: {
+          _id: '1',
+          avatar: 'https://github.com/shadcn.png',
+          fullname: 'Tran Dinh Trung',
+          email: '',
+          hasStory: true,
+          createdAt: '2021-10-10',
+        },
+        content:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptate in incidunt magnam ex, eligendi accusantium itaque voluptatum! Quisquam impedit ducimus eius debitis minus quae facere maxime cupiditate, temporibus incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptate in incidunt magnam ex, eligendi accusantium itaque voluptatum! Quisquam impedit ducimus eius debitis minus quae facere maxime cupiditate, temporibus incidunt.',
+        createdAt: '',
+        likes: ['34234b234b342', '232333234gdasd'],
+      },
+      {
+        _id: '2',
+        user: {
+          _id: '2',
+          avatar: 'https://github.com/shadcn.png',
+          fullname: 'Trieu Huy Hoang',
+          email: '',
+          hasStory: true,
+          createdAt: '2021-10-10',
+        },
+        content: '💔 So hurt moreee',
+        createdAt: '',
+        likes: [],
+      },
+      {
+        _id: '1',
+        user: {
+          _id: '1',
+          avatar: 'https://github.com/shadcn.png',
+          fullname: 'Tran Dinh Trung',
+          email: '',
+          hasStory: true,
+          createdAt: '2021-10-10',
+        },
+        content:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptate in incidunt magnam ex, eligendi accusantium itaque voluptatum! Quisquam impedit ducimus eius debitis minus quae facere maxime cupiditate, temporibus incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptate in incidunt magnam ex, eligendi accusantium itaque voluptatum! Quisquam impedit ducimus eius debitis minus quae facere maxime cupiditate, temporibus incidunt.',
+        createdAt: '',
+        likes: ['34234b234b342', '232333234gdasd'],
+      },
+      {
+        _id: '2',
+        user: {
+          _id: '2',
+          avatar: 'https://github.com/shadcn.png',
+          fullname: 'Trieu Huy Hoang',
+          email: '',
+          hasStory: true,
+          createdAt: '2021-10-10',
+        },
+        content: '💔 So hurt moreee',
+        createdAt: '',
+        likes: [],
+      },
+      {
+        _id: '1',
+        user: {
+          _id: '1',
+          avatar: 'https://github.com/shadcn.png',
+          fullname: 'Tran Dinh Trung',
+          email: '',
+          hasStory: true,
+          createdAt: '2021-10-10',
+        },
+        content:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptate in incidunt magnam ex, eligendi accusantium itaque voluptatum! Quisquam impedit ducimus eius debitis minus quae facere maxime cupiditate, temporibus incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis voluptate in incidunt magnam ex, eligendi accusantium itaque voluptatum! Quisquam impedit ducimus eius debitis minus quae facere maxime cupiditate, temporibus incidunt.',
+        createdAt: '',
+        likes: ['34234b234b342', '232333234gdasd'],
+      },
+      {
+        _id: '2',
+        user: {
+          _id: '2',
+          avatar: 'https://github.com/shadcn.png',
+          fullname: 'Trieu Huy Hoang',
+          email: '',
+          hasStory: true,
+          createdAt: '2021-10-10',
+        },
+        content: '💔 So hurt moreee',
+        createdAt: '',
+        likes: [],
       },
     ],
   }
