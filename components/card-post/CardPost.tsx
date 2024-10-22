@@ -1,25 +1,34 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { useState, useRef, cloneElement } from 'react'
 import { Bookmark, Heart, MessageSquareMore, Send } from 'lucide-react'
 import DOMPurify from 'isomorphic-dompurify'
+import Image from 'next/image'
 
 import { AvatarUser } from '../AvatarUser'
 import { CardPostProps } from '@/types'
-import Image from 'next/image'
 import { Carousel, CarouselItem, CarouselContent } from '../ui/carousel'
+import { Separator } from '../ui/separator'
+import { useTranslations } from 'next-intl'
 import DropDownMenu from './DropDownMenu'
+const SheetComment = dynamic(() => import('./SheetComment'))
 
 export default function CardPost({
   src,
   fullname,
   hasStory,
   content,
+  comments,
+  likes,
+  shares,
 }: CardPostProps) {
   const { images, text, createdAt } = content
+  const firstComment = comments[0]
   const sanitizedHtmlContent = DOMPurify.sanitize(text)
-  const [showMore, setShowMore] = useState(false)
+  const t = useTranslations()
 
+  const [showMore, setShowMore] = useState(false)
   const [isLiked, setIsLiked] = useState(false)
   const [isSaved, setIsSaved] = useState(false)
 
@@ -43,9 +52,14 @@ export default function CardPost({
   }
 
   const actions = [
-    { icon: <Heart />, count: 16, onClick: handlerLike, isActive: isLiked },
-    { icon: <MessageSquareMore />, count: 21 },
-    { icon: <Send />, count: 21 },
+    {
+      icon: <Heart />,
+      count: likes?.length,
+      onClick: handlerLike,
+      isActive: isLiked,
+    },
+    { icon: <MessageSquareMore />, count: comments.length },
+    { icon: <Send />, count: shares?.length },
   ]
 
   const formatText = (text: string) => {
@@ -106,7 +120,7 @@ export default function CardPost({
         />
       </div>
 
-      <div className='flex items-center mt-2 justify-between px-3 pb-4'>
+      <div className='flex items-center mt-2 justify-between px-3 pb-2'>
         <div className='flex items-center gap-3'>
           {actions.map((action, index) => (
             <div
@@ -133,6 +147,14 @@ export default function CardPost({
             <Bookmark className='font-semibold' />
           )}
         </div>
+      </div>
+      <Separator />
+      <div className='px-3 py-2'>
+        <p className='text-sm font-semibold truncate'>
+          {firstComment.user.fullname}{' '}
+          <span className='font-normal'>{firstComment.content}</span>
+        </p>
+        {comments.length > 1 && <SheetComment comment={comments} />}
       </div>
     </div>
   )
