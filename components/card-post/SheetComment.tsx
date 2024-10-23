@@ -1,10 +1,18 @@
 import { useState } from 'react'
 import { CommentProps } from '@/types'
 import { useTranslations } from 'next-intl'
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '../ui/sheet'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '../ui/sheet'
 import Image from 'next/image'
 import { Heart } from 'lucide-react'
 import CommentField from '../comment/comment-field'
+import { CommentProvider } from '@/provider/CommentProvider'
 
 export default function SheetComment({ comment }: { comment: CommentProps[] }) {
   const USER_ID: string = '213123321'
@@ -23,17 +31,19 @@ export default function SheetComment({ comment }: { comment: CommentProps[] }) {
 
   return (
     <Sheet>
-      <SheetTrigger className='w-full text-left'>
+      <SheetTrigger asChild className='w-full text-left'>
         <p className='text-xs text-gray-500 py-1'>
           {t('typography.view_more_comment')}
         </p>
       </SheetTrigger>
-
-      <SheetContent side='bottom' aria-describedby='content-comment'>
-        <SheetTitle>
-          <p className='text-lg font-bold mb-2'>{t('title.comment')}</p>
-        </SheetTitle>
-        <div className='h-[80vh] overflow-y-scroll scrollbar-hide'>
+      <SheetContent side='bottom'>
+        <SheetHeader>
+          <SheetTitle>
+            <p className='text-lg font-bold mb-2'>{t('title.comment')}</p>
+          </SheetTitle>
+          <SheetDescription />
+        </SheetHeader>
+        <div className='h-[70vh] overflow-y-scroll scrollbar-hide'>
           {comment.map((item, index) => (
             <div key={index} className='py-2'>
               <div className='flex gap-2'>
@@ -81,7 +91,9 @@ export default function SheetComment({ comment }: { comment: CommentProps[] }) {
             </div>
           ))}
         </div>
-        <CommentField />
+        <CommentProvider>
+          <CommentField />
+        </CommentProvider>
       </SheetContent>
     </Sheet>
   )
