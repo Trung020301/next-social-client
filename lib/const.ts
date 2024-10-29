@@ -4,7 +4,7 @@ export const pathRoute = {
   CONTACT: '/contact',
   SIGN_IN: '/sign-in',
   SIGN_UP: '/sign-up',
-  PROFILE: '/profile',
+  PROFILE: '/my-profile',
   EXPLORE: '/explore',
   UPLOAD: '/upload',
   MESSAGES: '/messages',
