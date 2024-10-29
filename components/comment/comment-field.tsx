@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Input } from '../ui/input'
 import { useTranslations } from 'next-intl'
 import { Send } from 'lucide-react'
 import { AvatarUser } from '../AvatarUser'
 import { AvatarUserProps } from '@/types'
+import { useComment } from '@/hooks/useComment'
 
 export default function CommentField() {
   const t = useTranslations()
-  const [showBtn, setShowBtn] = React.useState(false)
-  const [valueCmt, setValueCmt] = React.useState<string>('')
+  const [showBtn, setShowBtn] = useState(false)
+  const { valueCmt, setValueCmt } = useComment()
+
   const userProps: AvatarUserProps = {
     src: 'https://github.com/shadcn.png',
     username: 'Trung',
@@ -18,22 +20,15 @@ export default function CommentField() {
   }
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-    if (value && value.trim().length > 0 && value[0] !== ' ') {
-      setShowBtn(true)
-      setValueCmt(value)
-    } else {
-      setShowBtn(false)
-    }
+    setValueCmt(e.target.value)
+    setShowBtn(e.target.value.length > 0)
   }
 
   const handleSendComment = () => {
-    const payload = {
-      user: { ...userProps },
-      content: valueCmt,
-    }
+    // Xử lý gửi comment
     setValueCmt('')
-    console.log('payload', payload)
+    setShowBtn(false)
+    console.log('payload', { comment: valueCmt })
   }
 
   return (
@@ -41,7 +36,6 @@ export default function CommentField() {
       <AvatarUser {...userProps} />
       <Input
         className='rounded-full pl-3 pr-10 py-4 text-sm w-full'
-        type='text'
         placeholder={t('placehoolder.type_comment')}
         onChange={handleChangeValue}
         value={valueCmt}
@@ -58,4 +52,4 @@ export default function CommentField() {
   )
 }
 
-// TODO: Add more features like: Toast when push comment, handle error, handle like, reply, etc.
+// TODO: Bổ sung chức năng gửi comment, fix state khi người dùng đang nhập comment mà thoát ra ngoài thì comment vẫn giữ nguyên...

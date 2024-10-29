@@ -27,6 +27,9 @@
     "phone": "Phone",
     "address": "Address",
     "password": "Password",
+    "posts": "posts",
+    "followers": "followers",
+    "following": "following",
     "confirm_password": "Confirm password",
     "new_password": "New password",
     "confirm_new_password": "Confirm new password",
@@ -50,6 +53,9 @@
     "logout": "Logout",
     "register": "Register",
     "profile": "Profile",
+    "edit": "Edit",
+    "explore_user": "Explore user",
+    "share_profile": "Share profile",
     "setting": "Setting",
     "language": "Language",
     "theme": "Theme",
@@ -63,6 +69,7 @@
     "hide_post": "Hide post",
     "report_post": "Report post",
     "view_more_comment": "View more comment",
+    "view_all": "View all",
     "reply": "Reply"
   },
   "placehoolder": {

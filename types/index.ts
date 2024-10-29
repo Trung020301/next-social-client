@@ -6,7 +6,9 @@ export type LoginUser = {
 export type UserProps = {
   _id: string
   fullname: string | null
+  username: string
   avatar: string
+  bio?: string | null
   email: string
   hasStory: boolean
   createdAt: string | Date
@@ -46,4 +48,14 @@ export type AvatarUserProps = {
   hasStory?: boolean
   width?: number
   height?: number
+}
+
+export type UserDetailProps = {
+  user: UserProps
+  posts: CardPostProps[]
+  followers: UserProps[]
+  following: UserProps[]
+  isFollowed: boolean
+  isFollowing: boolean
+  isMe: boolean
 }
