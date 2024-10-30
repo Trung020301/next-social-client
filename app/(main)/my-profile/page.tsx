@@ -8,7 +8,8 @@ export default function Page() {
     user: {
       _id: '1',
       fullname: 'Trần Đình Trung',
-      avatar: 'https://example.com/avatar.jpg',
+      avatar:
+        'https://res.cloudinary.com/dpqhuucyq/image/upload/v1730266896/avatars/2_oreucm.jpg',
       bio: '"Everything will be okay?"',
       email: 'trandtrung@example.com',
       hasStory: true,
@@ -17,9 +18,16 @@ export default function Page() {
     },
     posts: [
       {
-        src: 'https://example.com/post.jpg',
-        fullname: 'Tran D. Trung',
-        hasStory: true,
+        author: {
+          _id: '1asjkldkjashdsa',
+          username: 'tran.d.trung',
+          fullname: 'Trần Đình Trung',
+          avatar: 'https://example.com/avatar.jpg',
+          email: '',
+          hasStory: true,
+          createdAt: '2021-01-01',
+        },
+
         content: {
           text: 'This is a fake post',
           createdAt: '2021-01-01',

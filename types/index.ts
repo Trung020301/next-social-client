@@ -10,7 +10,7 @@ export type UserProps = {
   avatar: string
   bio?: string | null
   email: string
-  hasStory: boolean
+  hasStory?: boolean
   createdAt: string | Date
 }
 
@@ -29,9 +29,7 @@ export type CommentProps = {
 }
 
 export type CardPostProps = {
-  src: string
-  fullname: string
-  hasStory?: boolean
+  author: UserProps
   content: {
     text: string
     images?: string[]

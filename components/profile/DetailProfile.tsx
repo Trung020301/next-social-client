@@ -1,6 +1,9 @@
-import { UserDetailProps } from '@/types'
-import { useTranslations } from 'next-intl'
+'use client'
+
 import React from 'react'
+import { UserDetailProps } from '@/types'
+import { CldImage } from 'next-cloudinary'
+import { useTranslations } from 'next-intl'
 
 export default function DetailProfile({ user }: { user: UserDetailProps }) {
   const t = useTranslations()
@@ -27,7 +30,13 @@ export default function DetailProfile({ user }: { user: UserDetailProps }) {
     <div className='px-2'>
       <div className=' flex items-center py-2'>
         <div className='flex-[1]'>
-          <div className='w-[64px] h-[64px] rounded-full bg-sky-400 '></div>
+          <CldImage
+            alt='avatar'
+            src={user.user.avatar}
+            width={64}
+            height={64}
+            className='w-[64px] h-[64px] rounded-full'
+          />
         </div>
         <div className='flex items-center justify-around flex-[4]'>
           {detailList.map((item) => (
