@@ -4,6 +4,16 @@ import useToggle from '@/hooks/useToggle'
 import { UserMinus, UserPlus } from 'lucide-react'
 import React from 'react'
 import { Button } from '@/components/ui/button'
+import CardUser from './CardUser'
+
+const fakeUser = {
+  _id: '1',
+  fullname: 'Lý An Nhiên',
+  username: 'ly.an.nhien',
+  avatar:
+    'https://res.cloudinary.com/dpqhuucyq/image/upload/v1730263036/avatars/1_s8hhrh.jpg',
+  followers: ['tran.d.trung', 'nguyen.van.d'],
+}
 
 export default function ExploreUserComp() {
   const [isToggle, toggle] = useToggle(true)
@@ -28,13 +38,27 @@ export default function ExploreUserComp() {
       </div>
       {isToggle && (
         <div className='px-2 pt-4'>
-          <div className='flex items-center justify-between'>
+          <div className='flex items-center justify-between pb-1'>
             <p className='text-sm font-semibold'>
               {t('typography.explore_user')}
             </p>
             <span className='text-sm text-blue-600'>
               {t('typography.view_all')}
             </span>
+          </div>
+          <div className='flex overflow-x-auto gap-2 py-2 scrollbar-hide'>
+            <div className='w-36'>
+              <CardUser user={fakeUser} />
+            </div>
+            <div className='w-36'>
+              <CardUser user={fakeUser} />
+            </div>
+            <div className='w-36'>
+              <CardUser user={fakeUser} />
+            </div>
+            <div className='w-36'>
+              <CardUser user={fakeUser} />
+            </div>
           </div>
         </div>
       )}

@@ -10,9 +10,16 @@ export const metadata: Metadata = {
 
 export default function Page() {
   const post: CardPostProps = {
-    src: 'https://github.com/shadcn.png',
-    fullname: 'Tran Dinh Trung',
-    hasStory: true,
+    author: {
+      _id: 'hjsdfhsdgj12',
+      fullname: 'Tran Dinh Trung',
+      bio: 'Hello there',
+      hasStory: true,
+      username: 'tran.d.trung',
+      avatar: 'https://github.com/shadcn.png',
+      createdAt: '2021-10-10',
+      email: '',
+    },
     content: {
       createdAt: '2021-10-10',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lorem sapien, tincidunt nec nunc nec, tincidunt ultricies nunc. Donec nec nunc nec, tincidunt ultricies nunc. Donec nec nunc nec, tincidunt ultricies nunc.',
@@ -29,6 +36,7 @@ export default function Page() {
         user: {
           _id: '1',
           avatar: 'https://github.com/shadcn.png',
+          username: 'nguyen.van.a',
           fullname: 'Tran Dinh Trung',
           email: '',
           hasStory: true,
@@ -43,6 +51,7 @@ export default function Page() {
         _id: '2',
         user: {
           _id: '2',
+          username: 'nguyen.van.b',
           avatar: 'https://github.com/shadcn.png',
           fullname: 'Trieu Huy Hoang',
           email: '',
@@ -57,6 +66,7 @@ export default function Page() {
         _id: '1',
         user: {
           _id: '1',
+          username: 'nguyen.van.c',
           avatar: 'https://github.com/shadcn.png',
           fullname: 'Tran Dinh Trung',
           email: '',
@@ -72,6 +82,7 @@ export default function Page() {
         _id: '2',
         user: {
           _id: '2',
+          username: 'nguyen.van.d',
           avatar: 'https://github.com/shadcn.png',
           fullname: 'Trieu Huy Hoang',
           email: '',
@@ -86,6 +97,7 @@ export default function Page() {
         _id: '1',
         user: {
           _id: '1',
+          username: 'danganh',
           avatar: 'https://github.com/shadcn.png',
           fullname: 'Tran Dinh Trung',
           email: '',
@@ -101,6 +113,7 @@ export default function Page() {
         _id: '2',
         user: {
           _id: '2',
+          username: 'nguyen.van.d',
           avatar: 'https://github.com/shadcn.png',
           fullname: 'Trieu Huy Hoang',
           email: '',
@@ -115,6 +128,7 @@ export default function Page() {
         _id: '1',
         user: {
           _id: '1',
+          username: 'nguyen.van.c',
           avatar: 'https://github.com/shadcn.png',
           fullname: 'Tran Dinh Trung',
           email: '',
@@ -130,6 +144,7 @@ export default function Page() {
         _id: '2',
         user: {
           _id: '2',
+          username: 'nguyen.van.d',
           avatar: 'https://github.com/shadcn.png',
           fullname: 'Trieu Huy Hoang',
           email: '',

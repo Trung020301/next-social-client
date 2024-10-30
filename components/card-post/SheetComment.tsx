@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { CommentProps } from '@/types'
 import { useTranslations } from 'next-intl'

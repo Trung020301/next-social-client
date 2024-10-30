@@ -16,7 +16,8 @@
     "reset": "Reset",
     "search": "Search",
     "upload": "Upload",
-    "download": "Download"
+    "download": "Download",
+    "follow": "Follow"
   },
   "typography": {
     "title": "Title",

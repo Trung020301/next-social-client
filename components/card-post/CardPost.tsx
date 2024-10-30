@@ -15,9 +15,7 @@ import DropDownMenu from './DropDownMenu'
 const SheetComment = dynamic(() => import('./SheetComment'))
 
 export default function CardPost({
-  src,
-  fullname,
-  hasStory,
+  author,
   content,
   comments,
   likes,
@@ -79,9 +77,9 @@ export default function CardPost({
     <div className='py-4 shadow-2xl flex flex-col gap-1'>
       <div className='flex items-center justify-between px-3'>
         <div className='flex items-center gap-2'>
-          <AvatarUser src={src} username={fullname} hasStory={hasStory} />
+          <AvatarUser src={author.avatar} {...author} />
           <div className='text-sm'>
-            <p className='font-semibold'>{fullname}</p>
+            <p className='font-semibold'>{author.fullname}</p>
             <p className='text-xs font-semibold'>{createdAt}</p>
           </div>
         </div>
