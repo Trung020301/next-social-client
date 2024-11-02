@@ -34,6 +34,7 @@ export default function DetailProfile({ user }: { user: UserDetailProps }) {
             alt='avatar'
             src={user.user.avatar}
             width={64}
+            priority
             height={64}
             className='w-[64px] h-[64px] rounded-full'
           />

@@ -1,5 +1,10 @@
 import React from 'react'
+import { defaultImage } from '@/lib/const'
 
 export default function page() {
-  return <div>page</div>
+  return (
+    <div className='scrollbar-hide'>
+      <img src={defaultImage} alt='default image' />
+    </div>
+  )
 }

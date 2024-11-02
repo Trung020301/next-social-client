@@ -1,17 +1,8 @@
+import { IPost, IUser } from '@/lib/interface'
+
 export type LoginUser = {
   username: string
   password: string
-}
-
-export type UserProps = {
-  _id: string
-  fullname: string | null
-  username: string
-  avatar: string
-  bio?: string | null
-  email: string
-  hasStory?: boolean
-  createdAt: string | Date
 }
 
 export type SignUpUserFormData = {
@@ -22,14 +13,14 @@ export type SignUpUserFormData = {
 
 export type CommentProps = {
   _id: string
-  user: UserProps
+  user: IUser
   content: string
   createdAt: string | Date
   likes: string[]
 }
 
 export type CardPostProps = {
-  author: UserProps
+  author: IUser
   content: {
     text: string
     images?: string[]
@@ -49,11 +40,13 @@ export type AvatarUserProps = {
 }
 
 export type UserDetailProps = {
-  user: UserProps
+  user: IUser
   posts: CardPostProps[]
-  followers: UserProps[]
-  following: UserProps[]
+  followers: IUser[]
+  following: IUser[]
   isFollowed: boolean
   isFollowing: boolean
   isMe: boolean
 }
+
+export type PostType = 'image' | 'video'

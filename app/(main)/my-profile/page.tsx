@@ -2,6 +2,8 @@ import { ChevronDown, Lock, Menu, SquarePlus } from 'lucide-react'
 import DetailProfile from '@/components/profile/DetailProfile'
 import { UserDetailProps } from '@/types'
 import ExploreUserComp from '@/components/profile/explore-user/ExploreUserComp'
+import FeatureNews from '@/components/profile/feature-news/FeatureNews'
+import ProfileTabs from '@/components/profile/tabs/ProfileTabs'
 
 export default function Page() {
   const fakeUser: UserDetailProps = {
@@ -99,7 +101,8 @@ export default function Page() {
         <DetailProfile user={fakeUser} />
       </div>
       <ExploreUserComp />
-      <div>Tin noi bat ?</div>
+      <FeatureNews />
+      <ProfileTabs />
     </div>
   )
 }

@@ -1,11 +1,15 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript"
+  ],
   "rules": {
     "no-restricted-imports": [
       "error",
       {
         "name": "next/link",
-        "message": "Please import from '@/navigation' instead.""importNames": [
+        "message": "Please import from '@/navigation' instead.",
+        "importNames": [
           "default"
         ]
       },
