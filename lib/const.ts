@@ -9,6 +9,7 @@ export const pathRoute = {
   UPLOAD: '/upload',
   MESSAGES: '/messages',
   NOT_FOUND: '/404',
+  SETTINGS: '/settings',
 }
 
 export const languageLabels = [

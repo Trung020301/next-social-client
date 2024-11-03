@@ -32,6 +32,7 @@ export default function FeatureNews() {
                 alt='story'
                 src={item.image}
                 width={40}
+                priority
                 height={40}
                 className='w-[40px] h-[40px] rounded-full'
               />

@@ -30,7 +30,7 @@ export default function ProfileTabs() {
   const tabCount = tabs.length
   const activeIndex = tabs.findIndex((tab) => tab.value === activeTab)
   return (
-    <div className='relative mt-4'>
+    <div className='relative mt-4 mb-20'>
       <div className='flex items-center justify-between border-b border-gray-300'>
         {tabs.map((tab, index) => (
           <div

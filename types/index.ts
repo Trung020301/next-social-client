@@ -50,3 +50,9 @@ export type UserDetailProps = {
 }
 
 export type PostType = 'image' | 'video'
+
+export type SettingsProps = {
+  icon: React.ReactNode
+  title: string
+  value: string
+}

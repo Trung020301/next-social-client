@@ -5,6 +5,8 @@ import { UserMinus, UserPlus } from 'lucide-react'
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import CardUser from './CardUser'
+import Link from 'next/link'
+import { pathRoute } from '@/lib/const'
 
 const fakeUser = {
   _id: '1',
@@ -21,8 +23,10 @@ export default function ExploreUserComp() {
   return (
     <>
       <div className='flex items-center px-2 gap-1'>
-        <Button variant='secondary' className=' flex-[4]'>
-          {t('typography.edit')}
+        <Button variant='secondary' className=' flex-[4]' asChild>
+          <Link href={`${pathRoute.SETTINGS}/edit-profile`}>
+            {t('typography.edit')}
+          </Link>
         </Button>
         <Button variant='secondary' className='flex-[6]'>
           {t('typography.share_profile')}

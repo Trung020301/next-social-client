@@ -163,7 +163,7 @@ export default function Page() {
       <HeaderHome />
       <div className='mt-4 flex flex-col gap-2 mb-10'>
         <CardPost {...post} />
-        {/* <CardPost {...post} />   */}
+        <CardPost {...post} />
         {/* <CardPost {...post} /> */}
         {/* <CardPost {...post} /> */}
       </div>

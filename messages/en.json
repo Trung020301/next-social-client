@@ -98,7 +98,14 @@
     "set_name": "Your full name",
     "create_account": "Create your account",
     "active_account": "Active your account",
-    "comment": "Comment"
+    "comment": "Comment",
+    "setting_privacy": "Settings and privacy",
+    "your_activity": "Your activity",
+    "archives": "Archives",
+    "saved": "Saved",
+    "favorite": "Favorite",
+    "qr_code": "QR code",
+    "edit_profile": "Edit profile"
   },
   "error": {
     "name_length": "The fullname must be at least 3 characters.",
@@ -108,5 +115,13 @@
   "notify": {
     "send_email": "We have sent an email to {email}. Please check your email to verify your account.",
     "otp_rule": "Your OTP must be 6 digits."
+  },
+  "settings": {
+    "setting_privacy": "Settings and privacy",
+    "your_activity": "Your activity",
+    "archives": "Archives",
+    "saved": "Saved",
+    "favorite": "Favorite",
+    "qr_code": "QR code"
   }
 }

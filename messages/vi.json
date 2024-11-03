@@ -98,7 +98,14 @@
     "set_name": "Họ tên của bạn",
     "create_account": "Tạo tài khoản",
     "active_account": "Kích hoạt tài khoản",
-    "comment": "Bình luận"
+    "comment": "Bình luận",
+    "setting_privacy": "Cài đặt quyền riêng tư",
+    "your_activity": "Hoạt động của bạn",
+    "archives": "Lưu trữ",
+    "saved": "Đã lưu",
+    "favorite": "Yêu thích",
+    "qr_code": "Mã QR",
+    "edit_profile": "Chỉnh sửa thông tin cá nhân"
   },
   "error": {
     "name_length": "Họ và tên phải có ít nhất 3 ký tự.",
@@ -108,5 +115,13 @@
   "notify": {
     "send_email": "Chúng tôi đã gửi mã xác thực tới {email} cho bạn, hãy kiểm tra hộp thư để xác thực tài khoản.",
     "otp_rule": "Mã OTP phải có 6 chữ số."
+  },
+  "settings": {
+    "setting_privacy": "Cài đặt quyền riêng tư",
+    "your_activity": "Hoạt động của bạn",
+    "archives": "Lưu trữ",
+    "saved": "Đã lưu",
+    "favorite": "Yêu thích",
+    "qr_code": "Mã QR"
   }
 }

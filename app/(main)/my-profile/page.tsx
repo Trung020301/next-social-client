@@ -1,9 +1,11 @@
-import { ChevronDown, Lock, Menu, SquarePlus } from 'lucide-react'
+import { ChevronDown, Lock, SquarePlus } from 'lucide-react'
+import dynamic from 'next/dynamic'
 import DetailProfile from '@/components/profile/DetailProfile'
 import { UserDetailProps } from '@/types'
 import ExploreUserComp from '@/components/profile/explore-user/ExploreUserComp'
 import FeatureNews from '@/components/profile/feature-news/FeatureNews'
 import ProfileTabs from '@/components/profile/tabs/ProfileTabs'
+const UserSetting = dynamic(() => import('@/components/settings/user-setting'))
 
 export default function Page() {
   const fakeUser: UserDetailProps = {
@@ -93,7 +95,7 @@ export default function Page() {
             <SquarePlus size={24} />
           </span>
           <span>
-            <Menu size={24} />
+            <UserSetting />
           </span>
         </div>
       </div>

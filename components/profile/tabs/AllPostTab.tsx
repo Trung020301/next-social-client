@@ -25,6 +25,19 @@ export default function Gallery() {
     },
     {
       _id: '2',
+      userId: 'user1',
+      content: 'This is the first post.',
+      image: ['http://example.com/image1.jpg'],
+      video: [],
+      likes: ['user2', 'user3'],
+      shares: ['user4'],
+      comments: ['Nice post!', 'Thanks for sharing!'],
+      createdAt: '2024-10-31T12:00:00Z',
+      type: 'image',
+    },
+
+    {
+      _id: '3',
       userId: 'user2',
       content: 'This is the second post.',
       image: [],
@@ -34,6 +47,18 @@ export default function Gallery() {
       comments: ['Great video!'],
       createdAt: '2024-10-30T12:00:00Z',
       type: 'video',
+    },
+    {
+      _id: '5',
+      userId: 'user1',
+      content: 'This is the first post.',
+      image: ['http://example.com/image1.jpg'],
+      video: [],
+      likes: ['user2', 'user3'],
+      shares: ['user4'],
+      comments: ['Nice post!', 'Thanks for sharing!'],
+      createdAt: '2024-10-31T12:00:00Z',
+      type: 'image',
     },
   ]
 

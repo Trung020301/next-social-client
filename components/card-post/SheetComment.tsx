@@ -27,9 +27,10 @@ export default function SheetComment({ comment }: { comment: CommentProps[] }) {
 
   return (
     <Drawer.Root>
-      <Drawer.Trigger className='w-full font-medium text-left dark:text-white'>
+      <Drawer.Trigger className='w-full font-medium text-left dark:text-white text-gray-500'>
         <p className='text-xs py-1 '>{t('typography.view_more_comment')}</p>
       </Drawer.Trigger>
+      <Drawer.Description />
       <Drawer.Portal>
         <Drawer.Overlay className='fixed inset-0 bg-black/40' />
         <Drawer.Content className='bg-gray-100 flex flex-col rounded-t-[10px] mt-24 h-[80%] lg:h-[320px] fixed bottom-0 left-0 right-0 outline-none'>

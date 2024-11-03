@@ -30,7 +30,7 @@ export default async function RootLayout({
     <html lang={locale} className='light'>
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased mb-20',
+          'min-h-screen bg-background font-sans antialiased',
           fontSans.variable,
         )}
       >
