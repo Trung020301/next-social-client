@@ -37,6 +37,7 @@
     "current_password": "Current password",
     "remember_me": "Remember me",
     "forgot_password": "Forgot password?",
+    "feature_news": "Feature news",
     "reset_password": "Reset password",
     "send_reset_password_link": "Send reset password link",
     "verify_email": "Verify email",
@@ -65,6 +66,7 @@
     "system": "System",
     "currency": "Currency",
     "no_account": "Don't have an account?",
+    "no_post": "No post",
     "have_account": "Already have an account?",
     "real_name": "Typing your real name",
     "hide_post": "Hide post",
@@ -96,7 +98,14 @@
     "set_name": "Your full name",
     "create_account": "Create your account",
     "active_account": "Active your account",
-    "comment": "Comment"
+    "comment": "Comment",
+    "setting_privacy": "Settings and privacy",
+    "your_activity": "Your activity",
+    "archives": "Archives",
+    "saved": "Saved",
+    "favorite": "Favorite",
+    "qr_code": "QR code",
+    "edit_profile": "Edit profile"
   },
   "error": {
     "name_length": "The fullname must be at least 3 characters.",
@@ -106,5 +115,13 @@
   "notify": {
     "send_email": "We have sent an email to {email}. Please check your email to verify your account.",
     "otp_rule": "Your OTP must be 6 digits."
+  },
+  "settings": {
+    "setting_privacy": "Settings and privacy",
+    "your_activity": "Your activity",
+    "archives": "Archives",
+    "saved": "Saved",
+    "favorite": "Favorite",
+    "qr_code": "QR code"
   }
 }

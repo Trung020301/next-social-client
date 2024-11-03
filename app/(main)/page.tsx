@@ -34,7 +34,7 @@ export default function Page() {
       {
         _id: '1',
         user: {
-          _id: '1',
+          _id: '134sdasd',
           avatar: 'https://github.com/shadcn.png',
           username: 'nguyen.van.a',
           fullname: 'Tran Dinh Trung',
@@ -163,7 +163,7 @@ export default function Page() {
       <HeaderHome />
       <div className='mt-4 flex flex-col gap-2 mb-10'>
         <CardPost {...post} />
-        {/* <CardPost {...post} />   */}
+        <CardPost {...post} />
         {/* <CardPost {...post} /> */}
         {/* <CardPost {...post} /> */}
       </div>

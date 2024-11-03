@@ -9,6 +9,7 @@ export const pathRoute = {
   UPLOAD: '/upload',
   MESSAGES: '/messages',
   NOT_FOUND: '/404',
+  SETTINGS: '/settings',
 }
 
 export const languageLabels = [
@@ -23,3 +24,9 @@ export const languageLabels = [
 ]
 
 export const STEP_ONE = 1
+
+export const defaultImage = '/images/defaultImage.jpg'
+
+export const DEFAULT_TAB = 'all'
+export const REEF_TAB = 'reef'
+export const TAG_TAB = 'tag'

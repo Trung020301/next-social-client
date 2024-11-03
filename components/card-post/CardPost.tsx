@@ -98,7 +98,7 @@ export default function CardPost({
                       src={image}
                       alt='Post image'
                       fill
-                      loading='lazy'
+                      priority
                       quality={100}
                       className='object-cover'
                     />
