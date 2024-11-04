@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { AvatarUserProps } from '@/types'
+import { CldImage } from 'next-cloudinary'
 import Image from 'next/image'
 
 export function AvatarUser({
@@ -10,16 +11,18 @@ export function AvatarUser({
   height = 42,
 }: AvatarUserProps) {
   return (
-    <div>
-      <Image
-        src={src}
-        alt={username}
-        width={width}
-        height={height}
-        className={`w-[${width}] h-[${height}] rounded-full object-cover ${
-          hasStory ? 'ring-2 ring-green-500' : '' // Thêm lớp CSS ring-2 ring-green-500 nếu hasStory là true
-        }`}
-      />
-    </div>
+    <>
+      <div className='p-[2px] bg-gradient-to-r from-instagram-pink to-instagram-purple  rounded-full'>
+        <CldImage
+          alt='avatar'
+          src={src}
+          width={width}
+          priority
+          height={height}
+          className={`w-[${width}] h-[${height}] rounded-full object-cover border
+          `}
+        />
+      </div>
+    </>
   )
 }

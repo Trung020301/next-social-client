@@ -16,7 +16,8 @@ export default function Page() {
       bio: 'Hello there',
       hasStory: true,
       username: 'tran.d.trung',
-      avatar: 'https://github.com/shadcn.png',
+      avatar:
+        'https://res.cloudinary.com/dpqhuucyq/image/upload/v1730280315/3_iopoi1.jpg',
       createdAt: '2021-10-10',
       email: '',
     },

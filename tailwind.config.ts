@@ -18,6 +18,7 @@ const config = {
         '2xl': '1400px',
       },
     },
+
     extend: {
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
@@ -56,7 +57,14 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        instagram: {
+          pink: '#F58529',
+          orange: '#FFDC80',
+          purple: '#833AB4',
+          blue: '#6BB7F6',
+        },
       },
+
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',

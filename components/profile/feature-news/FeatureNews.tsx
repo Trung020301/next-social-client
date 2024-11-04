@@ -3,31 +3,17 @@
 import { CldImage } from 'next-cloudinary'
 import React from 'react'
 
-export default function FeatureNews() {
-  const fakeListStory = [
-    {
-      title: '😝 Hehe',
-      image:
-        'https://res.cloudinary.com/dpqhuucyq/image/upload/v1730263036/avatars/1_s8hhrh.jpg',
-    },
-    {
-      title: '🍀 Featured',
-      image:
-        'https://res.cloudinary.com/dpqhuucyq/image/upload/v1730266896/avatars/2_oreucm.jpg',
-    },
-    {
-      title: 'Sky',
-      image:
-        'https://res.cloudinary.com/dpqhuucyq/image/upload/v1730280315/3_iopoi1.jpg',
-    },
-  ]
-
+export default function FeatureNews({
+  listFutureNews,
+}: {
+  listFutureNews: { title: string; image: string }[]
+}) {
   return (
-    <div className='flex overflow-x-auto gap-2 py-2 scrollbar-hide'>
-      {fakeListStory.map((item, index) => (
-        <div className='w-20' key={item.title}>
-          <div key={index} className='flex items-center flex-col w-16'>
-            <div className='p-[2px] border-[1px] bg-white rounded-full'>
+    <div className='flex overflow-x-auto py-2 scrollbar-hide'>
+      {listFutureNews.map((item, index) => (
+        <div key={item.title}>
+          <div className='flex items-center flex-col w-16'>
+            <div className='p-[2px] border-[1px] bg-green-400 rounded-full'>
               <CldImage
                 alt='story'
                 src={item.image}
@@ -37,7 +23,9 @@ export default function FeatureNews() {
                 className='w-[40px] h-[40px] rounded-full'
               />
             </div>
-            <p className='text-xs text-gray-500 truncate'>{item.title}</p>
+            <p className='text-xs text-zinc-900 truncate max-w-16'>
+              {item.title}
+            </p>
           </div>
         </div>
       ))}

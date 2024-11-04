@@ -30,3 +30,11 @@ export const defaultImage = '/images/defaultImage.jpg'
 export const DEFAULT_TAB = 'all'
 export const REEF_TAB = 'reef'
 export const TAG_TAB = 'tag'
+
+const MY_PROFILE = 'my-profile'
+const USER_PROFILE = 'user-profile'
+
+export const TYPE_PROFILE = {
+  MY_PROFILE,
+  USER_PROFILE,
+}
