@@ -1,11 +1,13 @@
 'use client'
+
+import React, { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import useToggle from '@/hooks/useToggle'
 import { UserMinus, UserPlus } from 'lucide-react'
-import React from 'react'
+import Link from 'next/link'
+
+import useToggle from '@/hooks/useToggle'
 import { Button } from '@/components/ui/button'
 import CardUser from './CardUser'
-import Link from 'next/link'
 import { pathRoute } from '@/lib/const'
 
 const fakeUser = {
@@ -17,36 +19,55 @@ const fakeUser = {
   followers: ['tran.d.trung', 'nguyen.van.d'],
 }
 
-export default function ExploreUserComp() {
+export default function ExploreUserComp({ type }: { type: string }) {
   const [isToggle, toggle] = useToggle(true)
+  const [isFollowed, setIsFollowed] = useState<boolean>(false)
   const t = useTranslations()
+
+  const handleFollow = () => {
+    setIsFollowed(!isFollowed)
+  }
+
   return (
     <>
       <div className='flex items-center px-2 gap-1'>
-        <Button variant='secondary' className=' flex-[4]' asChild>
-          <Link href={`${pathRoute.SETTINGS}/edit-profile`}>
-            {t('typography.edit')}
-          </Link>
-        </Button>
-        <Button variant='secondary' className='flex-[6]'>
-          {t('typography.share_profile')}
-        </Button>
-        <Button
+        {type === 'my-profile' ? (
+          <button className='px-6 py-1 bg-zinc-200 rounded text-xs font-medium'>
+            <Link href={`${pathRoute.SETTINGS}/edit-profile`}>
+              {t('typography.edit')}
+            </Link>
+          </button>
+        ) : (
+          <button
+            onClick={handleFollow}
+            className='px-6 py-1 bg-sky-600 rounded text-xs text-white font-medium flex-[6]'
+          >
+            {isFollowed ? t('typography.unfollow') : t('button.follow')}
+          </button>
+        )}
+        {type === 'my-profile' ? (
+          <button className='px-6 py-1 bg-zinc-200 rounded text-xs font-medium flex-[6]'>
+            {t('typography.share_profile')}
+          </button>
+        ) : (
+          <button className='px-6 py-1 bg-zinc-200 rounded text-xs font-medium flex-[6]'>
+            {t('button.chat')}
+          </button>
+        )}
+        <button
           onClick={() => toggle()}
-          className={`flex-[1] `}
-          variant='secondary'
-          size='icon'
+          className={`flex-[0.5] bg-zinc-200 p-1 rounded`}
         >
-          {isToggle ? <UserPlus /> : <UserMinus />}
-        </Button>
+          {isToggle ? <UserPlus size={16} /> : <UserMinus size={16} />}
+        </button>
       </div>
       {isToggle && (
         <div className='px-2 pt-4'>
           <div className='flex items-center justify-between pb-1'>
-            <p className='text-sm font-semibold'>
+            <p className='text-xs font-semibold'>
               {t('typography.explore_user')}
             </p>
-            <span className='text-sm text-blue-600'>
+            <span className='text-xs text-blue-600'>
               {t('typography.view_all')}
             </span>
           </div>

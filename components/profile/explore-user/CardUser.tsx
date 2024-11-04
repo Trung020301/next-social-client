@@ -1,6 +1,10 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { CldImage } from 'next-cloudinary'
+import Link from 'next/link'
+import { pathRoute } from '@/lib/const'
 
 type CardUserProps = {
   _id: string
@@ -11,9 +15,16 @@ type CardUserProps = {
 }
 
 export default function CardUser({ user }: { user: CardUserProps }) {
+  const [isFollowed, setIsFollowed] = useState<boolean>(false)
   const t = useTranslations()
+  const handleFollow = () => {
+    setIsFollowed(!isFollowed)
+  }
   return (
-    <div className='shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded w-36 flex flex-col items-center justify-center p-2'>
+    <Link
+      href={`${pathRoute.ACCOUNT}/${user.username}`}
+      className='shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded w-36 flex flex-col items-center justify-center p-2'
+    >
       <div className='flex flex-col items-center justify-center'>
         <CldImage
           src={user.avatar}
@@ -23,15 +34,18 @@ export default function CardUser({ user }: { user: CardUserProps }) {
           className='rounded-full'
         />
         <div className='text-center py-2'>
-          <p className='text-sm font-medium'>{user.fullname}</p>
+          <p className='text-xs font-semibold'>{user.fullname}</p>
           <p className='text-xs font-medium text-gray-600 '>
             Có tran.d.trung và 1 người khác theo dõi
           </p>
         </div>
       </div>
-      <button className='px-6 py-1 bg-sky-600 rounded text-sm text-white font-medium'>
-        {t('button.follow')}
+      <button
+        onClick={handleFollow}
+        className='px-6 py-1 bg-sky-600 rounded text-xs text-white font-medium'
+      >
+        {isFollowed ? t('typography.unfollow') : t('button.follow')}
       </button>
-    </div>
+    </Link>
   )
 }
