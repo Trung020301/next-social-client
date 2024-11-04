@@ -33,7 +33,7 @@ export default function SheetComment({ comment }: { comment: CommentProps[] }) {
       <Drawer.Description />
       <Drawer.Portal>
         <Drawer.Overlay className='fixed inset-0 bg-black/40' />
-        <Drawer.Content className='bg-gray-100 flex flex-col rounded-t-[10px] mt-24 h-[80%] lg:h-[320px] fixed bottom-0 left-0 right-0 outline-none'>
+        <Drawer.Content className='bg-gray-100 flex flex-col rounded-t-[10px] mt-24 h-[80%] fixed bottom-0 left-0 right-0 outline-none'>
           <div className='p-4 bg-white rounded-t-[10px] flex-1 overflow-y-auto scrollbar-hide'>
             <div className='max-w-md mx-auto space-y-4'>
               <div
@@ -45,7 +45,7 @@ export default function SheetComment({ comment }: { comment: CommentProps[] }) {
               </Drawer.Title>
               <Separator />
 
-              <div className='pb-4 '>
+              <div className='pb-8'>
                 {comment.map((item, index) => (
                   <div key={index} className='py-2 '>
                     <div className='flex gap-2'>

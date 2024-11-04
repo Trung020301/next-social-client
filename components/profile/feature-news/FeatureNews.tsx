@@ -11,9 +11,9 @@ export default function FeatureNews({
   return (
     <div className='flex overflow-x-auto py-2 scrollbar-hide'>
       {listFutureNews.map((item, index) => (
-        <div key={item.title}>
+        <div key={index}>
           <div className='flex items-center flex-col w-16'>
-            <div className='p-[2px] border-[1px] bg-green-400 rounded-full'>
+            <div className='p-[2px] bg-green-400 rounded-full'>
               <CldImage
                 alt='story'
                 src={item.image}

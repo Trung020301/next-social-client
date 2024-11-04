@@ -9,7 +9,7 @@ import EllipsisToolbar from '../profile/tools/ellipsis-toolbar'
 
 export default function BackpageUser() {
   const router = useRouter()
-  const pathname = usePathname().slice(1)
+  const pathname = usePathname().split('/')[2]
 
   return (
     <div className='py-3'>

@@ -40,7 +40,7 @@ export default function CardPost({
   // Handlers
   const handlerLike = () => {
     setIsLiked(!isLiked)
-    if (likeSound.current) {
+    if (likeSound.current && !isLiked) {
       likeSound.current.play()
     }
   }
@@ -51,13 +51,13 @@ export default function CardPost({
 
   const actions = [
     {
-      icon: <Heart />,
+      icon: <Heart size={18} />,
       count: likes?.length,
       onClick: handlerLike,
       isActive: isLiked,
     },
-    { icon: <MessageSquareMore />, count: comments.length },
-    { icon: <Send />, count: shares?.length },
+    { icon: <MessageSquareMore size={18} />, count: comments.length },
+    { icon: <Send size={18} />, count: shares?.length },
   ]
 
   const formatText = (text: string) => {
@@ -78,7 +78,7 @@ export default function CardPost({
       <div className='flex items-center justify-between px-3'>
         <div className='flex items-center gap-2'>
           <AvatarUser src={author.avatar} {...author} />
-          <div className='text-sm'>
+          <div className='text-xs'>
             <p className='font-semibold'>{author.fullname}</p>
             <p className='text-xs font-semibold'>{createdAt}</p>
           </div>
@@ -88,7 +88,7 @@ export default function CardPost({
         </span>
       </div>
       <div>
-        {images && images.length > 0 && (
+        {images && (
           <Carousel className='mt-2'>
             <CarouselContent>
               {images.map((image, index) => (
@@ -100,7 +100,7 @@ export default function CardPost({
                       fill
                       priority
                       quality={100}
-                      className='object-cover'
+                      className='object-cover object-center'
                     />
                   </div>
                 </CarouselItem>
@@ -110,7 +110,7 @@ export default function CardPost({
         )}
 
         <div
-          className={`mt-2 px-3 ${truncateText}`}
+          className={`mt-2 px-3 ${truncateText} text-sm`}
           onClick={() => setShowMore(!showMore)}
           dangerouslySetInnerHTML={{
             __html: sanitizedHtmlContent,
@@ -130,7 +130,7 @@ export default function CardPost({
                 fill: action.isActive ? 'red' : 'none',
                 strokeWidth: action.isActive ? 0 : 1,
               })}
-              <span>{action.count}</span>
+              <span className='text-sm'>{action.count}</span>
             </div>
           ))}
         </div>
@@ -140,9 +140,10 @@ export default function CardPost({
               fill='primary'
               strokeWidth={0}
               className='font-semibold'
+              size={18}
             />
           ) : (
-            <Bookmark className='font-semibold' />
+            <Bookmark className='font-semibold' size={18} />
           )}
         </div>
       </div>

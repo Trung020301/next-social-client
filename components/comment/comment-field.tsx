@@ -12,11 +12,11 @@ export default function CommentField() {
   const { valueCmt, setValueCmt } = useComment()
 
   const userProps: AvatarUserProps = {
-    src: 'https://github.com/shadcn.png',
+    src: 'https://res.cloudinary.com/dpqhuucyq/image/upload/v1730263036/avatars/1_s8hhrh.jpg',
     username: 'Trung',
-    hasStory: true,
-    width: 30,
-    height: 30,
+    hasStory: false,
+    width: 40,
+    height: 40,
   }
 
   const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,10 +35,11 @@ export default function CommentField() {
     <div className='relative flex items-center gap-2'>
       <AvatarUser {...userProps} />
       <Input
-        className='rounded-full pl-3 pr-10 py-4 text-sm w-full'
+        className='rounded-full pl-3  pr-10 text-sm w-full'
         placeholder={t('placehoolder.type_comment')}
         onChange={handleChangeValue}
         value={valueCmt}
+        size={14}
       />
 
       <div

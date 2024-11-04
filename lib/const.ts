@@ -7,9 +7,10 @@ export const pathRoute = {
   PROFILE: '/my-profile',
   EXPLORE: '/explore',
   UPLOAD: '/upload',
-  MESSAGES: '/messages',
+  MESSAGES: '/chat',
   NOT_FOUND: '/404',
   SETTINGS: '/settings',
+  ACCOUNT: '/account',
 }
 
 export const languageLabels = [

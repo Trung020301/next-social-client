@@ -32,30 +32,34 @@ export default function ExploreUserComp({ type }: { type: string }) {
     <>
       <div className='flex items-center px-2 gap-1'>
         {type === 'my-profile' ? (
-          <Button variant='secondary' size='sm' className=' flex-[4]' asChild>
+          <button className='px-6 py-1 bg-zinc-200 rounded text-xs font-medium'>
             <Link href={`${pathRoute.SETTINGS}/edit-profile`}>
               {t('typography.edit')}
             </Link>
-          </Button>
+          </button>
         ) : (
           <button
             onClick={handleFollow}
-            className='px-6 py-1 bg-sky-600 rounded text-xs text-white font-medium'
+            className='px-6 py-1 bg-sky-600 rounded text-xs text-white font-medium flex-[6]'
           >
             {isFollowed ? t('typography.unfollow') : t('button.follow')}
           </button>
         )}
-        <Button variant='secondary' size='sm' className='flex-[6]'>
-          {t('typography.share_profile')}
-        </Button>
-        <Button
+        {type === 'my-profile' ? (
+          <button className='px-6 py-1 bg-zinc-200 rounded text-xs font-medium flex-[6]'>
+            {t('typography.share_profile')}
+          </button>
+        ) : (
+          <button className='px-6 py-1 bg-zinc-200 rounded text-xs font-medium flex-[6]'>
+            {t('button.chat')}
+          </button>
+        )}
+        <button
           onClick={() => toggle()}
-          className={`flex-[0.5]`}
-          variant='secondary'
-          size='sm'
+          className={`flex-[0.5] bg-zinc-200 p-1 rounded`}
         >
           {isToggle ? <UserPlus size={16} /> : <UserMinus size={16} />}
-        </Button>
+        </button>
       </div>
       {isToggle && (
         <div className='px-2 pt-4'>

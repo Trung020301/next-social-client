@@ -4,6 +4,7 @@ import React from 'react'
 import { UserDetailProps } from '@/types'
 import { CldImage } from 'next-cloudinary'
 import { useTranslations } from 'next-intl'
+import { AvatarUser } from '../AvatarUser'
 
 export default function DetailProfile({ user }: { user: UserDetailProps }) {
   const t = useTranslations()
@@ -29,17 +30,12 @@ export default function DetailProfile({ user }: { user: UserDetailProps }) {
   return (
     <div className='px-2'>
       <div className=' flex items-center py-2'>
-        <div className='p-[2px] bg-gradient-to-r from-instagram-pink to-instagram-purple  rounded-full'>
-          <CldImage
-            alt='avatar'
-            src={user.user.avatar}
-            width={64}
-            priority
-            height={64}
-            className={`w-[${64}] h-[${64}] rounded-full object-cover border
-          `}
-          />
-        </div>
+        <AvatarUser
+          src={user.user.avatar}
+          {...user.user}
+          width={64}
+          height={64}
+        />
         <div className='flex items-center justify-around flex-[4]'>
           {detailList.map((item) => (
             <div
