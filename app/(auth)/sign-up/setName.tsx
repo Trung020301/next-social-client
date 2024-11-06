@@ -64,7 +64,11 @@ export default function setName({
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input placeholder={t('placehoolder.name')} {...field} />
+                  <Input
+                    placeholder={t('placehoolder.name')}
+                    {...field}
+                    className='py-4 h-10 rounded-3xl text-sm'
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -73,7 +77,6 @@ export default function setName({
           <Button
             type='submit'
             className='btn btn-primary mt-5 w-full rounded-full'
-            // onClick={nextStep}
             disabled={!isDirty}
           >
             {t('button.next')}

@@ -24,7 +24,7 @@ export default function Page() {
       case (step = 1):
         return <SetName nextStep={nextStep} values={formValues} />
       case (step = 2):
-        return <SignUpForm />
+        return <SignUpForm values={formValues} />
       default:
         return <div>Unknow Step</div>
     }

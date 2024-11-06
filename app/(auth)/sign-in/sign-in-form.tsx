@@ -15,7 +15,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 import z from 'zod'
-import setLanguageValue from './actions'
 import Link from 'next/link'
 import { pathRoute } from '@/lib/const'
 import { useState } from 'react'
@@ -47,14 +46,18 @@ export default function SignInForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4 px-2'>
         <FormField
           control={form.control}
           name='username'
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder={t('placehoolder.username')} {...field} />
+                <Input
+                  placeholder={t('placehoolder.username')}
+                  {...field}
+                  className='py-4 h-10 rounded-3xl text-sm'
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -66,13 +69,18 @@ export default function SignInForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type='password' placeholder='••••••••' {...field} />
+                <Input
+                  type='password'
+                  placeholder='••••••••'
+                  {...field}
+                  className='py-4 h-10 rounded-3xl text-sm'
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <p className='text-sm text-slate-500 text-right'>
+        <p className='text-xs text-slate-500 text-right'>
           {t('typography.forgot_password')}
         </p>
         {loading ? (
@@ -82,7 +90,6 @@ export default function SignInForm() {
             type='submit'
             disabled={!isValid}
             className='w-full rounded-full'
-            size='lg'
           >
             {t('button.sign_in')}
           </Button>

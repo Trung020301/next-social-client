@@ -11,13 +11,14 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { registerSchema } from '@/lib/validates'
+import { SignUpUserFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-export default function SignUpForm() {
+export default function SignUpForm({ values }: { values: SignUpUserFormData }) {
   const [loading, setLoading] = React.useState(false)
   const t = useTranslations()
   const form = useForm<z.infer<typeof registerSchema>>({
@@ -34,7 +35,12 @@ export default function SignUpForm() {
   } = form
 
   const onSubmit = (value: z.infer<typeof registerSchema>) => {
-    console.log(value)
+    const payload = {
+      fullname: values.fullname,
+      email: value.email,
+      password: value.password,
+    }
+    console.log('Payload----->', payload)
   }
 
   return (
@@ -53,7 +59,11 @@ export default function SignUpForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input placeholder={t('placehoolder.email')} {...field} />
+                  <Input
+                    placeholder={t('placehoolder.email')}
+                    {...field}
+                    className='py-4 h-10 rounded-3xl text-sm'
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -65,7 +75,12 @@ export default function SignUpForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input type='password' placeholder='••••••••' {...field} />
+                  <Input
+                    type='password'
+                    placeholder='••••••••'
+                    {...field}
+                    className='py-4 h-10 rounded-3xl text-sm'
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
