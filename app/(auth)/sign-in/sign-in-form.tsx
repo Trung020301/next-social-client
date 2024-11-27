@@ -16,13 +16,16 @@ import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 import z from 'zod'
 import Link from 'next/link'
-import { pathRoute } from '@/lib/const'
+import { pathRoute, STEP_ONE } from '@/lib/const'
 import { useState } from 'react'
 import { ButtonLoading } from '@/components/ButtonLoading'
+import { signIn } from '@/services/https/authService'
+import { setAuthToken } from '@/app/api/httpRequest'
 
 export default function SignInForm() {
   const t = useTranslations()
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<any>()
   const defaultValues: LoginUser = {
     username: '',
     password: '',
@@ -38,15 +41,27 @@ export default function SignInForm() {
     formState: { isValid },
   } = form
 
-  function onSubmit(values: z.infer<typeof loginSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof loginSchema>) {
+    try {
+      setLoading(true)
+      await signIn('/auth/sign-in', values)
+
+      // window.location.href = pathRoute.HOME
+    } catch (error: any) {
+      setError(error.response?.data.message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4 px-2'>
+        {error && (
+          <FormMessage className='text-center'>
+            {t(`error.${error}`)}
+          </FormMessage>
+        )}
         <FormField
           control={form.control}
           name='username'
@@ -88,7 +103,7 @@ export default function SignInForm() {
         ) : (
           <Button
             type='submit'
-            disabled={!isValid}
+            disabled={!isValid || loading}
             className='w-full rounded-full'
           >
             {t('button.sign_in')}
@@ -97,7 +112,7 @@ export default function SignInForm() {
       </form>
       <p className='text-sm text-center mt-10'>
         {t('typography.no_account')}{' '}
-        <Link href={pathRoute.SIGN_UP}>
+        <Link href={`${pathRoute.SIGN_UP}?type=${STEP_ONE}`}>
           <span className='text-primary'>{t('typography.register')}</span>
         </Link>
       </p>

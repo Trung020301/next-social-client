@@ -20,19 +20,19 @@ export default function CardUser({ user }: { user: CardUserProps }) {
   const handleFollow = () => {
     setIsFollowed(!isFollowed)
   }
+
   return (
-    <Link
-      href={`${pathRoute.ACCOUNT}/${user.username}`}
-      className='shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded w-36 flex flex-col items-center justify-center p-2'
-    >
+    <div className='shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded w-36 flex flex-col items-center justify-center p-2'>
       <div className='flex flex-col items-center justify-center'>
-        <CldImage
-          src={user.avatar}
-          alt='avatar'
-          width={64}
-          height={64}
-          className='rounded-full'
-        />
+        <Link href={`${pathRoute.ACCOUNT}/${user.username}`}>
+          <CldImage
+            src={user.avatar}
+            alt='avatar'
+            width={64}
+            height={64}
+            className='rounded-full'
+          />
+        </Link>
         <div className='text-center py-2'>
           <p className='text-xs font-semibold'>{user.fullname}</p>
           <p className='text-xs font-medium text-gray-600 '>
@@ -46,6 +46,6 @@ export default function CardUser({ user }: { user: CardUserProps }) {
       >
         {isFollowed ? t('typography.unfollow') : t('button.follow')}
       </button>
-    </Link>
+    </div>
   )
 }

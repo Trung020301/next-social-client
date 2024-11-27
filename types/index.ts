@@ -6,8 +6,8 @@ export type LoginUser = {
 }
 
 export type SignUpUserFormData = {
-  fullname?: string
-  email?: string
+  fullName?: string
+  username?: string
   password?: string
 }
 

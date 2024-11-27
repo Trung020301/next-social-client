@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { registerSchema } from '@/lib/validates'
+import { signUp } from '@/services/https/authService'
 import { SignUpUserFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
@@ -20,12 +21,13 @@ import { z } from 'zod'
 
 export default function SignUpForm({ values }: { values: SignUpUserFormData }) {
   const [loading, setLoading] = React.useState(false)
+  const [error, setError] = React.useState<any>('')
   const t = useTranslations()
   const form = useForm<z.infer<typeof registerSchema>>({
     mode: 'onChange',
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      email: '',
+      username: '',
       password: '',
     },
   })
@@ -34,13 +36,22 @@ export default function SignUpForm({ values }: { values: SignUpUserFormData }) {
     formState: { isValid },
   } = form
 
-  const onSubmit = (value: z.infer<typeof registerSchema>) => {
+  const onSubmit = async (value: z.infer<typeof registerSchema>) => {
     const payload = {
-      fullname: values.fullname,
-      email: value.email,
+      ...values,
+      username: value.username,
       password: value.password,
     }
-    console.log('Payload----->', payload)
+    try {
+      setLoading(true)
+      const response = await signUp('/auth/sign-up', payload)
+      console.log(response)
+    } catch (error: any) {
+      console.log('Http Error >>>', error)
+      setError(error.response.data.message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -48,19 +59,21 @@ export default function SignUpForm({ values }: { values: SignUpUserFormData }) {
       <h1 className='text-2xl font-semibold mb-4'>
         {t('title.create_account')}
       </h1>
-      <p className='text-red-400 font-semibold text-sm my-4'>
-        Username has already
-      </p>
+      {error && (
+        <p className='text-red-400 font-semibold text-sm my-4'>
+          {t(`error.${error}`)}
+        </p>
+      )}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
           <FormField
             control={form.control}
-            name='email'
+            name='username'
             render={({ field }) => (
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder={t('placehoolder.email')}
+                    placeholder={t('placehoolder.username')}
                     {...field}
                     className='py-4 h-10 rounded-3xl text-sm'
                   />

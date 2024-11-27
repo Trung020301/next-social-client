@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Home page description',
 }
 
-export default function Page() {
+export default async function Page() {
   return (
     <div className=''>
       <HeaderHome />

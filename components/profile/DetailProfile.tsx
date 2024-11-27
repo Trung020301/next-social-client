@@ -1,14 +1,31 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { UserDetailProps } from '@/types'
 import { CldImage } from 'next-cloudinary'
 import { useTranslations } from 'next-intl'
 import { AvatarUser } from '../AvatarUser'
+import { getAllPosts } from '@/services/https/postService'
 
-export default function DetailProfile({ user }: { user: UserDetailProps }) {
+export default async function DetailProfile({ user }: { user: any }) {
   const t = useTranslations()
-  const { posts, followers, following } = user
+  const [posts, setPosts] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const colection = await getAllPosts(`/post/get-all-posts`)
+        setPosts(colection.data.posts)
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
+        setLoading(false)
+      }
+    }
+    fetchPosts()
+  }, [])
+
   const detailList = [
     {
       id: 1,
@@ -18,12 +35,12 @@ export default function DetailProfile({ user }: { user: UserDetailProps }) {
     {
       id: 2,
       title: t('typography.followers'),
-      value: followers.length,
+      value: user.followers.length,
     },
     {
       id: 3,
       title: t('typography.following'),
-      value: following.length,
+      value: user.following.length,
     },
   ]
 
@@ -31,8 +48,9 @@ export default function DetailProfile({ user }: { user: UserDetailProps }) {
     <div className='px-2'>
       <div className=' flex items-center py-2'>
         <AvatarUser
-          src={user.user.avatar}
-          {...user.user}
+          username={user.username}
+          src={user.avatar?.url || ' '}
+          hasStory={user.hasStory}
           width={64}
           height={64}
         />
@@ -49,13 +67,13 @@ export default function DetailProfile({ user }: { user: UserDetailProps }) {
         </div>
       </div>
       <div>
-        <p className='font-medium text-xs'>{user.user.fullname}</p>
-        {user.user.bio && (
+        <p className='font-medium text-xs'>{user.fullName}</p>
+        {user.bio && (
           <span
             aria-description='biography'
             className='text-xs text-slate-500 '
           >
-            {user.user.bio}
+            {user.bio}
           </span>
         )}
       </div>

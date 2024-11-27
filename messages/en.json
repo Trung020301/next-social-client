@@ -121,9 +121,11 @@
     "edit_profile": "Edit profile"
   },
   "error": {
-    "name_length": "The fullname must be at least 3 characters.",
+    "name_length": "The fullname must be at least 2 characters.",
     "start_with_space": "The fullname must not start with space.",
-    "otp_invalid": "The OTP code is invalid."
+    "otp_invalid": "The OTP code is invalid.",
+    "not_found": "Not found",
+    "user_existed": "The username is already taken."
   },
   "notify": {
     "send_email": "We have sent an email to {email}. Please check your email to verify your account.",

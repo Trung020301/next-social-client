@@ -121,9 +121,11 @@
     "edit_profile": "Chỉnh sửa thông tin cá nhân"
   },
   "error": {
-    "name_length": "Họ và tên phải có ít nhất 3 ký tự.",
+    "name_length": "Họ và tên phải có ít nhất 2 ký tự.",
     "start_with_space": "Họ và tên không được bắt đầu bằng khoảng trắng.",
-    "otp_invalid": "Mã OTP không hợp lệ."
+    "otp_invalid": "Mã OTP không hợp lệ.",
+    "not_found": "Không tìm thấy",
+    "user_existed": "Tên người dùng đã tồn tại."
   },
   "notify": {
     "send_email": "Chúng tôi đã gửi mã xác thực tới {email} cho bạn, hãy kiểm tra hộp thư để xác thực tài khoản.",

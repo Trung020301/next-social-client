@@ -24,7 +24,8 @@ export const languageLabels = [
   },
 ]
 
-export const STEP_ONE = 1
+export const STEP_ONE = 'set-name'
+export const STEP_TWO = 'set-authentication'
 
 export const defaultImage = '/images/defaultImage.jpg'
 
