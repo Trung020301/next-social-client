@@ -21,3 +21,10 @@ export const getUserExplore = async () => {
   const response = await apiClient.get('/user/explore-user')
   return response.data
 }
+
+export const getUserExploreUserProfile = async (params: {
+  username: string
+}) => {
+  const response = await apiClient.get(`/user/explore-user/${params.username}`)
+  return response.data
+}

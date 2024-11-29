@@ -15,9 +15,9 @@ export default function Page() {
         <DetailProfile type={TYPE_PROFILE.USER_PROFILE} />
       </div>
       <ExploreUserComp type={TYPE_PROFILE.USER_PROFILE} />
-      {fakeListStory.length > 0 && (
+      {/* {fakeListStory.length > 0 && (
         <FeatureNews listFutureNews={fakeListStory} />
-      )}
+      )} */}
       <ProfileTabs />
     </div>
   )

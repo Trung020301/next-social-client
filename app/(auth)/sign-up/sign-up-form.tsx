@@ -10,11 +10,13 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { pathRoute } from '@/lib/const'
 import { registerSchema } from '@/lib/validates'
 import { signUp } from '@/services/https/authService'
 import { SignUpUserFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -23,6 +25,7 @@ export default function SignUpForm({ values }: { values: SignUpUserFormData }) {
   const [loading, setLoading] = React.useState(false)
   const [error, setError] = React.useState<any>('')
   const t = useTranslations()
+  const router = useRouter()
   const form = useForm<z.infer<typeof registerSchema>>({
     mode: 'onChange',
     resolver: zodResolver(registerSchema),
@@ -45,7 +48,7 @@ export default function SignUpForm({ values }: { values: SignUpUserFormData }) {
     try {
       setLoading(true)
       const response = await signUp('/auth/sign-up', payload)
-      console.log(response)
+      router.push(pathRoute.SIGN_IN)
     } catch (error: any) {
       console.log('Http Error >>>', error)
       setError(error.response.data.message)

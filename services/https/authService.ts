@@ -7,10 +7,10 @@ export const signIn = async (endpoint: string, signInDto: LoginUser) => {
   return response.data
 }
 
-// export const signUp = async (
-//   endpoint: string,
-//   signUpDto: SignUpUserFormData,
-// ) => {
-//   const response = await apiClient.post(endpoint, signUpDto)
-//   return response.data
-// }
+export const signUp = async (
+  endpoint: string,
+  signUpDto: SignUpUserFormData,
+) => {
+  const response = await apiClient.post(endpoint, signUpDto)
+  return response.data
+}

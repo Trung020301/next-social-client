@@ -6,10 +6,14 @@ import { Film, Notebook } from 'lucide-react'
 import { pathRoute } from '@/lib/const'
 import Link from 'next/link'
 import NoPostUI from '../NoPostUI'
-import { getAllPosts } from '@/services/https/postService'
+import { getAllPosts, getAllPostsUser } from '@/services/https/postService'
 import { IPost } from '@/lib/interface'
+import { useParams } from 'next/navigation'
 
 export default function Gallery() {
+  const params = useParams<{ username: string }>()
+  const checkParams = params.username !== undefined
+
   const [posts, setPosts] = useState<IPost[]>([])
   const [loading, setLoading] = useState<boolean>(false)
 
@@ -17,7 +21,11 @@ export default function Gallery() {
     const fetchPosts = async () => {
       try {
         setLoading(true)
-        const response = await getAllPosts()
+        const response = checkParams
+          ? await getAllPostsUser({
+              username: params.username,
+            })
+          : await getAllPosts()
         setPosts(response.data.posts)
         setLoading(false)
       } catch (error) {

@@ -8,20 +8,32 @@ import Link from 'next/link'
 import useToggle from '@/hooks/useToggle'
 import CardUser from './CardUser'
 import { pathRoute, TYPE_PROFILE } from '@/lib/const'
-import { getUserExplore } from '@/services/https/userService'
+import {
+  getUserExplore,
+  getUserExploreUserProfile,
+} from '@/services/https/userService'
 import { UserExploreProps } from '@/types'
+import { useParams } from 'next/navigation'
 
 export default function ExploreUserComp({ type }: { type: string }) {
+  const params = useParams<{ username: string }>()
+
   const [isToggle, toggle] = useToggle(true)
   const [isFollowed, setIsFollowed] = useToggle(false)
   const [listUser, setListUser] = useState<UserExploreProps[]>([])
   const [loading, setLoading] = useState(false)
+
   const t = useTranslations()
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await getUserExplore()
+        const response =
+          type === TYPE_PROFILE.MY_PROFILE
+            ? await getUserExplore()
+            : await getUserExploreUserProfile({
+                username: params.username,
+              })
         setListUser(response.data.users)
       } catch (error) {
         throw new Error()
@@ -80,7 +92,7 @@ export default function ExploreUserComp({ type }: { type: string }) {
           </div>
           <div className='flex overflow-x-auto gap-2 py-2 scrollbar-hide'>
             {listUser.map((user) => (
-              <div className='w-36'>
+              <div className='w-36' key={user._id}>
                 <CardUser user={user} loading={loading} />
               </div>
             ))}

@@ -20,7 +20,6 @@ import { pathRoute, STEP_ONE } from '@/lib/const'
 import { useState } from 'react'
 import { ButtonLoading } from '@/components/ButtonLoading'
 import { signIn } from '@/services/https/authService'
-import { setAuthToken } from '@/app/api/httpRequest'
 
 export default function SignInForm() {
   const t = useTranslations()
@@ -45,8 +44,7 @@ export default function SignInForm() {
     try {
       setLoading(true)
       await signIn('/auth/sign-in', values)
-
-      // window.location.href = pathRoute.HOME
+      window.location.href = pathRoute.HOME
     } catch (error: any) {
       setError(error.response?.data.message)
     } finally {

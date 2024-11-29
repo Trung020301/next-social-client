@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl'
 import { AvatarUser } from '../AvatarUser'
 import { getMyProfile, getUserProfile } from '@/services/https/userService'
 import { IPost, IUser } from '@/lib/interface'
-import { defaultUser, TYPE_PROFILE } from '@/lib/const'
-import { useParams } from 'next/navigation'
+import { defaultUser, pathRoute, TYPE_PROFILE } from '@/lib/const'
+import { useParams, useRouter } from 'next/navigation'
 
 export default function DetailProfile({ type }: { type: string }) {
   const t = useTranslations()
@@ -14,6 +14,8 @@ export default function DetailProfile({ type }: { type: string }) {
   const [posts, setPosts] = useState<IPost[]>([])
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
+
+  const router = useRouter()
   const params = useParams<{ username: string }>()
 
   useEffect(() => {
@@ -24,6 +26,7 @@ export default function DetailProfile({ type }: { type: string }) {
           type === TYPE_PROFILE.MY_PROFILE
             ? await getMyProfile()
             : await getUserProfile(params)
+        if (response.status === 302) return router.replace(pathRoute.PROFILE)
         setUser(response.user)
         setPosts(response.posts)
         setLoading(false)

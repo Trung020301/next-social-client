@@ -6,6 +6,11 @@ export const getAllPosts = async () => {
   return response.data
 }
 
+export const getAllPostsUser = async (params: { username: string }) => {
+  const response = await apiClient.get(`/post/collection/${params.username}`)
+  return response.data
+}
+
 export const getPostVideo = async () => {
   const response = await apiClient.get('/post/get-post-video')
   return response.data
