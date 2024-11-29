@@ -86,7 +86,8 @@
     "unfollow": "Bỏ theo dõi",
     "report": "Báo cáo",
     "copy_url_profile": "Sao chép URL trang cá nhân",
-    "copy_url_post": "Sao chép URL bài viết"
+    "copy_url_post": "Sao chép URL bài viết",
+    "recommend_for_you": "Gợi ý cho bạn"
   },
   "placehoolder": {
     "search": "Tìm kiếm...",
@@ -125,7 +126,8 @@
     "start_with_space": "Họ và tên không được bắt đầu bằng khoảng trắng.",
     "otp_invalid": "Mã OTP không hợp lệ.",
     "not_found": "Không tìm thấy",
-    "user_existed": "Tên người dùng đã tồn tại."
+    "user_existed": "Tên người dùng đã tồn tại.",
+    "unexpected": "Đã xảy ra lỗi không mong muốn."
   },
   "notify": {
     "send_email": "Chúng tôi đã gửi mã xác thực tới {email} cho bạn, hãy kiểm tra hộp thư để xác thực tài khoản.",

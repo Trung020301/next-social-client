@@ -3,7 +3,7 @@ import { LoginUser, SignUpUserFormData } from '@/types'
 
 export const signIn = async (endpoint: string, signInDto: LoginUser) => {
   const response = await apiClient.post(endpoint, signInDto)
-  const token = localStorage.setItem('token', response.data.accessToken)
+  localStorage.setItem('token', response.data.accessToken)
   return response.data
 }
 
