@@ -10,21 +10,27 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { pathRoute } from '@/lib/const'
 import { registerSchema } from '@/lib/validates'
+import { signUp } from '@/services/https/authService'
+import { SignUpUserFormData } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-export default function SignUpForm() {
+export default function SignUpForm({ values }: { values: SignUpUserFormData }) {
   const [loading, setLoading] = React.useState(false)
+  const [error, setError] = React.useState<any>('')
   const t = useTranslations()
+  const router = useRouter()
   const form = useForm<z.infer<typeof registerSchema>>({
     mode: 'onChange',
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      email: '',
+      username: '',
       password: '',
     },
   })
@@ -33,8 +39,22 @@ export default function SignUpForm() {
     formState: { isValid },
   } = form
 
-  const onSubmit = (value: z.infer<typeof registerSchema>) => {
-    console.log(value)
+  const onSubmit = async (value: z.infer<typeof registerSchema>) => {
+    const payload = {
+      ...values,
+      username: value.username,
+      password: value.password,
+    }
+    try {
+      setLoading(true)
+      const response = await signUp('/auth/sign-up', payload)
+      router.push(pathRoute.SIGN_IN)
+    } catch (error: any) {
+      console.log('Http Error >>>', error)
+      setError(error.response.data.message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -42,18 +62,24 @@ export default function SignUpForm() {
       <h1 className='text-2xl font-semibold mb-4'>
         {t('title.create_account')}
       </h1>
-      <p className='text-red-400 font-semibold text-sm my-4'>
-        Username has already
-      </p>
+      {error && (
+        <p className='text-red-400 font-semibold text-sm my-4'>
+          {t(`error.${error}`)}
+        </p>
+      )}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
           <FormField
             control={form.control}
-            name='email'
+            name='username'
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input placeholder={t('placehoolder.email')} {...field} />
+                  <Input
+                    placeholder={t('placehoolder.username')}
+                    {...field}
+                    className='py-4 h-10 rounded-3xl text-sm'
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -65,7 +91,12 @@ export default function SignUpForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input type='password' placeholder='••••••••' {...field} />
+                  <Input
+                    type='password'
+                    placeholder='••••••••'
+                    {...field}
+                    className='py-4 h-10 rounded-3xl text-sm'
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

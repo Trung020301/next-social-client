@@ -4,11 +4,11 @@ import { Drawer } from 'vaul'
 import { useState } from 'react'
 import { CommentProps } from '@/types'
 import { useTranslations } from 'next-intl'
-import Image from 'next/image'
 import { Heart } from 'lucide-react'
 import CommentField from '../comment/comment-field'
 import { CommentProvider } from '@/provider/CommentProvider'
 import { Separator } from '../ui/separator'
+import { AvatarUser } from '../AvatarUser'
 
 export default function SheetComment({ comment }: { comment: CommentProps[] }) {
   const USER_ID: string = '213123321'
@@ -49,16 +49,15 @@ export default function SheetComment({ comment }: { comment: CommentProps[] }) {
                 {comment.map((item, index) => (
                   <div key={index} className='py-2 '>
                     <div className='flex gap-2'>
-                      <Image
-                        src={item.user.avatar}
+                      <AvatarUser
+                        username={item.user?.username}
+                        src={item.user?.avatar.url}
                         width={32}
                         height={32}
-                        alt={item.user.fullname || ''}
-                        className='w-8 h-8 rounded-full'
                       />
                       <div>
                         <p className='text-sm font-semibold'>
-                          {item.user.fullname}
+                          {item.user.fullName}
                           <span className='font-normal text-gray-400 ml-2'>
                             2 days ago
                           </span>

@@ -1,14 +1,43 @@
 'use client'
 
-import React from 'react'
-import { UserDetailProps } from '@/types'
-import { CldImage } from 'next-cloudinary'
+import React, { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { AvatarUser } from '../AvatarUser'
+import { getMyProfile, getUserProfile } from '@/services/https/userService'
+import { IPost, IUser } from '@/lib/interface'
+import { defaultUser, pathRoute, TYPE_PROFILE } from '@/lib/const'
+import { useParams, useRouter } from 'next/navigation'
 
-export default function DetailProfile({ user }: { user: UserDetailProps }) {
+export default function DetailProfile({ type }: { type: string }) {
   const t = useTranslations()
-  const { posts, followers, following } = user
+  const [user, setUser] = useState<IUser>(defaultUser)
+  const [posts, setPosts] = useState<IPost[]>([])
+  const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const router = useRouter()
+  const params = useParams<{ username: string }>()
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        setLoading(true)
+        const response =
+          type === TYPE_PROFILE.MY_PROFILE
+            ? await getMyProfile()
+            : await getUserProfile(params)
+        if (response.status === 302) return router.replace(pathRoute.PROFILE)
+        setUser(response.user)
+        setPosts(response.posts)
+        setLoading(false)
+      } catch (error: any) {
+        setLoading(false)
+        setError(error.message)
+      }
+    }
+    fetchPosts()
+  }, [])
+
   const detailList = [
     {
       id: 1,
@@ -18,23 +47,63 @@ export default function DetailProfile({ user }: { user: UserDetailProps }) {
     {
       id: 2,
       title: t('typography.followers'),
-      value: followers.length,
+      value: user?.followers.length,
     },
     {
       id: 3,
       title: t('typography.following'),
-      value: following.length,
+      value: user?.following.length,
     },
   ]
 
+  if (loading) {
+    return (
+      <div className='px-2'>
+        <div className='flex items-center py-2'>
+          <AvatarUser
+            username={user.username}
+            src={user?.avatar?.url}
+            hasStory={user.hasStory}
+            width={64}
+            height={64}
+            loading={loading}
+          />
+          <div className='flex items-center justify-around flex-[4]'>
+            {detailList.map((item) => (
+              <div
+                key={item.id}
+                className='flex flex-col items-center justify-center'
+              >
+                <span className='font-semibold text-sm'>
+                  <div>...</div>
+                </span>
+                <p className='text-xs'>{item.title}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className='px-2'>
+        <p className='text-red-500'>{error}</p>
+      </div>
+    )
+  }
+
   return (
     <div className='px-2'>
-      <div className=' flex items-center py-2'>
+      <div className='flex items-center py-2'>
         <AvatarUser
-          src={user.user.avatar}
-          {...user.user}
+          username={user.username}
+          src={user?.avatar?.url}
+          hasStory={user.hasStory}
           width={64}
           height={64}
+          loading={loading}
         />
         <div className='flex items-center justify-around flex-[4]'>
           {detailList.map((item) => (
@@ -42,20 +111,22 @@ export default function DetailProfile({ user }: { user: UserDetailProps }) {
               key={item.id}
               className='flex flex-col items-center justify-center'
             >
-              <span className='font-semibold text-sm'>{item.value}</span>
+              <span className='font-semibold text-sm'>
+                <span className='text-xs text-gray-600'>{item.value}</span>
+              </span>
               <p className='text-xs'>{item.title}</p>
             </div>
           ))}
         </div>
       </div>
       <div>
-        <p className='font-medium text-xs'>{user.user.fullname}</p>
-        {user.user.bio && (
+        <p className='font-medium text-xs'>{user.fullName}</p>
+        {user.bio && (
           <span
             aria-description='biography'
             className='text-xs text-slate-500 '
           >
-            {user.user.bio}
+            {user.bio}
           </span>
         )}
       </div>

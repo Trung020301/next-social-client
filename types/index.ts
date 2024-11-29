@@ -1,4 +1,4 @@
-import { IPost, IUser } from '@/lib/interface'
+import { Avatar, ICardPost, IPost, IUser } from '@/lib/interface'
 
 export type LoginUser = {
   username: string
@@ -6,8 +6,8 @@ export type LoginUser = {
 }
 
 export type SignUpUserFormData = {
-  fullname?: string
-  email?: string
+  fullName?: string
+  username?: string
   password?: string
 }
 
@@ -20,23 +20,25 @@ export type CommentProps = {
 }
 
 export type CardPostProps = {
-  author: IUser
-  content: {
-    text: string
-    images?: string[]
-    createdAt: string
-  }
-  likes: string[] | null | []
-  shares: string[] | null | []
-  comments: CommentProps[] | []
+  post: ICardPost
 }
 
 export type AvatarUserProps = {
-  src: string
+  src?: string
   username: string
   hasStory?: boolean
   width?: number
   height?: number
+  loading?: boolean
+}
+
+export type UserExploreProps = {
+  _id: string
+  fullName: string
+  username: string
+  followers: string[]
+  avatar?: Avatar
+  blockedUsers?: string[]
 }
 
 export type UserDetailProps = {
@@ -55,4 +57,9 @@ export type SettingsProps = {
   icon: React.ReactNode
   title: string
   value: string
+}
+
+export type DetailProfileProps = {
+  user: IUser
+  posts: IPost[]
 }

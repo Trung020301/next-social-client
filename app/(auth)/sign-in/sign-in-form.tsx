@@ -15,15 +15,16 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 import z from 'zod'
-import setLanguageValue from './actions'
 import Link from 'next/link'
-import { pathRoute } from '@/lib/const'
+import { pathRoute, STEP_ONE } from '@/lib/const'
 import { useState } from 'react'
 import { ButtonLoading } from '@/components/ButtonLoading'
+import { signIn } from '@/services/https/authService'
 
 export default function SignInForm() {
   const t = useTranslations()
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<any>()
   const defaultValues: LoginUser = {
     username: '',
     password: '',
@@ -39,22 +40,37 @@ export default function SignInForm() {
     formState: { isValid },
   } = form
 
-  function onSubmit(values: z.infer<typeof loginSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof loginSchema>) {
+    try {
+      setLoading(true)
+      await signIn('/auth/sign-in', values)
+      window.location.href = pathRoute.HOME
+    } catch (error: any) {
+      setError(error.response?.data.message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4 px-2'>
+        {error && (
+          <FormMessage className='text-center'>
+            {t(`error.${error}`)}
+          </FormMessage>
+        )}
         <FormField
           control={form.control}
           name='username'
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder={t('placehoolder.username')} {...field} />
+                <Input
+                  placeholder={t('placehoolder.username')}
+                  {...field}
+                  className='py-4 h-10 rounded-3xl text-sm'
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -66,13 +82,18 @@ export default function SignInForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type='password' placeholder='••••••••' {...field} />
+                <Input
+                  type='password'
+                  placeholder='••••••••'
+                  {...field}
+                  className='py-4 h-10 rounded-3xl text-sm'
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <p className='text-sm text-slate-500 text-right'>
+        <p className='text-xs text-slate-500 text-right'>
           {t('typography.forgot_password')}
         </p>
         {loading ? (
@@ -80,9 +101,8 @@ export default function SignInForm() {
         ) : (
           <Button
             type='submit'
-            disabled={!isValid}
+            disabled={!isValid || loading}
             className='w-full rounded-full'
-            size='lg'
           >
             {t('button.sign_in')}
           </Button>
@@ -90,7 +110,7 @@ export default function SignInForm() {
       </form>
       <p className='text-sm text-center mt-10'>
         {t('typography.no_account')}{' '}
-        <Link href={pathRoute.SIGN_UP}>
+        <Link href={`${pathRoute.SIGN_UP}?type=${STEP_ONE}`}>
           <span className='text-primary'>{t('typography.register')}</span>
         </Link>
       </p>

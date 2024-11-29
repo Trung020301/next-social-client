@@ -1,0 +1,7 @@
+POST https://back-end-social-app.onrender.com/auth/sign-in 
+Content-Type: application/json
+
+{
+    "username": "Trung1214",
+    "password": "hkjasgdasghda"
+}

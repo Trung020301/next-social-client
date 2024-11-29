@@ -4,39 +4,55 @@ import React, { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { CldImage } from 'next-cloudinary'
 import Link from 'next/link'
-import { pathRoute } from '@/lib/const'
+import { defaultAvatar, pathRoute } from '@/lib/const'
+import { UserExploreProps } from '@/types'
+import { Skeleton } from '@/components/ui/skeleton'
 
-type CardUserProps = {
-  _id: string
-  fullname: string
-  username: string
-  avatar: string
-  followers: string[]
-}
-
-export default function CardUser({ user }: { user: CardUserProps }) {
+export default function CardUser({
+  user,
+  loading = false,
+}: {
+  user: UserExploreProps
+  loading?: boolean
+}) {
+  const { followers } = user
+  // const checkFollow = followers?.find((item) => item === user.id)
   const [isFollowed, setIsFollowed] = useState<boolean>(false)
   const t = useTranslations()
   const handleFollow = () => {
     setIsFollowed(!isFollowed)
   }
-  return (
-    <Link
-      href={`${pathRoute.ACCOUNT}/${user.username}`}
-      className='shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded w-36 flex flex-col items-center justify-center p-2'
-    >
-      <div className='flex flex-col items-center justify-center'>
-        <CldImage
-          src={user.avatar}
-          alt='avatar'
-          width={64}
-          height={64}
-          className='rounded-full'
-        />
+
+  if (loading) {
+    return (
+      <div className='shadow-[0_3px_10px_rgb(0,0,0,0.2)] h-36 rounded w-36 flex flex-col items-center justify-center p-2'>
+        <Skeleton className='w-16 h-16 rounded-full bg-gray-300' />
         <div className='text-center py-2'>
-          <p className='text-xs font-semibold'>{user.fullname}</p>
+          <Skeleton className='h-2 bg-gray-300' />
           <p className='text-xs font-medium text-gray-600 '>
-            Có tran.d.trung và 1 người khác theo dõi
+            {t('typography.recommend_for_you')}
+          </p>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className='shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded w-36 flex flex-col items-center justify-center p-2'>
+      <div className='flex flex-col items-center justify-center'>
+        <Link href={`${pathRoute.ACCOUNT}/${user.username}`}>
+          <CldImage
+            src={user.avatar?.url || defaultAvatar}
+            alt='avatar'
+            width={64}
+            height={64}
+            className='rounded-full'
+          />
+        </Link>
+        <div className='text-center py-2'>
+          <p className='text-xs font-semibold'>{user.fullName}</p>
+          <p className='text-xs font-medium text-gray-600 '>
+            {t('typography.recommend_for_you')}
           </p>
         </div>
       </div>
@@ -46,6 +62,6 @@ export default function CardUser({ user }: { user: CardUserProps }) {
       >
         {isFollowed ? t('typography.unfollow') : t('button.follow')}
       </button>
-    </Link>
+    </div>
   )
 }

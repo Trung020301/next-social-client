@@ -17,15 +17,17 @@ import { z } from 'zod'
 export default function setName({
   nextStep,
   values,
+  setValues,
 }: {
   nextStep: () => void
   values: SignUpUserFormData
+  setValues: React.Dispatch<React.SetStateAction<SignUpUserFormData>>
 }) {
   const t = useTranslations()
   const schema = z.object({
-    fullname: z
+    fullName: z
       .string()
-      .min(3, { message: t('error.name_length') })
+      .min(2, { message: t('error.name_length') })
       .refine((value) => !value.startsWith(' '), {
         message: t('error.start_with_space'),
       }),
@@ -35,7 +37,7 @@ export default function setName({
     mode: 'onBlur',
     resolver: zodResolver(schema),
     defaultValues: {
-      fullname: values.fullname,
+      fullName: values.fullName,
     },
   })
 
@@ -44,11 +46,7 @@ export default function setName({
   } = form
 
   const onSubmit = (value: z.infer<typeof schema>) => {
-    const updatedValues = {
-      ...values,
-      fullname: value.fullname,
-    }
-    console.log(updatedValues)
+    setValues({ ...values, fullName: value.fullName })
     nextStep()
   }
 
@@ -60,11 +58,15 @@ export default function setName({
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
             control={form.control}
-            name='fullname'
+            name='fullName'
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input placeholder={t('placehoolder.name')} {...field} />
+                  <Input
+                    placeholder={t('placehoolder.name')}
+                    {...field}
+                    className='py-4 h-10 rounded-3xl text-sm'
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -73,8 +75,6 @@ export default function setName({
           <Button
             type='submit'
             className='btn btn-primary mt-5 w-full rounded-full'
-            // onClick={nextStep}
-            disabled={!isDirty}
           >
             {t('button.next')}
           </Button>

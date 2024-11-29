@@ -1,6 +1,5 @@
-import CardPost from '@/components/card-post/CardPost'
 import HeaderHome from '@/components/HeaderHome'
-import { posts } from '@/services/data'
+import NewsFeed from '@/components/home/feed'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -8,17 +7,11 @@ export const metadata: Metadata = {
   description: 'Home page description',
 }
 
-export default function Page() {
+export default async function Page() {
   return (
     <div className=''>
       <HeaderHome />
-      <div className='mt-4 flex flex-col gap-2 mb-10'>
-        <CardPost {...posts} />
-        <CardPost {...posts} />
-        {/* <CardPost {...post} /> */}
-        {/* <CardPost {...post} /> */}
-      </div>
-      {/* <Tiptap /> */}
+      <NewsFeed />
     </div>
   )
 }

@@ -1,25 +1,73 @@
 import { PostType } from '@/types'
+import { AxiosError } from 'axios'
 
 export interface IUser {
   _id: string
-  fullname: string | null
+  fullName: string
   username: string
-  avatar: string
-  bio?: string | null
   email: string
-  hasStory?: boolean
-  createdAt: string | Date
+  bio: string
+  hasStory: boolean
+  accountStatus: string
+  role: string
+  followers: string[]
+  following: string[]
+  blockedUsers: string[]
+  savedPosts: string[]
+  createdAt: string
+  updatedAt: string
+  avatar: Avatar
+}
+
+export interface Avatar {
+  public_id: string
+  url: string
 }
 
 export interface IPost {
   _id: string
-  userId: string
-  content: string
-  image: string[]
-  video?: string[]
+  userId: IUserId
+  MediaTypeEnum: PostType
+  mediaUrl: MediaUrl[]
+  visibility: string
   likes: string[]
+  content?: string
   shares: string[]
   comments: string[]
-  createdAt: Date | string
-  type: PostType
+  createdAt: string
+  updatedAt: string
+}
+
+export interface ICardPost extends IPost {
+  isLikedPost: boolean
+  isSavedPost: boolean
+}
+
+export interface IUserId {
+  _id: string
+  avatar: {
+    url: string
+  }
+  username: string
+  fullName: string
+}
+
+export interface MediaUrl {
+  url: string
+  public_id: string
+}
+
+export interface HttpError extends AxiosError {
+  response: {
+    data: {
+      error: string
+      message: string
+      status: number
+    }
+  } & AxiosError['response']
+}
+
+// ? Request Interface
+export interface ToggleLikePost {
+  postId: string
 }

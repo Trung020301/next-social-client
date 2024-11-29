@@ -1,3 +1,5 @@
+import { IUser } from './interface'
+
 export const pathRoute = {
   HOME: '/',
   ABOUT: '/about',
@@ -24,9 +26,12 @@ export const languageLabels = [
   },
 ]
 
-export const STEP_ONE = 1
+export const STEP_ONE = 'set-name'
+export const STEP_TWO = 'set-authentication'
 
 export const defaultImage = '/images/defaultImage.jpg'
+export const defaultAvatar =
+  'https://res.cloudinary.com/dpqhuucyq/image/upload/v1732780340/2_ea60qt.jpg'
 
 export const DEFAULT_TAB = 'all'
 export const REEF_TAB = 'reef'
@@ -38,4 +43,24 @@ const USER_PROFILE = 'user-profile'
 export const TYPE_PROFILE = {
   MY_PROFILE,
   USER_PROFILE,
+}
+export const defaultUser: IUser = {
+  _id: '',
+  fullName: '',
+  username: '',
+  email: '',
+  bio: '',
+  hasStory: false,
+  accountStatus: '',
+  role: '',
+  followers: [],
+  following: [],
+  blockedUsers: [],
+  savedPosts: [],
+  createdAt: '',
+  updatedAt: '',
+  avatar: {
+    public_id: '',
+    url: '',
+  },
 }
