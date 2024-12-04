@@ -1,4 +1,5 @@
 import { IUser } from './interface'
+import { UserSettingProfileProps } from '@/types'
 
 export const pathRoute = {
   HOME: '/',
@@ -30,6 +31,7 @@ export const STEP_ONE = 'set-name'
 export const STEP_TWO = 'set-authentication'
 
 export const defaultImage = '/images/defaultImage.jpg'
+export const userNotFound = '/images/user-not-found.png'
 export const defaultAvatar =
   'https://res.cloudinary.com/dpqhuucyq/image/upload/v1732780340/2_ea60qt.jpg'
 
@@ -63,4 +65,16 @@ export const defaultUser: IUser = {
     public_id: '',
     url: '',
   },
+}
+
+export const defaultEditUser: UserSettingProfileProps = {
+  avatar: {
+    url: '',
+    public_id: '',
+  },
+  fullName: '',
+  username: '',
+  phone: '',
+  bio: '',
+  gender: 'other',
 }

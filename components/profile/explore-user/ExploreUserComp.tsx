@@ -1,50 +1,46 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { UserMinus, UserPlus } from 'lucide-react'
 import Link from 'next/link'
-
 import useToggle from '@/hooks/useToggle'
-import CardUser from './CardUser'
 import { pathRoute, TYPE_PROFILE } from '@/lib/const'
-import {
-  getUserExplore,
-  getUserExploreUserProfile,
-} from '@/services/https/userService'
-import { UserExploreProps } from '@/types'
-import { useParams } from 'next/navigation'
+import { useUser } from '@/hooks/useUser'
+import ExploreUserList from './ExploreUserList'
+import { DetailProfileProps } from '@/types'
+import { toggleFollowUser } from '@/services/https/userService'
 
-export default function ExploreUserComp({ type }: { type: string }) {
-  const params = useParams<{ username: string }>()
+export default function ExploreUserComp({
+  type,
+  user,
+}: {
+  type: string
+  user?: DetailProfileProps
+}) {
+  const { currentUser } = useUser()
+
+  const isFollowing = user?.user.followers.includes(currentUser?.userId ?? '')
 
   const [isToggle, toggle] = useToggle(true)
-  const [isFollowed, setIsFollowed] = useToggle(false)
-  const [listUser, setListUser] = useState<UserExploreProps[]>([])
-  const [loading, setLoading] = useState(false)
+  const [isFollowed, setIsFollowed] = useToggle(isFollowing)
+  const [error, setError] = useState(false)
 
   const t = useTranslations()
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response =
-          type === TYPE_PROFILE.MY_PROFILE
-            ? await getUserExplore()
-            : await getUserExploreUserProfile({
-                username: params.username,
-              })
-        setListUser(response.data.users)
-      } catch (error) {
-        throw new Error()
-      }
-    }
-    fetchUsers()
-  }, [])
-
   // Handlers
-  const handleFollow = () => {
-    setIsFollowed()
+  const handleFollow = async () => {
+    try {
+      if (user?.user._id) {
+        await toggleFollowUser(user.user._id)
+        setIsFollowed()
+      }
+    } catch (error: any) {
+      setError(error)
+    }
+  }
+
+  if (error) {
+    return <p className='text-red-500'>{error}</p>
   }
 
   return (
@@ -91,11 +87,7 @@ export default function ExploreUserComp({ type }: { type: string }) {
             </span>
           </div>
           <div className='flex overflow-x-auto gap-2 py-2 scrollbar-hide'>
-            {listUser.map((user) => (
-              <div className='w-36' key={user._id}>
-                <CardUser user={user} loading={loading} />
-              </div>
-            ))}
+            <ExploreUserList type={type} />
           </div>
         </div>
       )}

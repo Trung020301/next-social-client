@@ -41,6 +41,18 @@ export type UserExploreProps = {
   blockedUsers?: string[]
 }
 
+export type UserSettingProfileProps = {
+  avatar: {
+    url: string
+    public_id?: string
+  }
+  fullName: string
+  username: string
+  phone: string
+  bio: string
+  gender: GenderType
+}
+
 export type UserDetailProps = {
   user: IUser
   posts: CardPostProps[]
@@ -52,6 +64,7 @@ export type UserDetailProps = {
 }
 
 export type PostType = 'image' | 'video'
+export type GenderType = 'male' | 'female' | 'other'
 
 export type SettingsProps = {
   icon: React.ReactNode
@@ -61,5 +74,5 @@ export type SettingsProps = {
 
 export type DetailProfileProps = {
   user: IUser
-  posts: IPost[]
+  posts: number
 }

@@ -6,6 +6,7 @@ import { Inter as FontSans } from 'next/font/google'
 import { Suspense } from 'react'
 import { cn } from '@/lib/utils'
 import '@/styles/globals.css'
+import UserProvider from '@/provider/UserProvider'
 
 const fontSans = FontSans({
   subsets: ['vietnamese'],
@@ -28,16 +29,18 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className='light'>
-      <body
-        className={cn(
-          'min-h-screen bg-background font-sans antialiased',
-          fontSans.variable,
-        )}
-      >
-        <NextIntlClientProvider messages={messages}>
-          <Suspense>{children}</Suspense>
-        </NextIntlClientProvider>
-      </body>
+      <UserProvider>
+        <body
+          className={cn(
+            'min-h-screen bg-background font-sans antialiased',
+            fontSans.variable,
+          )}
+        >
+          <NextIntlClientProvider messages={messages}>
+            <Suspense>{children}</Suspense>
+          </NextIntlClientProvider>
+        </body>
+      </UserProvider>
     </html>
   )
 }

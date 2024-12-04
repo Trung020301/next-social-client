@@ -1,67 +1,189 @@
 'use client'
 
-import React from 'react'
+import { useEffect, useState } from 'react'
 import { Separator } from '@/components/ui/separator'
-import { CldImage } from 'next-cloudinary'
 import { useTranslations } from 'next-intl'
+import { UserSettingProfileProps } from '@/types'
+import { defaultEditUser } from '@/lib/const'
+import {
+  changeAvatarUser,
+  getMyProfile,
+  updateProfile,
+} from '@/services/https/userService'
+import { AvatarUser } from '@/components/AvatarUser'
+import { Input } from '@/components/ui/input'
 
 export default function page() {
   const t = useTranslations()
-  const fakeUser = {
-    name: 'John Doe',
-    avatar:
-      'https://res.cloudinary.com/your-cloud-name/image/upload/v166123456',
-    username: 'johndoe',
-    phone: '0123456789',
-    bio: '',
-    gender: 'Male',
-  }
+
+  const [user, setUser] = useState<UserSettingProfileProps>(defaultEditUser)
+  const [loading, setLoading] = useState<boolean>(false)
+  // Form
+  const [editingField, setEditingField] = useState<string | null>(null)
+  const [tempValue, setTempValue] = useState<string>('')
+  // Avatar
+  const [newAvatar, setNewAvatar] = useState<File | null>(null)
+  const [previewAvatar, setPreviewAvatar] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        setLoading(true)
+        const res = await getMyProfile()
+        setUser(res.user)
+        setLoading(false)
+      } catch (error) {
+        setLoading(false)
+        console.log(error)
+      }
+    }
+    fetchUser()
+  }, [])
+
   const listSettingFields = [
     {
       label: t('typography.name'),
-      value: fakeUser.name,
+      field: 'name',
+      value: loading ? '.....' : user.fullName,
     },
     {
       label: t('typography.username'),
-      value: fakeUser.username,
+      field: 'username',
+      value: loading ? '.....' : user.username,
     },
     {
       label: t('typography.phone'),
-      value: fakeUser.phone || '',
+      field: 'phone',
+      value: loading ? '.....' : user.phone,
     },
     {
       label: t('typography.bio'),
-      value: fakeUser.bio || '',
+      field: 'bio',
+      value: loading ? '.....' : user.bio,
     },
     {
       label: t('typography.gender'),
-      value: fakeUser.gender || '',
+      field: 'gender',
+      value: loading ? '.....' : user.gender,
     },
   ]
+
+  const handleEdit = (field: string, value: string) => {
+    setEditingField(field)
+    setTempValue(value)
+  }
+
+  const handleSave = async (field: string) => {
+    try {
+      // Cập nhật giá trị mới vào user
+      const updatedUser = { [field]: tempValue }
+      await updateProfile(updatedUser) // Gọi API để cập nhật thông tin
+      setUser({ ...user, [field]: tempValue }) // Cập nhật thông tin mới vào user
+      setEditingField(null) // Đóng ô input
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file) {
+      setNewAvatar(file)
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setPreviewAvatar(reader.result as string)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleSaveAvatar = async () => {
+    try {
+      if (newAvatar) {
+        const formData = new FormData()
+        formData.append('file', newAvatar)
+        await changeAvatarUser(formData)
+
+        if (previewAvatar) {
+          setUser({ ...user, avatar: { url: previewAvatar } }) // Cập nhật thông tin mới vào user
+        }
+        setNewAvatar(null) // Đặt lại ảnh mới
+        setPreviewAvatar(null)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleCancelAvatar = () => {
+    setNewAvatar(null)
+    setPreviewAvatar(null)
+  }
+
   return (
     <div>
       <div className='flex flex-col items-center justify-center pb-2'>
-        <CldImage
-          alt='avatar'
-          priority
-          src='https://res.cloudinary.com/dpqhuucyq/image/upload/v1730266896/avatars/2_oreucm.jpg'
+        <AvatarUser
+          src={previewAvatar || user?.avatar?.url}
+          username={user.username}
+          hasStory={false}
           width={80}
           height={80}
-          className='w-20 h-20 rounded-full'
+          loading={loading}
         />
-        <span className='text-xs font-medium text-blue-400 mt-1'>
-          {t('typography.change_avatar')}
-        </span>
+        <input
+          type='file'
+          id='change-avatar'
+          name='file'
+          hidden
+          accept='image/png, image/jpeg, image/jgp'
+          onChange={handleAvatarChange}
+        />
+        <div className='flex items-center gap-2'>
+          {previewAvatar && (
+            <label className='text-xs font-medium text-gray-400 mt-1'>
+              Cancel
+            </label>
+          )}
+          {previewAvatar ? (
+            <button
+              type='submit'
+              className='text-xs font-medium text-blue-400 mt-1'
+              onClick={handleSaveAvatar}
+            >
+              {t('button.confirm')}
+            </button>
+          ) : (
+            <label
+              htmlFor='change-avatar'
+              className='text-xs font-medium text-blue-400 mt-1'
+              onClick={handleCancelAvatar}
+            >
+              {t('typography.change_avatar')}
+            </label>
+          )}
+        </div>
       </div>
       <Separator />
       <div>
         {listSettingFields.map((field, index) => (
           <div
             key={index}
-            className='px-2 flex items-center py-2 gap-4 border-b border-gray-300 text-sm'
+            className='px-2 flex items-center h-12 gap-4 border-b border-gray-300 text-sm '
+            onClick={() => handleEdit(field.label, field.value)}
           >
             <span className='flex-[2]'>{field.label}</span>
-            <span className='flex-[5] text-gray-600'>{field.value}</span>
+            {editingField === field.label ? (
+              <Input
+                type='text'
+                value={tempValue}
+                onChange={(e) => setTempValue(e.target.value)}
+                onBlur={() => handleSave(field.field.toLowerCase())} // Lưu khi mất focus
+                className='flex-[5]'
+              />
+            ) : (
+              <span className='flex-[5] text-gray-600'>{field.value}</span>
+            )}
           </div>
         ))}
       </div>

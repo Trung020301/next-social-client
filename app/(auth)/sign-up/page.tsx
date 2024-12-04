@@ -40,7 +40,13 @@ export default function Page() {
       case STEP_TWO:
         return <SignUpForm values={formValues} />
       default:
-        return <div>{searchParams}</div>
+        return (
+          <SetName
+            nextStep={() => nextStep(STEP_TWO)}
+            values={formValues}
+            setValues={setFormValues}
+          />
+        )
     }
   }
 

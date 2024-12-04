@@ -20,9 +20,12 @@ import { pathRoute, STEP_ONE } from '@/lib/const'
 import { useState } from 'react'
 import { ButtonLoading } from '@/components/ButtonLoading'
 import { signIn } from '@/services/https/authService'
+import { useUser } from '@/hooks/useUser'
 
 export default function SignInForm() {
   const t = useTranslations()
+  const { setUser } = useUser()
+
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<any>()
   const defaultValues: LoginUser = {
@@ -43,7 +46,9 @@ export default function SignInForm() {
   async function onSubmit(values: z.infer<typeof loginSchema>) {
     try {
       setLoading(true)
-      await signIn('/auth/sign-in', values)
+      const res = await signIn(values)
+      setUser(res)
+      localStorage.setItem('user', JSON.stringify(res))
       window.location.href = pathRoute.HOME
     } catch (error: any) {
       setError(error.response?.data.message)
