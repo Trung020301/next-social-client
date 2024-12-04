@@ -15,7 +15,7 @@ import { CldImage } from 'next-cloudinary'
 import { CardPostProps } from '@/types'
 import { toggleLikePost } from '@/services/https/postService'
 import useToggle from '@/hooks/useToggle'
-import { toast } from '@/hooks/use-toast'
+import { toast } from '@/components/hooks/use-toast'
 const SheetComment = dynamic(() => import('./SheetComment'))
 
 export default function CardPost({ post }: CardPostProps) {

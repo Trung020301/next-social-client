@@ -87,7 +87,8 @@
     "report": "Report",
     "copy_url_profile": "Copy URL profile",
     "copy_url_post": "Copy URL post",
-    "recommend_for_you": "Recommend for you"
+    "recommend_for_you": "Recommend for you",
+    "confirm_block_user": "Are you sure you want to block {username} user?"
   },
   "placehoolder": {
     "search": "Search...",
@@ -119,7 +120,8 @@
     "saved": "Saved",
     "favorite": "Favorite",
     "qr_code": "QR code",
-    "edit_profile": "Edit profile"
+    "edit_profile": "Edit profile",
+    "block_user": "Block user"
   },
   "error": {
     "name_length": "The fullname must be at least 2 characters.",
@@ -127,7 +129,8 @@
     "otp_invalid": "The OTP code is invalid.",
     "not_found": "Not found",
     "user_existed": "The username is already taken.",
-    "unexpected": "Something went wrong. Please try again later."
+    "unexpected": "Something went wrong. Please try again later.",
+    "user_not_exist": "The user does not exist."
   },
   "notify": {
     "send_email": "We have sent an email to {email}. Please check your email to verify your account.",

@@ -25,11 +25,11 @@ export function AvatarUser({
         >
           <CldImage
             priority
-            alt={username}
+            alt={username || ''}
             src={src || defaultAvatar || ''}
             width={width}
             height={height}
-            className={`w-[${width}] h-[${height}] rounded-full object-cover border-[2px]
+            className={`w-[${width}px] h-[${height}px] rounded-full object-cover border-[2px]
               `}
           />
         </div>

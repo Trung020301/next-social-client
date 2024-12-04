@@ -3,56 +3,61 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { AvatarUser } from '../AvatarUser'
-import { getMyProfile, getUserProfile } from '@/services/https/userService'
+import { getMyProfile } from '@/services/https/userService'
 import { IPost, IUser } from '@/lib/interface'
-import { defaultUser, pathRoute, TYPE_PROFILE } from '@/lib/const'
-import { useParams, useRouter } from 'next/navigation'
+import { defaultUser, TYPE_PROFILE } from '@/lib/const'
+import { DetailProfileProps } from '@/types'
 
-export default function DetailProfile({ type }: { type: string }) {
+export default function DetailProfile({
+  type,
+  user,
+}: {
+  type: string
+  user?: DetailProfileProps
+}) {
   const t = useTranslations()
-  const [user, setUser] = useState<IUser>(defaultUser)
+  const [userProfile, setUserProfile] = useState<IUser>(defaultUser)
   const [posts, setPosts] = useState<IPost[]>([])
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
 
-  const router = useRouter()
-  const params = useParams<{ username: string }>()
-
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        setLoading(true)
-        const response =
-          type === TYPE_PROFILE.MY_PROFILE
-            ? await getMyProfile()
-            : await getUserProfile(params)
-        if (response.status === 302) return router.replace(pathRoute.PROFILE)
-        setUser(response.user)
-        setPosts(response.posts)
-        setLoading(false)
-      } catch (error: any) {
-        setLoading(false)
-        setError(error.message)
+    if (type === TYPE_PROFILE.MY_PROFILE) {
+      const fetchPosts = async () => {
+        try {
+          setLoading(true)
+          const response = await getMyProfile()
+          setUserProfile(response.user)
+          setPosts(response.posts)
+          setLoading(false)
+        } catch (error: any) {
+          setLoading(false)
+          setError(error.message)
+        }
+      }
+      fetchPosts()
+    } else {
+      if (user) {
+        setUserProfile(user.user)
       }
     }
-    fetchPosts()
   }, [])
 
   const detailList = [
     {
       id: 1,
       title: t('typography.posts'),
-      value: posts.length,
+      value: type === TYPE_PROFILE.MY_PROFILE ? posts.length : user?.posts || 0,
     },
     {
       id: 2,
       title: t('typography.followers'),
-      value: user?.followers.length,
+      value: userProfile?.followers.length,
     },
     {
       id: 3,
       title: t('typography.following'),
-      value: user?.following.length,
+      value: userProfile?.following.length,
     },
   ]
 
@@ -61,9 +66,9 @@ export default function DetailProfile({ type }: { type: string }) {
       <div className='px-2'>
         <div className='flex items-center py-2'>
           <AvatarUser
-            username={user.username}
-            src={user?.avatar?.url}
-            hasStory={user.hasStory}
+            username={userProfile.username}
+            src={userProfile?.avatar?.url}
+            hasStory={userProfile.hasStory}
             width={64}
             height={64}
             loading={loading}
@@ -98,9 +103,9 @@ export default function DetailProfile({ type }: { type: string }) {
     <div className='px-2'>
       <div className='flex items-center py-2'>
         <AvatarUser
-          username={user.username}
-          src={user?.avatar?.url}
-          hasStory={user.hasStory}
+          username={userProfile.username}
+          src={userProfile?.avatar?.url}
+          hasStory={userProfile.hasStory}
           width={64}
           height={64}
           loading={loading}
@@ -120,13 +125,13 @@ export default function DetailProfile({ type }: { type: string }) {
         </div>
       </div>
       <div>
-        <p className='font-medium text-xs'>{user.fullName}</p>
-        {user.bio && (
+        <p className='font-medium text-xs'>{userProfile.fullName}</p>
+        {userProfile.bio && (
           <span
             aria-description='biography'
             className='text-xs text-slate-500 '
           >
-            {user.bio}
+            {userProfile.bio}
           </span>
         )}
       </div>

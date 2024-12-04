@@ -10,3 +10,9 @@
 1. Form Sign-Up
 
 - Step: SetName: const fullname has empty
+
+2. Profile Page
+
+- Get user exclude password : Done
+
+3. 白月光 - white moonlight
