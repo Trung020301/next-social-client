@@ -102,7 +102,8 @@
     "new_password": "Enter your new password",
     "confirm_new_password": "Enter your confirm new password",
     "current_password": "Enter your current password",
-    "type_comment": "Type your comment..."
+    "type_comment": "Type your comment...",
+    "type_username": "Type username..."
   },
   "LocaleSwitcher": {
     "label": "Change language",
@@ -121,7 +122,8 @@
     "favorite": "Favorite",
     "qr_code": "QR code",
     "edit_profile": "Edit profile",
-    "block_user": "Block user"
+    "block_user": "Block user",
+    "suggestion": "Suggestion"
   },
   "error": {
     "name_length": "The fullname must be at least 2 characters.",
