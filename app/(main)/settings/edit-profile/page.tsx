@@ -43,7 +43,7 @@ export default function page() {
   const listSettingFields = [
     {
       label: t('typography.name'),
-      field: 'name',
+      field: 'fullName',
       value: loading ? '.....' : user.fullName,
     },
     {
@@ -79,7 +79,7 @@ export default function page() {
       const updatedUser = { [field]: tempValue }
       await updateProfile(updatedUser) // Gọi API để cập nhật thông tin
       setUser({ ...user, [field]: tempValue }) // Cập nhật thông tin mới vào user
-      setEditingField(null) // Đóng ô input
+      setEditingField(null)
     } catch (error) {
       console.log(error)
     }
@@ -178,7 +178,7 @@ export default function page() {
                 type='text'
                 value={tempValue}
                 onChange={(e) => setTempValue(e.target.value)}
-                onBlur={() => handleSave(field.field.toLowerCase())} // Lưu khi mất focus
+                onBlur={() => handleSave(field.field)} // Lưu khi mất focus
                 className='flex-[5]'
               />
             ) : (

@@ -7,6 +7,7 @@ import { Suspense } from 'react'
 import { cn } from '@/lib/utils'
 import '@/styles/globals.css'
 import UserProvider from '@/provider/UserProvider'
+import { Toaster } from '@/components/ui/toaster'
 
 const fontSans = FontSans({
   subsets: ['vietnamese'],
@@ -39,6 +40,7 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <Suspense>{children}</Suspense>
           </NextIntlClientProvider>
+          <Toaster />
         </body>
       </UserProvider>
     </html>

@@ -65,7 +65,7 @@ export default function setName({
                   <Input
                     placeholder={t('placehoolder.name')}
                     {...field}
-                    className='py-4 h-10 rounded-3xl text-sm'
+                    className='py-4 h-10 rounded-3xl text-sm focus-visible:ring-1 focus-visible:ring-ring'
                   />
                 </FormControl>
                 <FormMessage />

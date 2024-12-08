@@ -13,7 +13,7 @@ export type SignUpUserFormData = {
 
 export type CommentProps = {
   _id: string
-  user: IUser
+  userId: IUser
   content: string
   createdAt: string | Date
   likes: string[]

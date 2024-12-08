@@ -9,7 +9,7 @@ import { Ellipsis } from 'lucide-react'
 import { CardPostProps } from '@/types'
 import { useTranslations } from 'next-intl'
 
-export default function DropDownMenu() {
+export default function DropDownMenu({ post }: CardPostProps) {
   const t = useTranslations('typography')
   const DropDownMenuItemList = [
     {

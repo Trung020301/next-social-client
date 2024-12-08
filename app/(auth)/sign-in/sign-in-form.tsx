@@ -74,7 +74,7 @@ export default function SignInForm() {
                 <Input
                   placeholder={t('placehoolder.username')}
                   {...field}
-                  className='py-4 h-10 rounded-3xl text-sm'
+                  className='py-4 h-10 rounded-3xl text-sm focus-visible:ring-1 focus-visible:ring-ring'
                 />
               </FormControl>
               <FormMessage />
@@ -91,7 +91,7 @@ export default function SignInForm() {
                   type='password'
                   placeholder='••••••••'
                   {...field}
-                  className='py-4 h-10 rounded-3xl text-sm'
+                  className='py-4 h-10 rounded-3xl text-sm focus-visible:ring-1 focus-visible:ring-ring'
                 />
               </FormControl>
               <FormMessage />

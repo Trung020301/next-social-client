@@ -30,6 +30,13 @@ export const getUserExploreUserProfile = async (params: {
   return response.data
 }
 
+export const findUserByQuery = async (params: { q: string }) => {
+  const response = await apiClient.get('/user/find-user', {
+    params,
+  })
+  return response.data
+}
+
 //? [POST API] ***********************************************************
 export const blockUser = async (targetUserId: string) => {
   return await apiClient.post('/user/interact/block-user', { targetUserId })

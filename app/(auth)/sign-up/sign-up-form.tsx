@@ -78,7 +78,7 @@ export default function SignUpForm({ values }: { values: SignUpUserFormData }) {
                   <Input
                     placeholder={t('placehoolder.username')}
                     {...field}
-                    className='py-4 h-10 rounded-3xl text-sm'
+                    className='py-4 h-10 rounded-3xl text-sm focus-visible:ring-1 focus-visible:ring-ring'
                   />
                 </FormControl>
                 <FormMessage />
@@ -95,7 +95,7 @@ export default function SignUpForm({ values }: { values: SignUpUserFormData }) {
                     type='password'
                     placeholder='••••••••'
                     {...field}
-                    className='py-4 h-10 rounded-3xl text-sm'
+                    className='py-4 h-10 rounded-3xl text-sm focus-visible:ring-1 focus-visible:ring-ring'
                   />
                 </FormControl>
                 <FormMessage />
