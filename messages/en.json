@@ -88,7 +88,8 @@
     "copy_url_profile": "Copy URL profile",
     "copy_url_post": "Copy URL post",
     "recommend_for_you": "Recommend for you",
-    "confirm_block_user": "Are you sure you want to block {username} user?"
+    "confirm_block_user": "Are you sure you want to block {username} user?",
+    "search_no_result": "No result found"
   },
   "placehoolder": {
     "search": "Search...",
@@ -145,5 +146,21 @@
     "saved": "Saved",
     "favorite": "Favorite",
     "qr_code": "QR code"
+  },
+  "toast": {
+    "save_success": "Saved successfully",
+    "block_success": "Blocked successfully",
+    "unblock_success": "Unblocked successfully",
+    "follow_success": "Followed successfully",
+    "unfollow_success": "Unfollowed successfully",
+    "delete_success": "Deleted successfully",
+    "upload_success": "Uploaded successfully",
+    "reset_password_success": "Password reset successfully",
+    "verify_email_success": "Email verified successfully",
+    "change_email_success": "Email changed successfully",
+    "change_password_success": "Password changed successfully",
+    "copy_success": "Copied successfully",
+    "sucess": "Success",
+    "error": "Error"
   }
 }

@@ -88,7 +88,8 @@
     "copy_url_profile": "Sao chép URL trang cá nhân",
     "copy_url_post": "Sao chép URL bài viết",
     "recommend_for_you": "Gợi ý cho bạn",
-    "confirm_block_user": "Bạn có chắc chắn muốn chặn người dùng {username} không?"
+    "confirm_block_user": "Bạn có chắc chắn muốn chặn người dùng {username} không?",
+    "search_no_result": "Không tìm thấy kết quả nào."
   },
   "placehoolder": {
     "search": "Tìm kiếm...",
@@ -145,5 +146,21 @@
     "saved": "Đã lưu",
     "favorite": "Yêu thích",
     "qr_code": "Mã QR"
+  },
+  "toast": {
+    "save_success": "Đã lưu",
+    "block_success": "Đã chặn",
+    "unblock_success": "Đã bỏ chặn",
+    "follow_success": "Đã theo dõi",
+    "unfollow_success": "Bỏ theo dõi",
+    "delete_success": "Chỉnh sửa thành công",
+    "upload_success": "Tải lên thành công",
+    "reset_password_success": "Đặt lại mật khẩu thành công",
+    "verify_email_success": "Xác minh email thành công",
+    "change_email_success": "Thay đổi email thành công",
+    "change_password_success": "Thay đổi mật khẩu thành công",
+    "copy_success": "Sao chép thành công",
+    "success": "Thành công",
+    "error": "Xảy ra lỗi"
   }
 }

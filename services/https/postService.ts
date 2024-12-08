@@ -1,5 +1,6 @@
 import apiClient from '@/app/api/httpRequest'
 import { ToggleLikePost } from '@/lib/interface'
+import { string } from 'zod'
 
 export const getAllPosts = async () => {
   const response = await apiClient.get('/post/get-all-posts')
@@ -18,4 +19,11 @@ export const getPostVideo = async () => {
 
 export const toggleLikePost = async (toggleLikePost: ToggleLikePost) => {
   return await apiClient.post('/post/interact-post', toggleLikePost)
+}
+
+export const createComment = async (payload: {
+  postId: string
+  content: string
+}) => {
+  return await apiClient.post('/comment/create', payload)
 }

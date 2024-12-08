@@ -15,12 +15,11 @@ import { CldImage } from 'next-cloudinary'
 import { CardPostProps } from '@/types'
 import { toggleLikePost } from '@/services/https/postService'
 import useToggle from '@/hooks/useToggle'
-import { toast } from '@/components/hooks/use-toast'
+import { toast } from '../hooks/use-toast'
 const SheetComment = dynamic(() => import('./SheetComment'))
 
 export default function CardPost({ post }: CardPostProps) {
   const locale = useLocale()
-  const myUserId = localStorage.getItem('userId')
   const {
     _id,
     userId,
@@ -41,17 +40,21 @@ export default function CardPost({ post }: CardPostProps) {
   const [showMore, setShowMore] = useState(false)
   const [isLiked, liked] = useToggle(isLikedPost)
   const [isSaved, setIsSaved] = useState<boolean>(isSavedPost)
+  const [like, setLike] = useState<number>(likes.length)
+
   const likeSound = useRef(
     typeof window !== 'undefined' ? new Audio('/sounds/likesound.mp3') : null,
   )
-
   const truncateText = showMore ? ' ' : 'truncate'
 
   // Handlers
   const handlerLike = async () => {
     try {
+      const newLikeStatus = !isLiked
       liked()
-      if (likeSound.current && !isLiked) {
+      setLike((prevLike) => (newLikeStatus ? prevLike + 1 : prevLike - 1))
+
+      if (likeSound.current && newLikeStatus) {
         likeSound.current.play()
       }
       await toggleLikePost({
@@ -59,6 +62,7 @@ export default function CardPost({ post }: CardPostProps) {
       })
     } catch (error) {
       toast({
+        variant: 'destructive',
         description: t('error.unexpected'),
       })
     }
@@ -71,11 +75,14 @@ export default function CardPost({ post }: CardPostProps) {
   const actions = [
     {
       icon: <Heart size={18} />,
-      count: Number(likes.length),
+      count: Number(like),
       onClick: handlerLike,
       isActive: isLiked,
     },
-    { icon: <MessageSquareMore size={18} />, count: Number(comments.length) },
+    {
+      icon: <MessageSquareMore size={18} />,
+      count: Number(comments.length),
+    },
     { icon: <Send size={18} />, count: Number(shares.length) },
   ]
 
@@ -105,7 +112,7 @@ export default function CardPost({ post }: CardPostProps) {
           </div>
         </div>
         <span>
-          <DropDownMenu />
+          <DropDownMenu post={post} />
         </span>
       </div>
       <div>
@@ -144,7 +151,7 @@ export default function CardPost({ post }: CardPostProps) {
           {actions.map((action, index) => (
             <div
               key={index}
-              className='flex items-center gap-1 font-semibold'
+              className='flex items-center gap-1 min-w-8 font-semibold'
               onClick={action.onClick}
             >
               {cloneElement(action.icon, {
@@ -169,15 +176,7 @@ export default function CardPost({ post }: CardPostProps) {
         </div>
       </div>
       <Separator />
-      {/* {firstComment && (
-        <div className='px-3 py-2'>
-          <p className='text-sm font-semibold truncate'>
-            {firstComment.user.fullname}
-            <span className='font-normal'>{firstComment.content}</span>
-          </p>
-          {comments.length > 1 && <SheetComment comment={comments} />}
-        </div>
-      )} */}
+      {comments.length > 0 && <SheetComment postId={_id} />}
     </div>
   )
 }
