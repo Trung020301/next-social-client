@@ -50,6 +50,7 @@ export interface IUserId {
   }
   username: string
   fullName: string
+  isFollowed?: boolean
 }
 
 export interface MediaUrl {

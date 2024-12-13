@@ -21,7 +21,7 @@ export default function UserSetting() {
   const listSetting: SettingsProps[] = [
     {
       icon: <Settings />,
-      title: t('settings.setting_privacy'),
+      title: t('settings.settings_privacy'),
       value: 'settings_privacy',
     },
     {

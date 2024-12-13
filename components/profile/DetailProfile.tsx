@@ -2,11 +2,13 @@
 
 import React, { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { AvatarUser } from '../AvatarUser'
+import { useRouter } from 'next/navigation'
+
 import { getMyProfile } from '@/services/https/userService'
 import { IPost, IUser } from '@/lib/interface'
-import { defaultUser, TYPE_PROFILE } from '@/lib/const'
+import { defaultUser, pathRoute, TYPE_PROFILE } from '@/lib/const'
 import { DetailProfileProps } from '@/types'
+import { AvatarUser } from '../AvatarUser'
 
 export default function DetailProfile({
   type,
@@ -20,6 +22,7 @@ export default function DetailProfile({
   const [posts, setPosts] = useState<IPost[]>([])
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
+  const router = useRouter()
 
   useEffect(() => {
     if (type === TYPE_PROFILE.MY_PROFILE) {
@@ -53,11 +56,19 @@ export default function DetailProfile({
       id: 2,
       title: t('typography.followers'),
       value: userProfile?.followers.length,
+      href:
+        type === TYPE_PROFILE.MY_PROFILE
+          ? `${pathRoute.SETTINGS}/followers`
+          : `${pathRoute.ACCOUNT}/${userProfile.username}/followers`,
     },
     {
       id: 3,
       title: t('typography.following'),
       value: userProfile?.following.length,
+      href:
+        type === TYPE_PROFILE.MY_PROFILE
+          ? `${pathRoute.SETTINGS}/following`
+          : `${pathRoute.ACCOUNT}/${userProfile.username}/following`,
     },
   ]
 
@@ -115,6 +126,7 @@ export default function DetailProfile({
             <div
               key={item.id}
               className='flex flex-col items-center justify-center'
+              onClick={() => item.href && router.push(item.href)}
             >
               <span className='font-semibold text-sm'>
                 <span className='text-xs text-gray-600'>{item.value}</span>

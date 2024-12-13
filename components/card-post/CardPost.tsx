@@ -16,6 +16,7 @@ import { CardPostProps } from '@/types'
 import { toggleLikePost } from '@/services/https/postService'
 import useToggle from '@/hooks/useToggle'
 import { toast } from '../hooks/use-toast'
+import { toggleSavePost } from '@/services/https/userService'
 const SheetComment = dynamic(() => import('./SheetComment'))
 
 export default function CardPost({ post }: CardPostProps) {
@@ -34,12 +35,11 @@ export default function CardPost({ post }: CardPostProps) {
     shares,
   } = post
 
-  const firstComment = comments.length > 0 ? comments[0] : null
   const t = useTranslations()
 
   const [showMore, setShowMore] = useState(false)
   const [isLiked, liked] = useToggle(isLikedPost)
-  const [isSaved, setIsSaved] = useState<boolean>(isSavedPost)
+  const [isSaved, setIsSaved] = useToggle(isSavedPost)
   const [like, setLike] = useState<number>(likes.length)
 
   const likeSound = useRef(
@@ -68,8 +68,16 @@ export default function CardPost({ post }: CardPostProps) {
     }
   }
 
-  const handleSave = () => {
-    setIsSaved(!isSaved)
+  const handleSave = async () => {
+    try {
+      setIsSaved()
+      await toggleSavePost(_id)
+    } catch (error) {
+      toast({
+        variant: 'destructive',
+        description: t('error.unexpected'),
+      })
+    }
   }
 
   const actions = [

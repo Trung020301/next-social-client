@@ -18,7 +18,8 @@
     "search": "Tìm kiếm",
     "upload": "Tải lên",
     "download": "Tải xuống",
-    "follow": "Theo dõi"
+    "follow": "Theo dõi",
+    "unfollow": "Bỏ theo dõi"
   },
   "typography": {
     "title": "Tiêu đề",
@@ -116,7 +117,7 @@
     "create_account": "Tạo tài khoản",
     "active_account": "Kích hoạt tài khoản",
     "comment": "Bình luận",
-    "setting_privacy": "Cài đặt quyền riêng tư",
+    "settings_privacy": "Cài đặt quyền riêng tư",
     "your_activity": "Hoạt động của bạn",
     "archives": "Lưu trữ",
     "saved": "Đã lưu",
@@ -124,7 +125,9 @@
     "qr_code": "Mã QR",
     "edit_profile": "Chỉnh sửa thông tin cá nhân",
     "block_user": "Chặn người dùng",
-    "suggestion": "Gợi ý"
+    "suggestion": "Gợi ý",
+    "followers": "Người theo dõi",
+    "following": "Đang theo dõi"
   },
   "error": {
     "name_length": "Họ và tên phải có ít nhất 2 ký tự.",
@@ -133,19 +136,26 @@
     "not_found": "Không tìm thấy",
     "user_existed": "Tên người dùng đã tồn tại.",
     "unexpected": "Đã xảy ra lỗi không mong muốn.",
-    "user_not_exist": "Người dùng không tồn tại."
+    "user_not_exist": "Người dùng không tồn tại.",
+    "user_not_found": "Không tìm thấy người dùng."
   },
   "notify": {
     "send_email": "Chúng tôi đã gửi mã xác thực tới {email} cho bạn, hãy kiểm tra hộp thư để xác thực tài khoản.",
-    "otp_rule": "Mã OTP phải có 6 chữ số."
+    "otp_rule": "Mã OTP phải có 6 chữ số.",
+    "no_post_found": "Không tìm thấy bài viết nào.",
+    "no_user_found": "Không tìm thấy người dùng nào."
   },
   "settings": {
-    "setting_privacy": "Cài đặt quyền riêng tư",
+    "settings_privacy": "Cài đặt quyền riêng tư",
     "your_activity": "Hoạt động của bạn",
     "archives": "Lưu trữ",
     "saved": "Đã lưu",
     "favorite": "Yêu thích",
-    "qr_code": "Mã QR"
+    "qr_code": "Mã QR",
+    "blocked_users": "Người dùng đã chặn",
+    "notifications": "Thông báo",
+    "language": "Ngôn ngữ",
+    "theme": "Chủ đề"
   },
   "toast": {
     "save_success": "Đã lưu",

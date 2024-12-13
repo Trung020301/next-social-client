@@ -4,7 +4,6 @@ import { ChevronLeft } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
-import { Separator } from '../ui/separator'
 
 export default function Backpage() {
   const t = useTranslations()
@@ -14,14 +13,13 @@ export default function Backpage() {
   const title = value.replace(/-/g, '_')
 
   return (
-    <div className='py-3'>
-      <div className='absolute' onClick={() => router.back()}>
+    <div className='p-3 h-10  border-b-[1px] flex items-center '>
+      <div className='' onClick={() => router.back()}>
         <ChevronLeft />
       </div>
-      <p className='text-center text-sm font-medium'>{t(`title.${title}`)}</p>
-      <div className='pt-2'>
-        <Separator />
-      </div>
+      <p className=' text-sm text-center w-full font-medium'>
+        {t(`title.${title}`)}
+      </p>
     </div>
   )
 }

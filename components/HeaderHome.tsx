@@ -31,13 +31,15 @@ export default function HeaderHome() {
   }, [lastScrollY])
 
   return (
-    <header
-      className={`flex items-center gap-4 px-3 sticky top-0 py-4 z-50 bg-white transition-transform duration-300 ${
-        isVisible ? 'transform translate-y-0 ' : 'transform -translate-y-full'
-      }`}
-    >
-      <h6 className='flex-[1.5] font-bold font-mono'>Coffee Sweet</h6>
-      <HeaderTools />
-    </header>
+    <div>
+      <header
+        className={`flex items-center gap-4 px-3 sticky top-0 py-4 z-50 bg-white transition-transform duration-300 ${
+          isVisible ? 'transform translate-y-0 ' : 'transform -translate-y-full'
+        }`}
+      >
+        <h6 className='flex-[1.5] font-bold font-mono'>Coffee Sweet</h6>
+        <HeaderTools />
+      </header>
+    </div>
   )
 }

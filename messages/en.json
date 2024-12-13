@@ -18,7 +18,8 @@
     "search": "Search",
     "upload": "Upload",
     "download": "Download",
-    "follow": "Follow"
+    "follow": "Follow",
+    "unfollow": "Unfollow"
   },
   "typography": {
     "title": "Title",
@@ -108,15 +109,15 @@
   },
   "LocaleSwitcher": {
     "label": "Change language",
-    "en": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 English",
-    "vi": "🇻🇳 Vietnamese"
+    "en": "English",
+    "vi": "Vietnamese"
   },
   "title": {
     "set_name": "Your full name",
     "create_account": "Create your account",
     "active_account": "Active your account",
     "comment": "Comment",
-    "setting_privacy": "Settings and privacy",
+    "settings_privacy": "Settings and privacy",
     "your_activity": "Your activity",
     "archives": "Archives",
     "saved": "Saved",
@@ -124,7 +125,9 @@
     "qr_code": "QR code",
     "edit_profile": "Edit profile",
     "block_user": "Block user",
-    "suggestion": "Suggestion"
+    "suggestion": "Suggestion",
+    "followers": "Followers",
+    "following": "Following"
   },
   "error": {
     "name_length": "The fullname must be at least 2 characters.",
@@ -133,19 +136,26 @@
     "not_found": "Not found",
     "user_existed": "The username is already taken.",
     "unexpected": "Something went wrong. Please try again later.",
-    "user_not_exist": "The user does not exist."
+    "user_not_exist": "The user does not exist.",
+    "user_not_found": "User not found."
   },
   "notify": {
     "send_email": "We have sent an email to {email}. Please check your email to verify your account.",
-    "otp_rule": "Your OTP must be 6 digits."
+    "otp_rule": "Your OTP must be 6 digits.",
+    "no_post_found": "Currently no post found.",
+    "no_user_found": "Currently no user found."
   },
   "settings": {
-    "setting_privacy": "Settings and privacy",
+    "settings_privacy": "Settings and privacy",
     "your_activity": "Your activity",
     "archives": "Archives",
     "saved": "Saved",
     "favorite": "Favorite",
-    "qr_code": "QR code"
+    "qr_code": "QR code",
+    "blocked_users": "Blocked users",
+    "notifications": "Notifications",
+    "language": "Language",
+    "theme": "Theme"
   },
   "toast": {
     "save_success": "Saved successfully",
