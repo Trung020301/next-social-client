@@ -37,6 +37,21 @@ export const findUserByQuery = async (params: { q: string }) => {
   return response.data
 }
 
+export const getFollowersByMe = async () => {
+  const response = await apiClient.get(`/user/follow/get-followers`)
+  return response.data
+}
+
+export const getFollowingByMe = async () => {
+  const response = await apiClient.get(`/user/follow/get-following`)
+  return response.data
+}
+
+export const getBlockedListUser = async () => {
+  const response = await apiClient.get(`/user/blocked-list`)
+  return response.data
+}
+
 //? [POST API] ***********************************************************
 export const blockUser = async (targetUserId: string) => {
   return await apiClient.post('/user/interact/block-user', { targetUserId })
@@ -45,6 +60,15 @@ export const blockUser = async (targetUserId: string) => {
 export const toggleFollowUser = async (targetUserId: string) => {
   return await apiClient.post('/user/toggle-follow-user', { targetUserId })
 }
+
+export const toggleSavePost = async (postId: string) => {
+  return await apiClient.post('/user/save-post', { postId })
+}
+
+export const removeFollower = async (followerId: string) => {
+  return await apiClient.post('/user/remove-follower', { followerId })
+}
+
 //? [UPDATE API] ***********************************************************
 export const updateProfile = async (updateData: object) => {
   return await apiClient.patch('/user/update-profile', updateData)

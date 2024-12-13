@@ -84,7 +84,7 @@ export default function SheetComment({ postId }: { postId: string }) {
                         <div className='flex-[1]'>
                           <AvatarUser
                             username={item.userId?.username}
-                            src={item.userId?.avatar.url}
+                            src={item.userId?.avatar?.url}
                             width={32}
                             height={32}
                           />

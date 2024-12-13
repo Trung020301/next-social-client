@@ -50,7 +50,6 @@ export default function SignUpForm({ values }: { values: SignUpUserFormData }) {
       const response = await signUp('/auth/sign-up', payload)
       router.push(pathRoute.SIGN_IN)
     } catch (error: any) {
-      console.log('Http Error >>>', error)
       setError(error.response.data.message)
     } finally {
       setLoading(false)

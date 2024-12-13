@@ -58,7 +58,7 @@ export default function SearchField() {
         />
         <>{isSearching && <div className='loader-search'></div>}</>
       </div>
-      <ul className='mp-2 shadow-lg pt-10'>
+      <ul className='shadow-lg pt-10'>
         {conditionRenderResults &&
           results.map((user: IUser) => (
             <Link key={user._id} href={`${pathRoute.ACCOUNT}/${user.username}`}>
