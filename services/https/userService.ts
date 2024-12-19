@@ -42,6 +42,16 @@ export const getFollowersByMe = async () => {
   return response.data
 }
 
+export const getFollowersOfUser = async (params: { username: string }) => {
+  const response = await apiClient.get(`/user/${params.username}/followers`)
+  return response.data
+}
+
+export const getFollowingOfUser = async (params: { username: string }) => {
+  const response = await apiClient.get(`/user/${params.username}/following`)
+  return response.data
+}
+
 export const getFollowingByMe = async () => {
   const response = await apiClient.get(`/user/follow/get-following`)
   return response.data
@@ -55,6 +65,10 @@ export const getBlockedListUser = async () => {
 //? [POST API] ***********************************************************
 export const blockUser = async (targetUserId: string) => {
   return await apiClient.post('/user/interact/block-user', { targetUserId })
+}
+
+export const unBlockUser = async (targetUserId: string) => {
+  return await apiClient.post('/user/interact/unblock-user', { targetUserId })
 }
 
 export const toggleFollowUser = async (targetUserId: string) => {

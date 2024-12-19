@@ -63,12 +63,7 @@ export default function SearchField() {
           results.map((user: IUser) => (
             <Link key={user._id} href={`${pathRoute.ACCOUNT}/${user.username}`}>
               <li className='hover:bg-slate-100 p-1 flex items-center gap-2 cursor-pointer'>
-                <AvatarUser
-                  src={user?.avatar?.url}
-                  username={user.username}
-                  width={28}
-                  height={28}
-                />
+                <AvatarUser src={user?.avatar?.url} username={user.username} />
                 <span className='text-xs font-semibold'>{user.username}</span>
               </li>
             </Link>

@@ -17,6 +17,8 @@ import { toggleLikePost } from '@/services/https/postService'
 import useToggle from '@/hooks/useToggle'
 import { toast } from '../hooks/use-toast'
 import { toggleSavePost } from '@/services/https/userService'
+import { pathRoute } from '@/lib/const'
+import Link from 'next/link'
 const SheetComment = dynamic(() => import('./SheetComment'))
 
 export default function CardPost({ post }: CardPostProps) {
@@ -29,6 +31,7 @@ export default function CardPost({ post }: CardPostProps) {
     mediaUrl,
     visibility,
     createdAt,
+    MediaTypeEnum,
     content,
     isLikedPost,
     isSavedPost,
@@ -110,15 +113,17 @@ export default function CardPost({ post }: CardPostProps) {
   return (
     <div className='py-4 shadow-2xl flex flex-col gap-1'>
       <div className='flex items-center justify-between px-3'>
-        <div className='flex items-center gap-2'>
-          <AvatarUser src={userId.avatar?.url} username={userId.username} />
-          <div className='text-xs'>
-            <p className='font-semibold'>{userId.fullName}</p>
-            <p className='text-xs font-semibold'>
-              {formatRelativeTime(createdAt, locale)}
-            </p>
+        <Link href={`${pathRoute.ACCOUNT}/${userId.username}`}>
+          <div className='flex items-center gap-2'>
+            <AvatarUser src={userId.avatar?.url} username={userId.username} />
+            <div className='text-xs'>
+              <p className='font-semibold'>{userId.fullName}</p>
+              <p className='text-xs font-semibold'>
+                {formatRelativeTime(createdAt, locale)}
+              </p>
+            </div>
           </div>
-        </div>
+        </Link>
         <span>
           <DropDownMenu post={post} />
         </span>
@@ -128,15 +133,23 @@ export default function CardPost({ post }: CardPostProps) {
           <CarouselContent>
             {mediaUrl.map((image, index) => (
               <CarouselItem key={index}>
-                <div className='relative h-60 min-h-60'>
-                  <CldImage
-                    src={image.url}
-                    alt='Post image'
-                    fill
-                    priority
-                    quality={100}
-                    className='object-cover object-center'
-                  />
+                <div className='relative min-h-60'>
+                  {MediaTypeEnum === 'image' ? (
+                    <CldImage
+                      src={image.url}
+                      alt='Post image'
+                      fill
+                      priority
+                      quality={100}
+                      className='object-cover h-auto object-center'
+                    />
+                  ) : (
+                    <video
+                      src={image.url}
+                      className='w-full h-full object-cover'
+                      controls
+                    />
+                  )}
                 </div>
               </CarouselItem>
             ))}
@@ -184,7 +197,7 @@ export default function CardPost({ post }: CardPostProps) {
         </div>
       </div>
       <Separator />
-      {comments.length > 0 && <SheetComment postId={_id} />}
+      <SheetComment postId={_id} />
     </div>
   )
 }

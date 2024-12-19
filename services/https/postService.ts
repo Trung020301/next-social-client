@@ -1,5 +1,6 @@
 import apiClient from '@/app/api/httpRequest'
 import { ToggleLikePost } from '@/lib/interface'
+import { DefaultValuesPostProps } from '@/types'
 import { string } from 'zod'
 
 export const getAllPosts = async () => {
@@ -26,4 +27,8 @@ export const createComment = async (payload: {
   content: string
 }) => {
   return await apiClient.post('/comment/create', payload)
+}
+
+export const createPost = async (payload: FormData) => {
+  return await apiClient.post('/post/create-post', payload)
 }

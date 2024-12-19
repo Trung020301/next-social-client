@@ -10,6 +10,7 @@ import { useUser } from '@/hooks/useUser'
 import ExploreUserList from './ExploreUserList'
 import { DetailProfileProps } from '@/types'
 import { toggleFollowUser } from '@/services/https/userService'
+import { useRouter } from 'next/navigation'
 
 export default function ExploreUserComp({
   type,
@@ -19,8 +20,10 @@ export default function ExploreUserComp({
   user?: DetailProfileProps
 }) {
   const { currentUser } = useUser()
+  const router = useRouter()
 
   const isFollowing = user?.user.followers.includes(currentUser?.userId ?? '')
+  console.log('isFollowing', isFollowing)
 
   const [isToggle, toggle] = useToggle(true)
   const [isFollowed, setIsFollowed] = useToggle(isFollowing)
@@ -82,7 +85,10 @@ export default function ExploreUserComp({
             <p className='text-xs font-semibold'>
               {t('typography.explore_user')}
             </p>
-            <span className='text-xs text-blue-600'>
+            <span
+              onClick={() => router.push(`${pathRoute.EXPLORE}`)}
+              className='text-xs text-blue-600'
+            >
               {t('typography.view_all')}
             </span>
           </div>

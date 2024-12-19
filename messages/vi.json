@@ -127,7 +127,8 @@
     "block_user": "Chặn người dùng",
     "suggestion": "Gợi ý",
     "followers": "Người theo dõi",
-    "following": "Đang theo dõi"
+    "following": "Đang theo dõi",
+    "create_post": "Tạo bài viết"
   },
   "error": {
     "name_length": "Họ và tên phải có ít nhất 2 ký tự.",
@@ -138,6 +139,9 @@
     "unexpected": "Đã xảy ra lỗi không mong muốn.",
     "user_not_exist": "Người dùng không tồn tại.",
     "user_not_found": "Không tìm thấy người dùng."
+  },
+  "success": {
+    "upload_successfully": "Tải lên thành công."
   },
   "notify": {
     "send_email": "Chúng tôi đã gửi mã xác thực tới {email} cho bạn, hãy kiểm tra hộp thư để xác thực tài khoản.",
@@ -155,7 +159,9 @@
     "blocked_users": "Người dùng đã chặn",
     "notifications": "Thông báo",
     "language": "Ngôn ngữ",
-    "theme": "Chủ đề"
+    "theme": "Chủ đề",
+    "create_post": "Tạo bài viết",
+    "create_story": "Tạo tin nổi bật"
   },
   "toast": {
     "save_success": "Đã lưu",
@@ -172,5 +178,15 @@
     "copy_success": "Sao chép thành công",
     "success": "Thành công",
     "error": "Xảy ra lỗi"
+  },
+  "label": {
+    "choose_files": "Chọn tệp",
+    "choose_avatar": "Chọn ảnh đại diện",
+    "choose_image": "Chọn ảnh",
+    "content": "Nội dung",
+    "visibility": "Đối tượng hiển thị",
+    "public": "Công khai",
+    "private": "Riêng tư",
+    "followers": "Người theo dõi"
   }
 }

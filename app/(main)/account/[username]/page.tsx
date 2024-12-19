@@ -8,8 +8,7 @@ import DetailProfile from '@/components/profile/DetailProfile'
 import ExploreUserComp from '@/components/profile/explore-user/ExploreUserComp'
 import FeatureNews from '@/components/profile/feature-news/FeatureNews'
 import ProfileTabs from '@/components/profile/tabs/ProfileTabs'
-import { defaultUser, TYPE_PROFILE, userNotFound } from '@/lib/const'
-import { fakeListStory } from '@/services/data'
+import { defaultUser, pathRoute, TYPE_PROFILE, userNotFound } from '@/lib/const'
 import { getUserProfile } from '@/services/https/userService'
 import { DetailProfileProps, UserDetailProps } from '@/types'
 import Image from 'next/image'
@@ -17,6 +16,7 @@ import { useTranslations } from 'next-intl'
 
 export default function Page() {
   const t = useTranslations()
+
   const { username } = useParams<{ username: string }>()
   const [user, setUser] = useState<DetailProfileProps>({
     user: defaultUser,
@@ -30,6 +30,9 @@ export default function Page() {
     const fetchUser = async () => {
       try {
         const res = await getUserProfile({ username })
+        if (res.status === 302) {
+          return window.location.replace(`${pathRoute.PROFILE}`)
+        }
         setUser(res)
         setLoading(false)
       } catch (error: any) {
