@@ -7,6 +7,8 @@ import Link from 'next/link'
 import { defaultAvatar, pathRoute } from '@/lib/const'
 import { UserExploreProps } from '@/types'
 import { Skeleton } from '@/components/ui/skeleton'
+import { toggleFollowUser } from '@/services/https/userService'
+import { toast } from '@/components/hooks/use-toast'
 
 export default function CardUser({
   user,
@@ -15,12 +17,26 @@ export default function CardUser({
   user: UserExploreProps
   loading?: boolean
 }) {
-  const { followers } = user
-  // const checkFollow = followers?.find((item) => item === user.id)
-  const [isFollowed, setIsFollowed] = useState<boolean>(false)
   const t = useTranslations()
-  const handleFollow = () => {
-    setIsFollowed(!isFollowed)
+
+  const [isFollowed, setIsFollowed] = useState<boolean>(false)
+  const [loadingState, setLoadingState] = useState(false)
+
+  const handleFollow = async (userId: string) => {
+    try {
+      setLoadingState(true)
+      const response = await toggleFollowUser(userId)
+      if (response.status === 201) {
+        setIsFollowed((prev) => !prev)
+      }
+    } catch (error) {
+      toast({
+        variant: 'destructive',
+        description: t('error.unexpected'),
+      })
+    } finally {
+      setLoadingState(false)
+    }
   }
 
   if (loading) {
@@ -46,7 +62,7 @@ export default function CardUser({
             alt='avatar'
             width={64}
             height={64}
-            className='rounded-full'
+            className='w-[64px] h-[64px] rounded-full'
           />
         </Link>
         <div className='text-center py-2'>
@@ -57,8 +73,9 @@ export default function CardUser({
         </div>
       </div>
       <button
-        onClick={handleFollow}
+        onClick={() => handleFollow(user._id)}
         className='px-6 py-1 bg-sky-600 rounded text-xs text-white font-medium'
+        disabled={loadingState}
       >
         {isFollowed ? t('typography.unfollow') : t('button.follow')}
       </button>

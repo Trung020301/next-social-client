@@ -97,12 +97,7 @@ export default function page() {
               href={`${pathRoute.ACCOUNT}/${user.username}`}
               className='flex items-center gap-2 hover:bg-slate-100 '
             >
-              <AvatarUser
-                src={user?.avatar?.url}
-                username={user.username}
-                width={28}
-                height={28}
-              />
+              <AvatarUser src={user?.avatar?.url} username={user.username} />
               <span className='text-xs font-semibold'>{user.username}</span>
             </Link>
             <button

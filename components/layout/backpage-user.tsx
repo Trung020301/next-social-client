@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 import { ChevronLeft } from 'lucide-react'
 
 import EllipsisToolbar from '../profile/tools/ellipsis-toolbar'
@@ -11,10 +11,14 @@ import { getUserProfile } from '@/services/https/userService'
 
 export default function BackpageUser() {
   const router = useRouter()
+  const pathName = usePathname()
   const params = useParams<{ username: string }>()
 
-  const [user, setUser] = useState<IUser>(defaultUser)
   const [errorStatus, setErrorStatus] = useState<number>(0)
+  const [user, setUser] = useState<IUser>(defaultUser)
+
+  const conditionRender =
+    pathName === `/account/${params.username}` || errorStatus === 404
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -37,7 +41,7 @@ export default function BackpageUser() {
         <ChevronLeft />
       </div>
       <p className='text-center text-sm font-medium'>{params.username}</p>
-      {errorStatus !== 404 && (
+      {conditionRender && (
         <div className='absolute right-2 top-3'>
           <EllipsisToolbar user={user} />
         </div>

@@ -35,6 +35,8 @@ export const userNotFound = '/images/user-not-found.png'
 export const defaultAvatar =
   'https://res.cloudinary.com/dpqhuucyq/image/upload/v1732780340/2_ea60qt.jpg'
 
+export const createPostFileImage = '/images/create-post.png'
+
 export const DEFAULT_TAB = 'all'
 export const REEF_TAB = 'reef'
 export const TAG_TAB = 'tag'

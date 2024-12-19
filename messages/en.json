@@ -127,7 +127,8 @@
     "block_user": "Block user",
     "suggestion": "Suggestion",
     "followers": "Followers",
-    "following": "Following"
+    "following": "Following",
+    "create_post": "Create post"
   },
   "error": {
     "name_length": "The fullname must be at least 2 characters.",
@@ -138,6 +139,9 @@
     "unexpected": "Something went wrong. Please try again later.",
     "user_not_exist": "The user does not exist.",
     "user_not_found": "User not found."
+  },
+  "success": {
+    "upload_successfully": "Uploaded successfully."
   },
   "notify": {
     "send_email": "We have sent an email to {email}. Please check your email to verify your account.",
@@ -155,7 +159,9 @@
     "blocked_users": "Blocked users",
     "notifications": "Notifications",
     "language": "Language",
-    "theme": "Theme"
+    "theme": "Theme",
+    "create_post": "Create post",
+    "create_story": "Create story"
   },
   "toast": {
     "save_success": "Saved successfully",
@@ -172,5 +178,15 @@
     "copy_success": "Copied successfully",
     "sucess": "Success",
     "error": "Error"
+  },
+  "label": {
+    "choose_files": "Choose files",
+    "choose_avatar": "Choose avatar",
+    "choose_image": "Choose image",
+    "content": "Content",
+    "upload_successfully": "Uploaded successfully",
+    "public": "Public",
+    "private": "Private",
+    "followers": "Followers"
   }
 }

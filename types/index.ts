@@ -65,6 +65,7 @@ export type UserDetailProps = {
 
 export type PostType = 'image' | 'video'
 export type GenderType = 'male' | 'female' | 'other'
+export type VisibilityType = 'public' | 'private' | 'followers'
 
 export type SettingsProps = {
   icon: React.ReactNode
@@ -75,4 +76,11 @@ export type SettingsProps = {
 export type DetailProfileProps = {
   user: IUser
   posts: number
+}
+
+export type DefaultValuesPostProps = {
+  files: File[]
+  content?: string
+  resourceType?: PostType
+  visibility?: VisibilityType
 }

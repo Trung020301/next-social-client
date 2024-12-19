@@ -16,3 +16,11 @@
 - Get user exclude password : Done
 
 3. 白月光 - white moonlight
+
+// Deadline: 14/12/2023
+
+4. path: my-profile:
+
+- create new Post:
+  - settings/create-new-post
+- create a new Story

@@ -3,10 +3,12 @@ import dynamic from 'next/dynamic'
 import ExploreUserComp from '@/components/profile/explore-user/ExploreUserComp'
 import FeatureNews from '@/components/profile/feature-news/FeatureNews'
 import ProfileTabs from '@/components/profile/tabs/ProfileTabs'
-import { getMyProfile } from '@/services/https/userService'
 import { TYPE_PROFILE } from '@/lib/const'
 const Header = dynamic(() => import('@/components/profile/Header'))
 const UserSetting = dynamic(() => import('@/components/settings/user-setting'))
+const CreateFields = dynamic(
+  () => import('@/components/settings/create-fields'),
+)
 const DetailProfile = dynamic(
   () => import('@/components/profile/DetailProfile'),
   { ssr: false },
@@ -21,7 +23,7 @@ export default async function Page() {
 
           <div className='flex items-center gap-3'>
             <span>
-              <SquarePlus size={24} />
+              <CreateFields />
             </span>
             <span>
               <UserSetting />
