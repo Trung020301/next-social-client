@@ -28,15 +28,15 @@ export default function BackpageUser() {
         })
         setUser(response.user)
       } catch (error: any) {
-        console.error(error)
         setErrorStatus(error.status)
+        // window.location.replace('/')
       }
     }
     fetchUser()
   }, [])
 
   return (
-    <div className='sticky top-0 z-50 bg-white py-3 border-b-2 border-gray-200'>
+    <div className='fixed w-full top-0 z-50 bg-white py-3 border-b-2 border-gray-200'>
       <div className='absolute' onClick={() => router.back()}>
         <ChevronLeft />
       </div>

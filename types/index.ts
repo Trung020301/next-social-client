@@ -21,6 +21,7 @@ export type CommentProps = {
 
 export type CardPostProps = {
   post: ICardPost
+  onHidePost?: () => void
 }
 
 export type AvatarUserProps = {
@@ -83,4 +84,9 @@ export type DefaultValuesPostProps = {
   content?: string
   resourceType?: PostType
   visibility?: VisibilityType
+}
+
+export type ReportPostProps = {
+  reportedPostId: string
+  reason: string
 }

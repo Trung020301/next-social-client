@@ -8,7 +8,7 @@ export default function UserLayout({
   return (
     <div>
       <BackpageUser />
-      {children}
+      <main className='mt-12'>{children}</main>
     </div>
   )
 }
