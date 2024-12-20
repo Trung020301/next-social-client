@@ -105,7 +105,8 @@
     "confirm_new_password": "Nhập xác nhận mật khẩu mới...",
     "current_password": "Nhập mật khẩu hiện tại...",
     "type_comment": "Nhập bình luận...",
-    "type_username": "Nhập tên người dùng..."
+    "type_username": "Nhập tên người dùng...",
+    "report_reason": "Nhập lý do báo cáo..."
   },
   "LocaleSwitcher": {
     "label": "Chọn ngôn ngữ",
@@ -177,7 +178,8 @@
     "change_password_success": "Thay đổi mật khẩu thành công",
     "copy_success": "Sao chép thành công",
     "success": "Thành công",
-    "error": "Xảy ra lỗi"
+    "error": "Xảy ra lỗi",
+    "report_success": "Báo cáo thành công"
   },
   "label": {
     "choose_files": "Chọn tệp",

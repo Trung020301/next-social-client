@@ -1,4 +1,5 @@
 import apiClient from '@/app/api/httpRequest'
+import { ReportPostProps } from '@/types'
 
 //? [GET API] ***********************************************************
 export const getMyProfile = async () => {
@@ -62,6 +63,11 @@ export const getBlockedListUser = async () => {
   return response.data
 }
 
+export const getSavedPosts = async () => {
+  const response = await apiClient.get('/user/archives/saved-posts')
+  return response.data
+}
+
 //? [POST API] ***********************************************************
 export const blockUser = async (targetUserId: string) => {
   return await apiClient.post('/user/interact/block-user', { targetUserId })
@@ -81,6 +87,14 @@ export const toggleSavePost = async (postId: string) => {
 
 export const removeFollower = async (followerId: string) => {
   return await apiClient.post('/user/remove-follower', { followerId })
+}
+
+export const reportPost = async (reportPostDto: ReportPostProps) => {
+  return await apiClient.post('/user/report/post', reportPostDto)
+}
+
+export const unhidePost = async (unhidePostId: string) => {
+  return await apiClient.post('/user/archives/unhide-post', unhidePostId)
 }
 
 //? [UPDATE API] ***********************************************************

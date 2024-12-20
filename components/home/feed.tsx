@@ -15,6 +15,7 @@ export default function NewsFeed() {
   const query = {
     limit: 10,
   }
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -28,6 +29,10 @@ export default function NewsFeed() {
     }
     fetchPosts()
   }, [])
+
+  const handleHidePost = (postId: string) => {
+    setPosts((prevPosts) => prevPosts.filter((post) => post._id !== postId))
+  }
 
   if (loading) return <LoadingChild />
 
@@ -44,7 +49,11 @@ export default function NewsFeed() {
   return (
     <div className='mb-10'>
       {posts.map((post: ICardPost) => (
-        <CardPost key={post._id} post={post} />
+        <CardPost
+          key={post._id}
+          post={post}
+          onHidePost={() => handleHidePost(post._id)}
+        />
       ))}
     </div>
   )

@@ -52,7 +52,7 @@ export default function Gallery() {
       {posts.map((post) => (
         <Link
           key={post._id}
-          href={pathRoute.HOME}
+          href={`${pathRoute.ACCOUNT}/${params.username}/posts`}
           className='w-[32%] relative flex h-48 items-end overflow-hidden rounded-lg shadow-lg'
         >
           {post.MediaTypeEnum === 'image' ? (

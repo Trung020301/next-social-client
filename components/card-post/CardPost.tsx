@@ -21,7 +21,10 @@ import { pathRoute } from '@/lib/const'
 import Link from 'next/link'
 const SheetComment = dynamic(() => import('./SheetComment'))
 
-export default function CardPost({ post }: CardPostProps) {
+export default function CardPost({
+  post,
+  onHidePost,
+}: CardPostProps & { onHidePost: () => void }) {
   const locale = useLocale()
   const {
     _id,
@@ -29,7 +32,6 @@ export default function CardPost({ post }: CardPostProps) {
     likes,
     comments,
     mediaUrl,
-    visibility,
     createdAt,
     MediaTypeEnum,
     content,
@@ -125,7 +127,7 @@ export default function CardPost({ post }: CardPostProps) {
           </div>
         </Link>
         <span>
-          <DropDownMenu post={post} />
+          <DropDownMenu post={post} onHidePost={onHidePost} />
         </span>
       </div>
       <div>

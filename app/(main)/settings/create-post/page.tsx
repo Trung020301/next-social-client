@@ -122,7 +122,7 @@ export default function page() {
   }
 
   return (
-    <div className='p-2'>
+    <div className='p-2 mb-20'>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
           <FormField

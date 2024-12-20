@@ -13,9 +13,11 @@ import { getUserProfile } from '@/services/https/userService'
 import { DetailProfileProps, UserDetailProps } from '@/types'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { useUser } from '@/hooks/useUser'
 
 export default function Page() {
   const t = useTranslations()
+  const { currentUser } = useUser()
 
   const { username } = useParams<{ username: string }>()
   const [user, setUser] = useState<DetailProfileProps>({
@@ -43,6 +45,21 @@ export default function Page() {
     fetchUser()
   }, [])
 
+  const handleFollowChange = (isFollowed: boolean) => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      user: {
+        ...prevUser.user,
+        followers: isFollowed
+          ? [
+              ...prevUser.user.followers,
+              ...(currentUser?.userId ? [currentUser.userId] : []),
+            ]
+          : prevUser.user.followers.filter((id) => id !== currentUser?.userId),
+      },
+    }))
+  }
+
   if (statusCode === 404) {
     return (
       <div className='h-screen flex flex-col items-center justify-center'>
@@ -67,7 +84,11 @@ export default function Page() {
       <div className='py-2'>
         <DetailProfile type={TYPE_PROFILE.USER_PROFILE} user={user} />
       </div>
-      <ExploreUserComp type={TYPE_PROFILE.USER_PROFILE} user={user} />
+      <ExploreUserComp
+        type={TYPE_PROFILE.USER_PROFILE}
+        user={user}
+        onFollowChange={handleFollowChange}
+      />
       {/* {fakeListStory.length > 0 && (
         <FeatureNews listFutureNews={fakeListStory} />
       )} */}

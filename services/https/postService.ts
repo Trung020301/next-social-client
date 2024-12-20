@@ -1,7 +1,5 @@
 import apiClient from '@/app/api/httpRequest'
 import { ToggleLikePost } from '@/lib/interface'
-import { DefaultValuesPostProps } from '@/types'
-import { string } from 'zod'
 
 export const getAllPosts = async () => {
   const response = await apiClient.get('/post/get-all-posts')
