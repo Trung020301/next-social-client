@@ -35,7 +35,7 @@ export default function DropDownMenu({
     {
       label: t('typography.hide_post'),
       value: 'hide_post',
-      handler: () => <div>Hide Post</div>,
+      handler: () => <div>Ẩn</div>,
     },
     {
       label: t('typography.report_post'),

@@ -68,6 +68,11 @@ export const getSavedPosts = async () => {
   return response.data
 }
 
+export const getPostsHidden = async () => {
+  const response = await apiClient.get('/user/archives/posts-hidden')
+  return response.data
+}
+
 //? [POST API] ***********************************************************
 export const blockUser = async (targetUserId: string) => {
   return await apiClient.post('/user/interact/block-user', { targetUserId })
@@ -93,8 +98,8 @@ export const reportPost = async (reportPostDto: ReportPostProps) => {
   return await apiClient.post('/user/report/post', reportPostDto)
 }
 
-export const unhidePost = async (unhidePostId: string) => {
-  return await apiClient.post('/user/archives/unhide-post', unhidePostId)
+export const unhidePost = async (unhidePostIds: string[]) => {
+  return await apiClient.post('/user/archives/unhide-post', { unhidePostIds })
 }
 
 //? [UPDATE API] ***********************************************************
