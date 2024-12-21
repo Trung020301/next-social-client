@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { BadgePlus, SquarePlus, SquarePen } from 'lucide-react'
+import { SquarePlus, SquarePen, CircleFadingPlus } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { SettingsProps } from '@/types'
 import { Drawer } from 'vaul'
@@ -17,7 +17,7 @@ export default function CreateFields() {
       value: 'create-post',
     },
     {
-      icon: <BadgePlus />,
+      icon: <CircleFadingPlus />,
       title: t('settings.create_story'),
       value: 'create-story',
     },

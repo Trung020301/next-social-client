@@ -19,7 +19,8 @@
     "upload": "Upload",
     "download": "Download",
     "follow": "Follow",
-    "unfollow": "Unfollow"
+    "unfollow": "Unfollow",
+    "unhide_post": "Unhide post"
   },
   "typography": {
     "title": "Title",
@@ -139,7 +140,10 @@
     "user_existed": "The username is already taken.",
     "unexpected": "Something went wrong. Please try again later.",
     "user_not_exist": "The user does not exist.",
-    "user_not_found": "User not found."
+    "user_not_found": "User not found.",
+    "fetching_data": "Cannot fetch data.",
+    "no_saved_posts": "No saved post.",
+    "no_posts_hidden": "No posts hidden."
   },
   "success": {
     "upload_successfully": "Uploaded successfully."
@@ -162,7 +166,8 @@
     "language": "Language",
     "theme": "Theme",
     "create_post": "Create post",
-    "create_story": "Create story"
+    "create_story": "Create story",
+    "posts_hidden": "Posts hidden"
   },
   "toast": {
     "save_success": "Saved successfully",
@@ -179,7 +184,8 @@
     "copy_success": "Copied successfully",
     "sucess": "Success",
     "error": "Error",
-    "report_success": "Reported successfully"
+    "report_success": "Reported successfully",
+    "unhide_post_success": "Unhide post successfully"
   },
   "label": {
     "choose_files": "Choose files",

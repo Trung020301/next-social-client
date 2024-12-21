@@ -33,12 +33,7 @@ export default async function Page() {
         <div className='py-2'>
           <DetailProfile type={TYPE_PROFILE.MY_PROFILE} />
         </div>
-        <ExploreUserComp
-          type={TYPE_PROFILE.MY_PROFILE}
-          onFollowChange={(isFollowed: boolean) => {
-            console.log(`User follow status changed: ${isFollowed}`)
-          }}
-        />
+        <ExploreUserComp type={TYPE_PROFILE.MY_PROFILE} />
         {/* {fakeListStory.length > 0 && (
             <FeatureNews listFutureNews={fakeListStory} />
           )} */}

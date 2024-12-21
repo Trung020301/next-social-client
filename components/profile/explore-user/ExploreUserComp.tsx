@@ -15,11 +15,9 @@ import { useRouter } from 'next/navigation'
 export default function ExploreUserComp({
   type,
   user,
-  onFollowChange,
 }: {
   type: string
   user?: DetailProfileProps
-  onFollowChange: (isFollowed: boolean) => void
 }) {
   const { currentUser } = useUser()
   const router = useRouter()
@@ -37,7 +35,6 @@ export default function ExploreUserComp({
       if (user?.user._id) {
         await toggleFollowUser(user.user._id)
         setIsFollowed()
-        onFollowChange(!isFollowed)
       }
     } catch (error: any) {
       setError(error)

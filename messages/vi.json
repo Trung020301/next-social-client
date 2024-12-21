@@ -19,7 +19,8 @@
     "upload": "Tải lên",
     "download": "Tải xuống",
     "follow": "Theo dõi",
-    "unfollow": "Bỏ theo dõi"
+    "unfollow": "Bỏ theo dõi",
+    "unhide_post": "Bỏ ẩn bài viết"
   },
   "typography": {
     "title": "Tiêu đề",
@@ -139,7 +140,10 @@
     "user_existed": "Tên người dùng đã tồn tại.",
     "unexpected": "Đã xảy ra lỗi không mong muốn.",
     "user_not_exist": "Người dùng không tồn tại.",
-    "user_not_found": "Không tìm thấy người dùng."
+    "user_not_found": "Không tìm thấy người dùng.",
+    "fetch_data": "Không thể tải dữ liệu.",
+    "no_saved_posts": "Không có bài viết nào được lưu.",
+    "no_posts_hidden": "Không có bài viết nào được ẩn."
   },
   "success": {
     "upload_successfully": "Tải lên thành công."
@@ -162,7 +166,8 @@
     "language": "Ngôn ngữ",
     "theme": "Chủ đề",
     "create_post": "Tạo bài viết",
-    "create_story": "Tạo tin nổi bật"
+    "create_story": "Tạo tin nổi bật",
+    "posts_hidden": "Bài viết đã ẩn"
   },
   "toast": {
     "save_success": "Đã lưu",
@@ -179,7 +184,8 @@
     "copy_success": "Sao chép thành công",
     "success": "Thành công",
     "error": "Xảy ra lỗi",
-    "report_success": "Báo cáo thành công"
+    "report_success": "Báo cáo thành công",
+    "unhide_post_success": "Bỏ ẩn bài viết thành công"
   },
   "label": {
     "choose_files": "Chọn tệp",

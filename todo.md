@@ -22,5 +22,8 @@
 4. path: my-profile:
 
 - create new Post:
-  - settings/create-new-post
+  - settings/create-new-post :+1:
 - create a new Story
+
+5. path: settings/saved:
+   - update: remove saved post

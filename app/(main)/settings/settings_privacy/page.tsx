@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import dynamic from 'next/dynamic'
-import { Bell, Languages, SunMoon, UserRoundX } from 'lucide-react'
+import { Bell, BookX, Languages, SunMoon, UserRoundX } from 'lucide-react'
 
 // This component is used in Settings page.
 const BlockedUserComp = dynamic(() => import('./BlockedUserComp'))
 const NotifyComp = dynamic(() => import('./NotifyComp'))
 const ThemeComp = dynamic(() => import('./ThemeComp'))
 const LanguageComp = dynamic(() => import('./LanguageComp'))
+const PostsHidden = dynamic(() => import('./PostsHidden'))
 
 export default function page() {
   const searchParams = useSearchParams()
@@ -29,6 +30,12 @@ export default function page() {
       href: '?tab=blocked-users',
       icon: <UserRoundX size={20} />,
       component: <BlockedUserComp />,
+    },
+    {
+      label: t('settings.posts_hidden'),
+      href: '?tab=posts-hidden',
+      icon: <BookX size={20} />,
+      component: <PostsHidden />,
     },
     {
       label: t('settings.notifications'),
