@@ -130,7 +130,11 @@
     "suggestion": "Gợi ý",
     "followers": "Người theo dõi",
     "following": "Đang theo dõi",
-    "create_post": "Tạo bài viết"
+    "create_post": "Tạo bài viết",
+    "my_posts": "Bài viết của tôi",
+    "my_reels": "Reels của tôi",
+    "shared_posts": "Bài viết đã chia sẻ",
+    "confirm_delete": "Xác nhận xóa"
   },
   "error": {
     "name_length": "Họ và tên phải có ít nhất 2 ký tự.",
@@ -175,7 +179,7 @@
     "unblock_success": "Đã bỏ chặn",
     "follow_success": "Đã theo dõi",
     "unfollow_success": "Bỏ theo dõi",
-    "delete_success": "Chỉnh sửa thành công",
+    "delete_success": "Xóa thành công",
     "upload_success": "Tải lên thành công",
     "reset_password_success": "Đặt lại mật khẩu thành công",
     "verify_email_success": "Xác minh email thành công",
@@ -196,5 +200,13 @@
     "public": "Công khai",
     "private": "Riêng tư",
     "followers": "Người theo dõi"
+  },
+  "modal": {
+    "description": {
+      "delete_post": "Bạn có chắc chắn muốn xóa bài viết này không?"
+    },
+    "title": {
+      "edit_post": "Chỉnh sửa bài viết"
+    }
   }
 }
