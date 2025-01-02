@@ -22,6 +22,12 @@ export const getAllUsers = async (options: { page: number; limit: number }) => {
   return response.data
 }
 
+export const getAllPosts = async (options: { page: number; limit: number }) => {
+  const response = await apiClient.get('/admin/posts', {
+    params: options,
+  })
+  return response.data
+}
 export const deletePostByAdmin = async (postId: string) => {
   const response = await apiClient.delete(`/admin/posts/delete/${postId}`)
   return response.data

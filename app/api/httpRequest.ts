@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const apiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
-  timeout: 10000,
+  timeout: 20000,
 })
 
 // Thêm interceptor để gắn token vào headers

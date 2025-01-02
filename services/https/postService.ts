@@ -10,13 +10,26 @@ type updatePostType = {
   files: File[]
 }
 
-export const getAllPosts = async () => {
-  const response = await apiClient.get('/post/get-all-posts')
+type QueryPost = {
+  page: number
+  limit: number
+  sortBy: 'createdAt' | 'updatedAt'
+  MediaTypeEnum?: 'video' | 'image'
+}
+
+export const getAllPosts = async (query?: Partial<QueryPost>) => {
+  const response = await apiClient.get('/post/get-all-posts', { params: query })
   return response.data
 }
 
-export const getAllPostsUser = async (params: { username: string }) => {
-  const response = await apiClient.get(`/post/collection/${params.username}`)
+export const getAllPostsUser = async (
+  params: { username: string },
+  query?: Partial<QueryPost>,
+) => {
+  const response = await apiClient.get(`/post/collection/${params.username}`, {
+    params: query,
+  })
+
   return response.data
 }
 

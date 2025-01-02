@@ -9,7 +9,7 @@ export default function HeaderMyProfileLayout() {
   const t = useTranslations()
   const router = useRouter()
   const pathName = usePathname()
-  const title = pathName.split('/')[2]
+  const title = pathName ? pathName.split('/')[2] : ''
 
   const renderTitle = (title: string) => {
     switch (title) {
