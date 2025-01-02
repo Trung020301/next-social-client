@@ -53,7 +53,7 @@ export default function page() {
         {results.map((post) => (
           <Link
             key={post._id}
-            href={`${pathRoute.ACCOUNT}/posts`}
+            href={`${pathRoute.ACCOUNT}/${post.userId.username}/posts`}
             className='w-[32%] relative flex h-48 items-end overflow-hidden rounded-lg shadow-lg'
           >
             {post.MediaTypeEnum === 'image' ? (

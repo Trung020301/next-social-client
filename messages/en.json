@@ -20,7 +20,12 @@
     "download": "Download",
     "follow": "Follow",
     "unfollow": "Unfollow",
-    "unhide_post": "Unhide post"
+    "unhide_post": "Unhide post",
+    "view_post": "View post",
+    "delete_post": "Delete post",
+    "update": "Update",
+    "ban_user": "Ban user",
+    "unban_user": "Unban user"
   },
   "typography": {
     "title": "Title",
@@ -134,7 +139,8 @@
     "my_posts": "My posts",
     "my_reels": "My reels",
     "shared_posts": "Shared posts",
-    "confirm_delete": "Confirm delete"
+    "confirm_delete": "Confirm delete",
+    "admin_dashboard": "Admin dashboard"
   },
   "error": {
     "name_length": "The fullname must be at least 2 characters.",
@@ -150,7 +156,11 @@
     "no_posts_hidden": "No posts hidden."
   },
   "success": {
-    "upload_successfully": "Uploaded successfully."
+    "upload_successfully": "Uploaded successfully.",
+    "update_successfully": "Updated successfully.",
+    "delete_successfully": "Deleted successfully.",
+    "ban_successfully": "Ban successfully.",
+    "unban_successfully": "Unban successfully."
   },
   "notify": {
     "send_email": "We have sent an email to {email}. Please check your email to verify your account.",
@@ -199,14 +209,32 @@
     "upload_successfully": "Uploaded successfully",
     "public": "Public",
     "private": "Private",
-    "followers": "Followers"
+    "followers": "Followers",
+    "admin": {
+      "reported_posts": "Reported posts",
+      "all_users": "All users",
+      "all_posts": "All posts"
+    }
   },
   "modal": {
     "description": {
-      "delete_post": "Do you want to delete this post?"
+      "delete_post": "Do you want to delete this post?",
+      "ban_user": "Do you want to ban this user?",
+      "unban_user": "Do you want to unban this user?"
     },
     "title": {
-      "edit_post": "Edit post"
+      "edit_post": "Edit post",
+      "post_detail": "Post detail",
+      "delete_post": "Delete post",
+      "ban_user": "Ban user",
+      "unban_user": "Unban user"
+    },
+    "button": {
+      "update_status": "Update status"
+    },
+    "select": {
+      "resolved": "Resolved",
+      "unresolved": "Unresolved"
     }
   }
 }

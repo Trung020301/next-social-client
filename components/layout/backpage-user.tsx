@@ -18,15 +18,18 @@ export default function BackpageUser() {
   const [user, setUser] = useState<IUser>(defaultUser)
 
   const conditionRender =
-    pathName === `/account/${params.username}` || errorStatus === 404
+    params &&
+    (pathName === `/account/${params.username}` || errorStatus === 404)
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await getUserProfile({
-          username: params.username,
-        })
-        setUser(response.user)
+        if (params) {
+          const response = await getUserProfile({
+            username: params.username,
+          })
+          setUser(response.user)
+        }
       } catch (error: any) {
         setErrorStatus(error.status)
         // window.location.replace('/')
@@ -40,7 +43,9 @@ export default function BackpageUser() {
       <div className='absolute' onClick={() => router.back()}>
         <ChevronLeft />
       </div>
-      <p className='text-center text-sm font-medium'>{params.username}</p>
+      {params && (
+        <p className='text-center text-sm font-medium'>{params.username}</p>
+      )}
       {conditionRender && (
         <div className='absolute right-2 top-3'>
           <EllipsisToolbar user={user} />

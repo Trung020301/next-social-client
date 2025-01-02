@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation'
 export default function Page() {
   const [step, setStep] = useState<string>(STEP_ONE)
   const router = useRouter()
-  const searchParams = useSearchParams().get('type')
+  const searchParams = useSearchParams()?.get('type') || STEP_ONE
   const [formValues, setFormValues] = useState<SignUpUserFormData>({
     fullName: '',
     username: '',

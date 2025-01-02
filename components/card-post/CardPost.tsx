@@ -129,9 +129,11 @@ export default function CardPost({
             </div>
           </div>
         </Link>
-        {!checkIsAuthPost && <span>
-          <DropDownMenu post={post} onHidePost={onHidePost} />
-        </span>}
+        {!checkIsAuthPost && (
+          <span>
+            <DropDownMenu post={post} onHidePost={onHidePost} />
+          </span>
+        )}
       </div>
       <div>
         <Carousel className='mt-2'>
@@ -188,18 +190,20 @@ export default function CardPost({
             </div>
           ))}
         </div>
-        <div onClick={handleSave}>
-          {isSaved ? (
-            <Bookmark
-              fill='primary'
-              strokeWidth={0}
-              className='font-semibold'
-              size={18}
-            />
-          ) : (
-            <Bookmark className='font-semibold' size={18} />
-          )}
-        </div>
+        {!checkIsAuthPost && (
+          <div onClick={handleSave}>
+            {isSaved ? (
+              <Bookmark
+                fill='primary'
+                strokeWidth={0}
+                className='font-semibold'
+                size={18}
+              />
+            ) : (
+              <Bookmark className='font-semibold' size={18} />
+            )}
+          </div>
+        )}
       </div>
       <Separator />
       <SheetComment postId={_id} />

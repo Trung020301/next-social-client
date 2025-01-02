@@ -14,6 +14,7 @@ export const pathRoute = {
   NOT_FOUND: '/404',
   SETTINGS: '/settings',
   ACCOUNT: '/account',
+  ADMIN: '/admin',
 }
 
 export const languageLabels = [
@@ -40,6 +41,11 @@ export const createPostFileImage = '/images/create-post.png'
 export const DEFAULT_TAB = 'all'
 export const REEF_TAB = 'reef'
 export const TAG_TAB = 'tag'
+
+export const ROLE_TYPE = {
+  USER: 'user',
+  ADMIN: 'admin',
+}
 
 const MY_PROFILE = 'my-profile'
 const USER_PROFILE = 'user-profile'
