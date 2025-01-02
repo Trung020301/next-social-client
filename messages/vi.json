@@ -20,7 +20,12 @@
     "download": "Tải xuống",
     "follow": "Theo dõi",
     "unfollow": "Bỏ theo dõi",
-    "unhide_post": "Bỏ ẩn bài viết"
+    "unhide_post": "Bỏ ẩn bài viết",
+    "view_post": "Xem bài viết",
+    "delete_post": "Xóa bài viết",
+    "update": "Cập nhập",
+    "ban_user": "Cấm người dùng",
+    "unban_user": "Bỏ cấm người dùng"
   },
   "typography": {
     "title": "Tiêu đề",
@@ -130,7 +135,12 @@
     "suggestion": "Gợi ý",
     "followers": "Người theo dõi",
     "following": "Đang theo dõi",
-    "create_post": "Tạo bài viết"
+    "create_post": "Tạo bài viết",
+    "my_posts": "Bài viết của tôi",
+    "my_reels": "Reels của tôi",
+    "shared_posts": "Bài viết đã chia sẻ",
+    "confirm_delete": "Xác nhận xóa",
+    "admin_dashboard": "Bảng điều khiển quản trị"
   },
   "error": {
     "name_length": "Họ và tên phải có ít nhất 2 ký tự.",
@@ -146,7 +156,11 @@
     "no_posts_hidden": "Không có bài viết nào được ẩn."
   },
   "success": {
-    "upload_successfully": "Tải lên thành công."
+    "upload_successfully": "Tải lên thành công.",
+    "update_successfully": "Cập nhập thành công.",
+    "delete_successfully": "Xóa thành công.",
+    "ban_successfully": "Chặn thành công.",
+    "unban_successfully": "Bỏ chặn thành công."
   },
   "notify": {
     "send_email": "Chúng tôi đã gửi mã xác thực tới {email} cho bạn, hãy kiểm tra hộp thư để xác thực tài khoản.",
@@ -175,7 +189,7 @@
     "unblock_success": "Đã bỏ chặn",
     "follow_success": "Đã theo dõi",
     "unfollow_success": "Bỏ theo dõi",
-    "delete_success": "Chỉnh sửa thành công",
+    "delete_success": "Xóa thành công",
     "upload_success": "Tải lên thành công",
     "reset_password_success": "Đặt lại mật khẩu thành công",
     "verify_email_success": "Xác minh email thành công",
@@ -195,6 +209,32 @@
     "visibility": "Đối tượng hiển thị",
     "public": "Công khai",
     "private": "Riêng tư",
-    "followers": "Người theo dõi"
+    "followers": "Người theo dõi",
+    "admin": {
+      "reported_posts": "Bài viết bị báo cáo",
+      "all_users": "Tất cả người dùng",
+      "all_posts": "Tất cả bài viết"
+    }
+  },
+  "modal": {
+    "description": {
+      "delete_post": "Bạn có chắc chắn muốn xóa bài viết này không?",
+      "ban_user": "Bạn có chắc chắn muốn cấm người dùng này không?",
+      "unban_user": "Bạn có chắc chắn muốn bỏ cấm người dùng này không?"
+    },
+    "title": {
+      "edit_post": "Chỉnh sửa bài viết",
+      "post_detail": "Chi tiết bài viết",
+      "delete_post": "Xóa bài viết",
+      "ban_user": "Cấm người dùng",
+      "unban_user": "Bỏ cấm người dùng"
+    },
+    "button": {
+      "update_status": "Cập nhập trạng thái"
+    },
+    "select": {
+      "resolved": "Đã giải quyết",
+      "unresolved": "Chưa giải quyết"
+    }
   }
 }

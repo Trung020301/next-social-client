@@ -24,6 +24,11 @@ export default function page() {
 
   useEffect(() => {
     const fetchUsers = async () => {
+      if (!params) {
+        setLoading(false)
+        setError('Params is null')
+        return
+      }
       try {
         const response = await getFollowingOfUser({ username: params.username })
         setUsers(response.data.users)

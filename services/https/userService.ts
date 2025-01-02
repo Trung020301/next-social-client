@@ -102,6 +102,12 @@ export const unhidePost = async (unhidePostIds: string[]) => {
   return await apiClient.post('/user/archives/unhide-post', { unhidePostIds })
 }
 
+export const checkUserIsAdmin = async (
+  requestUserId: string,
+): Promise<{ isAdmin: boolean }> => {
+  return await apiClient.post('/user/check-admin', { requestUserId })
+}
+
 //? [UPDATE API] ***********************************************************
 export const updateProfile = async (updateData: object) => {
   return await apiClient.patch('/user/update-profile', updateData)

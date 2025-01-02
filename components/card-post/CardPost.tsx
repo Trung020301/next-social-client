@@ -19,6 +19,7 @@ import { toast } from '../hooks/use-toast'
 import { toggleSavePost } from '@/services/https/userService'
 import { pathRoute } from '@/lib/const'
 import Link from 'next/link'
+import { useUser } from '@/hooks/useUser'
 const SheetComment = dynamic(() => import('./SheetComment'))
 
 export default function CardPost({
@@ -41,6 +42,8 @@ export default function CardPost({
   } = post
 
   const t = useTranslations()
+  const { currentUser } = useUser()
+  const checkIsAuthPost = currentUser?.userId === userId._id
 
   const [showMore, setShowMore] = useState(false)
   const [isLiked, liked] = useToggle(isLikedPost)
@@ -126,9 +129,11 @@ export default function CardPost({
             </div>
           </div>
         </Link>
-        <span>
-          <DropDownMenu post={post} onHidePost={onHidePost} />
-        </span>
+        {!checkIsAuthPost && (
+          <span>
+            <DropDownMenu post={post} onHidePost={onHidePost} />
+          </span>
+        )}
       </div>
       <div>
         <Carousel className='mt-2'>
@@ -185,18 +190,20 @@ export default function CardPost({
             </div>
           ))}
         </div>
-        <div onClick={handleSave}>
-          {isSaved ? (
-            <Bookmark
-              fill='primary'
-              strokeWidth={0}
-              className='font-semibold'
-              size={18}
-            />
-          ) : (
-            <Bookmark className='font-semibold' size={18} />
-          )}
-        </div>
+        {!checkIsAuthPost && (
+          <div onClick={handleSave}>
+            {isSaved ? (
+              <Bookmark
+                fill='primary'
+                strokeWidth={0}
+                className='font-semibold'
+                size={18}
+              />
+            ) : (
+              <Bookmark className='font-semibold' size={18} />
+            )}
+          </div>
+        )}
       </div>
       <Separator />
       <SheetComment postId={_id} />
