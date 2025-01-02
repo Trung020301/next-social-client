@@ -145,8 +145,7 @@ export default function CardPost({
                     <CldImage
                       src={image.url}
                       alt='Post image'
-                      width={100}
-                      height={100}
+                      fill
                       priority
                       quality={100}
                       className='object-cover w-full h-full '
