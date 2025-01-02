@@ -18,10 +18,12 @@ export default function page() {
   const router = useRouter()
   const t = useTranslations()
 
-  const [activeTab, setActiveTab] = useState(searchParams.get('tab'))
+  const [activeTab, setActiveTab] = useState(
+    searchParams ? searchParams.get('tab') : null,
+  )
 
   useEffect(() => {
-    setActiveTab(searchParams.get('tab'))
+    setActiveTab(searchParams ? searchParams.get('tab') : null)
   }, [searchParams])
 
   const listSettings = [

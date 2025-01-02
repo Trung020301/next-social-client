@@ -145,10 +145,11 @@ export default function CardPost({
                     <CldImage
                       src={image.url}
                       alt='Post image'
-                      fill
+                      width={100}
+                      height={100}
                       priority
                       quality={100}
-                      className='object-cover h-auto object-center'
+                      className='object-cover w-full h-full '
                     />
                   ) : (
                     <video

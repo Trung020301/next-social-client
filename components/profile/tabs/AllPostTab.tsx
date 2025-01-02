@@ -12,7 +12,7 @@ import { useParams } from 'next/navigation'
 
 export default function Gallery() {
   const params = useParams<{ username: string }>()
-  const checkParams = params.username !== undefined
+  const checkParams = params && params.username !== undefined
 
   const [posts, setPosts] = useState<IPost[]>([])
   const [loading, setLoading] = useState<boolean>(false)
@@ -21,11 +21,12 @@ export default function Gallery() {
     const fetchPosts = async () => {
       try {
         setLoading(true)
-        const response = checkParams
-          ? await getAllPostsUser({
-              username: params.username,
-            })
-          : await getAllPosts()
+        const response =
+          checkParams && params
+            ? await getAllPostsUser({
+                username: params.username,
+              })
+            : await getAllPosts()
         setPosts(response.data.posts)
         setLoading(false)
       } catch (error) {

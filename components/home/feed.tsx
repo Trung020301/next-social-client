@@ -12,14 +12,11 @@ export default function NewsFeed() {
   const [posts, setPosts] = useState<ICardPost[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
-  const query = {
-    limit: 10,
-  }
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await getNewsFeed(query)
+        const response = await getNewsFeed()
         setPosts(response.data.posts)
         setLoading(false)
       } catch (error: any) {
