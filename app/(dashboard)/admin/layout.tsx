@@ -6,7 +6,7 @@ export default function DashBoardLayout({
   children: React.ReactNode
 }) {
   return (
-    <main>
+    <main className='md:w-primary md:m-auto'>
       <HeaderAdmin />
       {children}
     </main>

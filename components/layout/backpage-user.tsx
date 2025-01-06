@@ -39,7 +39,7 @@ export default function BackpageUser() {
   }, [])
 
   return (
-    <div className='fixed w-full top-0 z-50 bg-white py-3 border-b-2 border-gray-200'>
+    <div className='fixed w-full md:w-primary top-0 z-50 bg-white py-3 border-b-2 border-gray-200'>
       <div className='absolute' onClick={() => router.back()}>
         <ChevronLeft />
       </div>

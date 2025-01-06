@@ -16,29 +16,26 @@ const DetailProfile = dynamic(
 
 export default async function Page() {
   return (
-    <>
-      <div className='pt-4'>
-        <div className='flex items-center justify-between px-2'>
-          <Header />
-
-          <div className='flex items-center gap-3'>
-            <span>
-              <CreateFields />
-            </span>
-            <span>
-              <UserSetting />
-            </span>
-          </div>
+    <div className='pt-4 md:w-primary md:m-auto'>
+      <div className='flex items-center justify-between px-2'>
+        <Header />
+        <div className='flex items-center gap-3'>
+          <span>
+            <CreateFields />
+          </span>
+          <span>
+            <UserSetting />
+          </span>
         </div>
-        <div className='py-2'>
-          <DetailProfile type={TYPE_PROFILE.MY_PROFILE} />
-        </div>
-        <ExploreUserComp type={TYPE_PROFILE.MY_PROFILE} />
-        {/* {fakeListStory.length > 0 && (
+      </div>
+      <div className='py-2'>
+        <DetailProfile type={TYPE_PROFILE.MY_PROFILE} />
+      </div>
+      <ExploreUserComp type={TYPE_PROFILE.MY_PROFILE} />
+      {/* {fakeListStory.length > 0 && (
             <FeatureNews listFutureNews={fakeListStory} />
           )} */}
-        <ProfileTabs />
-      </div>
-    </>
+      <ProfileTabs />
+    </div>
   )
 }

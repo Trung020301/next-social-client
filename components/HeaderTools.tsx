@@ -24,7 +24,7 @@ export default function HeaderTools() {
       {tools.map((tool, index) => (
         <div
           key={index}
-          className='relative dark:bg-black bg-slate-100 rounded-xl p-1'
+          className='relative dark:bg-black bg-slate-100 rounded-xl p-1 cursor-pointer'
         >
           {tool.icon}
           {tool.hasAlert && (

@@ -24,7 +24,7 @@ export default function Header() {
         <Lock size={16} color='gray' />
       </span>
       <span>{user.username}</span>
-      <span>
+      <span className='cursor-pointer'>
         {user.role === ROLE_TYPE.ADMIN ? (
           <FolderCog
             onClick={() => router.push(`${pathRoute.ADMIN}`)}

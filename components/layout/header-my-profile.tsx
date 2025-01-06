@@ -25,7 +25,7 @@ export default function HeaderMyProfileLayout() {
   }
 
   return (
-    <div className='fixed w-full top-0 z-50 bg-white py-2 h-9 border-b-2 border-gray-200'>
+    <div className='fixed w-full md:w-primary top-0 z-50 bg-white py-2 h-9 border-b-2 border-gray-200'>
       <div className='absolute' onClick={() => router.back()}>
         <ChevronLeft />
       </div>

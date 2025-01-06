@@ -96,7 +96,8 @@
     "copy_url_post": "Copy URL post",
     "recommend_for_you": "Recommend for you",
     "confirm_block_user": "Are you sure you want to block {username} user?",
-    "search_no_result": "No result found"
+    "search_no_result": "No result found",
+    "no_comment": "No comment"
   },
   "placehoolder": {
     "search": "Search...",

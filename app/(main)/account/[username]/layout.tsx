@@ -6,7 +6,7 @@ export default function UserLayout({
   children: React.ReactNode
 }) {
   return (
-    <div>
+    <div className='md:w-primary md:m-auto'>
       <BackpageUser />
       <main className='mt-12'>{children}</main>
     </div>
