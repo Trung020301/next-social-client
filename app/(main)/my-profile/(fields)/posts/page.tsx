@@ -52,7 +52,7 @@ export default function Page() {
   if (results.length === 0 && !loading) return <NoPostUI />
 
   return (
-    <div>
+    <div className='md:flex md:justify-center md:items-center md:flex-col'>
       {results.map((post) => (
         <div key={post._id} className='my-4'>
           <CardPostProfile

@@ -40,9 +40,9 @@ export default function CommentField({
   }
 
   return (
-    <div className='relative flex items-center gap-2'>
+    <div className='relative flex items-center gap-2 md:max-w-lg md:m-auto'>
       <Input
-        className='rounded-full pl-3 pr-10 text-sm h-10 w-full'
+        className='rounded-full bg-white pl-3 pr-10 text-sm h-10 w-full'
         placeholder={t('placehoolder.type_comment')}
         onChange={handleChangeValue}
         value={valueCmt}
@@ -50,7 +50,7 @@ export default function CommentField({
       />
 
       <div
-        className={`absolute right-3 top-1/2 transform -translate-y-1/2 transition-opacity duration-500  ease-in-out ${
+        className={`absolute right-3 top-1/2 transform -translate-y-1/2 transition-opacity cursor-pointer duration-500  ease-in-out ${
           showBtn ? 'opacity-100' : 'opacity-0'
         }`}
       >

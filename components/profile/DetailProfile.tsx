@@ -125,7 +125,7 @@ export default function DetailProfile({
           {detailList.map((item) => (
             <div
               key={item.id}
-              className='flex flex-col items-center justify-center'
+              className='flex flex-col items-center justify-center cursor-pointer'
               onClick={() => item.href && router.push(item.href)}
             >
               <span className='font-semibold text-sm'>

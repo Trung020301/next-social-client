@@ -58,16 +58,17 @@ export default function Gallery() {
               ? `${pathRoute.ACCOUNT}/${params.username}/posts`
               : `${pathRoute.PROFILE}/posts`
           }
-          className='w-[32%] relative flex h-48 items-end overflow-hidden rounded-lg shadow-lg'
+          className='w-[32%] md:w-[33%] relative flex h-48 md:h-96 items-end overflow-hidden rounded-lg shadow-lg'
         >
           {post.MediaTypeEnum === 'image' ? (
             <CldImage
               priority
               src={post.mediaUrl[0].url}
-              width={100}
-              height={250}
+              width='200'
+              height='250'
+              crop='fill'
               alt='Photo'
-              className='absolute inset-0 w-full h-full object-cover object-center'
+              className='absolute inset-0 h-full md:m-auto object-cover object-center'
             />
           ) : (
             <video

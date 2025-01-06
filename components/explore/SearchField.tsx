@@ -44,8 +44,8 @@ export default function SearchField() {
   }, [debouncedSearchValue])
 
   return (
-    <div>
-      <div className='flex items-center px-2 border-b-2 border-gray-300 fixed top-0 w-full dark:bg-blend-darken bg-white'>
+    <div className='md:flex md:items-center md:justify-center'>
+      <div className='flex items-center px-2 border-b-2 border-gray-300 fixed top-0 w-full dark:bg-blend-darken bg-white md:w-primary'>
         <div>
           <Search />
         </div>
@@ -58,7 +58,7 @@ export default function SearchField() {
         />
         <>{isSearching && <div className='loader-search'></div>}</>
       </div>
-      <ul className='shadow-lg pt-10'>
+      <ul className='md:w-primary shadow-lg pt-10'>
         {conditionRenderResults &&
           results.map((user: IUser) => (
             <Link key={user._id} href={`${pathRoute.ACCOUNT}/${user.username}`}>

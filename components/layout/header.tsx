@@ -31,8 +31,8 @@ export default function Header() {
   ]
 
   return (
-    <nav className='w-full fixed left-0 right-0 bg-slate-100 bottom-0 h-14 flex items-center'>
-      <div className='w-full flex items-center justify-around'>
+    <nav className='w-full fixed left-0 right-0 bg-slate-100 bottom-0 h-14 flex items-center md:flex md:items-center md:justify-center'>
+      <div className='w-full flex items-center justify-around md:w-primary'>
         {listItemNav.map((item, index) => {
           const isActive = pathname === item.href
           return (

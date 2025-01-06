@@ -116,7 +116,7 @@ export default function CardPost({
   }
 
   return (
-    <div className='py-4 shadow-2xl flex flex-col gap-1'>
+    <div className='py-4 shadow-2xl flex flex-col gap-1 md:w-[500px]'>
       <div className='flex items-center justify-between px-3'>
         <Link href={`${pathRoute.ACCOUNT}/${userId.username}`}>
           <div className='flex items-center gap-2'>
@@ -140,24 +140,24 @@ export default function CardPost({
           <CarouselContent>
             {mediaUrl.map((image, index) => (
               <CarouselItem key={index}>
-                <div className='relative min-h-60'>
-                  {MediaTypeEnum === 'image' ? (
-                    <CldImage
-                      src={image.url}
-                      alt='Post image'
-                      fill
-                      priority
-                      quality={100}
-                      className='object-cover w-full h-full '
-                    />
-                  ) : (
-                    <video
-                      src={image.url}
-                      className='w-full h-full object-cover'
-                      controls
-                    />
-                  )}
-                </div>
+                {MediaTypeEnum === 'image' ? (
+                  <CldImage
+                    src={image.url}
+                    alt={image.url}
+                    width='500'
+                    height='720'
+                    crop='fill'
+                    loading='lazy'
+                    quality={100}
+                    className='object-cover h-[720] '
+                  />
+                ) : (
+                  <video
+                    src={image.url}
+                    className='w-full object-cover'
+                    controls
+                  />
+                )}
               </CarouselItem>
             ))}
           </CarouselContent>

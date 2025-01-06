@@ -14,7 +14,7 @@ export default function Backpage() {
 
   return (
     <div className='p-3 h-10  border-b-[1px] flex items-center '>
-      <div className='' onClick={() => router.back()}>
+      <div className='cursor-pointer' onClick={() => router.back()}>
         <ChevronLeft />
       </div>
       <p className=' text-sm text-center w-full font-medium'>

@@ -49,7 +49,7 @@ export default function ExploreUserComp({
     <>
       <div className='flex items-center px-2 gap-1'>
         {type === TYPE_PROFILE.MY_PROFILE ? (
-          <button className='px-6 py-1 bg-zinc-200 rounded text-xs font-medium'>
+          <button className='px-6 py-1 bg-zinc-200 rounded text-xs font-medium md:flex-[5]'>
             <Link href={`${pathRoute.SETTINGS}/edit-profile`}>
               {t('typography.edit')}
             </Link>

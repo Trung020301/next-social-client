@@ -157,7 +157,7 @@ export default function CardPostProfile({
   ]
 
   return (
-    <div className='py-4 shadow-2xl flex flex-col gap-1'>
+    <div className='py-4 shadow-2xl flex flex-col gap-1 md:w-[500px]'>
       <div className='flex items-center justify-between px-3'>
         <Link href={`${pathRoute.PROFILE}`}>
           <div className='flex items-center gap-2'>
@@ -170,10 +170,14 @@ export default function CardPostProfile({
             </div>
           </div>
         </Link>
-        <div className='relative'>
-          <Ellipsis size={16} onClick={() => setMenuOpen(!menuOpen)} />
+        <div className='relative '>
+          <Ellipsis
+            className='cursor-pointer'
+            size={16}
+            onClick={() => setMenuOpen(!menuOpen)}
+          />
           {menuOpen && (
-            <div className='absolute right-0 mt-2 min-w-24 z-50 bg-white border border-gray-200 rounded shadow-lg'>
+            <div className='absolute right-0 mt-2 min-w-24 z-50 bg-white border border-gray-200 rounded shadow-lg '>
               <div
                 className='px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-100 flex items-center gap-2'
                 onClick={() => {
@@ -214,10 +218,12 @@ export default function CardPostProfile({
                     <CldImage
                       src={image.url}
                       alt='Post image'
-                      fill
+                      width='500'
+                      height='500'
+                      crop='fill'
                       priority
                       quality={100}
-                      className='object-cover h-auto object-center'
+                      className='object-cover h-[720px] object-center'
                     />
                   ) : (
                     <video

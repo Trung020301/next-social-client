@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   return (
-    <>
+    <div className='md:flex md:items-center md:justify-center md:flex-col'>
       <HeaderHome />
       <NewsFeed />
-    </>
+    </div>
   )
 }

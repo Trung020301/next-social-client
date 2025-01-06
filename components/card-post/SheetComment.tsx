@@ -60,9 +60,9 @@ export default function SheetComment({ postId }: { postId: string }) {
       <Drawer.Description />
       <Drawer.Portal>
         <Drawer.Overlay className='fixed inset-0 bg-black/40' />
-        <Drawer.Content className='bg-gray-100 flex flex-col rounded-t-[10px] mt-24 h-[80%] fixed bottom-0 left-0 right-0 outline-none'>
-          <div className='p-4 bg-white rounded-t-[10px] flex-1 overflow-y-auto scrollbar-hide'>
-            <div className='max-w-md mx-auto space-y-4'>
+        <Drawer.Content className=' flex flex-col rounded-t-[10px] mt-24 h-[80%] fixed bottom-0 left-0 right-0 outline-none'>
+          <div className='p-4 md:bg-slate-100 bg-white rounded-t-[10px] flex-1 overflow-y-auto scrollbar-hide'>
+            <div className='max-w-lg mx-auto space-y-4'>
               <div
                 aria-hidden
                 className='mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-gray-300 mb-2'
@@ -126,9 +126,14 @@ export default function SheetComment({ postId }: { postId: string }) {
                     </div>
                   )
                 })}
+                {results.length === 0 && (
+                  <p className='text-center text-sm text-gray-400'>
+                    {t('typography.no_comment')}
+                  </p>
+                )}
               </div>
             </div>
-            <div className='p-2 bg-white fixed bottom-0 left-0 right-0'>
+            <div className='p-2 fixed bottom-0 left-0 right-0'>
               <CommentProvider>
                 <CommentField
                   postId={postId}
