@@ -7,13 +7,11 @@ import { useTranslations } from 'next-intl'
 import { ICardPost, IPost } from '@/lib/interface'
 import CardPost from '@/components/card-post/CardPost'
 import { getAllPostsUser } from '@/services/https/postService'
-import { useUser } from '@/hooks/useUser'
 import LoadingChild from '@/components/fallback/LoadingChild'
 
 export default function page() {
   const t = useTranslations()
   const params = useParams<{ username: string }>()
-  const { currentUser } = useUser()
 
   const [results, setResults] = useState<ICardPost[] | []>([])
   const [loading, setLoading] = useState<boolean>(true)
@@ -22,6 +20,11 @@ export default function page() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
+        if (!params) {
+          setError('Username parameter is missing')
+          setLoading(false)
+          return
+        }
         const response = await getAllPostsUser({
           username: params.username,
         })
