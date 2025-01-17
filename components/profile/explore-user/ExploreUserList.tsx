@@ -23,7 +23,7 @@ export default function ExploreUserList({ type }: { type: string }) {
           type === TYPE_PROFILE.MY_PROFILE
             ? await getUserExplore()
             : await getUserExploreUserProfile({
-                username: params.username,
+                username: params?.username || '',
               })
         setLoading(false)
         setListUser(response.data.users)

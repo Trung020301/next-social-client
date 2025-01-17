@@ -19,7 +19,8 @@ export default function Page() {
   const t = useTranslations()
   const { currentUser } = useUser()
 
-  const { username } = useParams<{ username: string }>()
+  const params = useParams<{ username: string }>()
+  const username = params?.username || ''
   const [user, setUser] = useState<DetailProfileProps>({
     user: defaultUser,
     posts: 0,
