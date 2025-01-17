@@ -16,7 +16,7 @@ import { CardPostProps } from '@/types'
 import { toggleLikePost } from '@/services/https/postService'
 import useToggle from '@/hooks/useToggle'
 import { toast } from '../hooks/use-toast'
-import { toggleSavePost } from '@/services/https/userService'
+import { sharePost, toggleSavePost } from '@/services/https/userService'
 import { pathRoute } from '@/lib/const'
 import Link from 'next/link'
 import { useUser } from '@/hooks/useUser'
@@ -49,6 +49,7 @@ export default function CardPost({
   const [isLiked, liked] = useToggle(isLikedPost)
   const [isSaved, setIsSaved] = useToggle(isSavedPost)
   const [like, setLike] = useState<number>(likes.length)
+  const [share, setShare] = useState<number>(shares.length)
 
   const likeSound = useRef(
     typeof window !== 'undefined' ? new Audio('/sounds/likesound.mp3') : null,
@@ -88,6 +89,31 @@ export default function CardPost({
     }
   }
 
+  const handleShare = async () => {
+    try {
+      const response = await sharePost(_id)
+      if (response.status === 201) {
+        toast({
+          variant: 'success',
+          description: t('success.share_successfully'),
+        })
+        setShare((prevShare) => prevShare + 1)
+      }
+    } catch (error: any) {
+      if (error?.status === 409) {
+        return toast({
+          variant: 'destructive',
+          description: t('error.already_shared'),
+        })
+      } else {
+        toast({
+          variant: 'destructive',
+          description: t('error.unexpected'),
+        })
+      }
+    }
+  }
+
   const actions = [
     {
       icon: <Heart size={18} />,
@@ -99,7 +125,11 @@ export default function CardPost({
       icon: <MessageSquareMore size={18} />,
       count: Number(comments.length),
     },
-    { icon: <Send size={18} />, count: Number(shares.length) },
+    {
+      icon: <Send size={18} />,
+      count: Number(share),
+      onClick: handleShare,
+    },
   ]
 
   const formatText = (text: string) => {
@@ -179,7 +209,7 @@ export default function CardPost({
           {actions.map((action, index) => (
             <div
               key={index}
-              className='flex items-center gap-1 min-w-8 font-semibold'
+              className='flex items-center gap-1 min-w-8 font-semibold cursor-pointer'
               onClick={action.onClick}
             >
               {cloneElement(action.icon, {

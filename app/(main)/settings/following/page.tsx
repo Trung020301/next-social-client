@@ -12,9 +12,6 @@ import { pathRoute } from '@/lib/const'
 import { AvatarUser } from '@/components/AvatarUser'
 import Link from 'next/link'
 import LoadingChild from '@/components/fallback/LoadingChild'
-import { Separator } from '@/components/ui/separator'
-import { Button } from '@/components/ui/button'
-import { useToggle } from '@uidotdev/usehooks'
 
 export default function page() {
   const t = useTranslations()

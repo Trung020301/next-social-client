@@ -7,6 +7,18 @@ export const getMyProfile = async () => {
   return response.data
 }
 
+export const getSharedPost = async () => {
+  const response = await apiClient.get('/user/share/get-shared-posts')
+  return response.data
+}
+
+export const getSharedPostByUser = async (params: { username: string }) => {
+  const response = await apiClient.get(
+    `/user/share/get-shared-posts/${params.username}`,
+  )
+  return response.data
+}
+
 export const getUserProfile = async (params: { username: string }) => {
   const response = await apiClient.get(`/user/${params.username}`)
   return response.data
@@ -106,6 +118,14 @@ export const checkUserIsAdmin = async (
   requestUserId: string,
 ): Promise<{ isAdmin: boolean }> => {
   return await apiClient.post('/user/check-admin', { requestUserId })
+}
+
+export const sharePost = async (postId: string) => {
+  return await apiClient.post('/user/share/create', { postId })
+}
+
+export const removeSharePost = async (postId: string) => {
+  return await apiClient.delete('/user/share/remove', { data: { postId } })
 }
 
 //? [UPDATE API] ***********************************************************

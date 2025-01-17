@@ -51,7 +51,7 @@ export default function page() {
     )
 
   return (
-    <div className='mb-10'>
+    <div className='mb-10 md:flex md:justify-center md:items-center md:flex-col'>
       {results.map((post: ICardPost) => (
         <CardPost
           key={post._id}

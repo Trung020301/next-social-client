@@ -154,14 +154,16 @@
     "user_not_found": "Không tìm thấy người dùng.",
     "fetch_data": "Không thể tải dữ liệu.",
     "no_saved_posts": "Không có bài viết nào được lưu.",
-    "no_posts_hidden": "Không có bài viết nào được ẩn."
+    "no_posts_hidden": "Không có bài viết nào được ẩn.",
+    "already_shared": "Bài viết đã được chia sẻ."
   },
   "success": {
     "upload_successfully": "Tải lên thành công.",
     "update_successfully": "Cập nhập thành công.",
     "delete_successfully": "Xóa thành công.",
     "ban_successfully": "Chặn thành công.",
-    "unban_successfully": "Bỏ chặn thành công."
+    "unban_successfully": "Bỏ chặn thành công.",
+    "share_successfully": "Chia sẻ thành công."
   },
   "notify": {
     "send_email": "Chúng tôi đã gửi mã xác thực tới {email} cho bạn, hãy kiểm tra hộp thư để xác thực tài khoản.",
