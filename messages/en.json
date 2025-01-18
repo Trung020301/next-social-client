@@ -154,14 +154,16 @@
     "user_not_found": "User not found.",
     "fetching_data": "Cannot fetch data.",
     "no_saved_posts": "No saved post.",
-    "no_posts_hidden": "No posts hidden."
+    "no_posts_hidden": "No posts hidden.",
+    "already_shared": "The post has already been shared."
   },
   "success": {
     "upload_successfully": "Uploaded successfully.",
     "update_successfully": "Updated successfully.",
     "delete_successfully": "Deleted successfully.",
     "ban_successfully": "Ban successfully.",
-    "unban_successfully": "Unban successfully."
+    "unban_successfully": "Unban successfully.",
+    "share_successfully": "Share successfully."
   },
   "notify": {
     "send_email": "We have sent an email to {email}. Please check your email to verify your account.",

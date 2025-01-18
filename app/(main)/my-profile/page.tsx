@@ -1,9 +1,10 @@
-import { SquarePlus } from 'lucide-react'
+import { LogOut, SquarePlus } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import ExploreUserComp from '@/components/profile/explore-user/ExploreUserComp'
 import FeatureNews from '@/components/profile/feature-news/FeatureNews'
 import ProfileTabs from '@/components/profile/tabs/ProfileTabs'
-import { TYPE_PROFILE } from '@/lib/const'
+import { pathRoute, TYPE_PROFILE } from '@/lib/const'
+import { useRouter } from 'next/router'
 const Header = dynamic(() => import('@/components/profile/Header'))
 const UserSetting = dynamic(() => import('@/components/settings/user-setting'))
 const CreateFields = dynamic(
